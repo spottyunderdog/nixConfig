@@ -1,0 +1,320 @@
+[accessibility]
+ui_scale = 1.2
+
+[bar.default]
+capsule = true
+capsule_border = "primary"
+capsule_foreground = "secondary"
+capsule_radius = 6
+center = [ "group:g2", "spacer_1", "workspaces", "spacer_1", "group:g3" ]
+concave_edge_corners = true
+contact_shadow = true
+end = [ "media", "spacer_1", "tray", "volume", "notifications", "network", "battery", "session" ]
+margin_edge = 4
+margin_ends = 4
+position = "bottom"
+radius = 13
+radius_bottom_left = 13
+radius_bottom_right = 13
+radius_top_left = 13
+radius_top_right = 13
+scale = 1.0000000074505806
+start = [ "launcher", "clock", "spacer_1", "group:g1", "summary", "spacer_1", "active_window" ]
+thickness = 35
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    border = "primary"
+    enabled = true
+    fill = "surface_variant"
+    foreground = "secondary"
+    id = "g1"
+    members = [ "temp", "sysmon_2", "sysmon_3" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    border = "primary"
+    enabled = true
+    fill = "surface_variant"
+    foreground = "secondary"
+    id = "g2"
+    members = [ "audio_visualizer", "cat_2" ]
+    opacity = 1.0
+    padding = 6.0
+    radius = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    border = "primary"
+    enabled = true
+    fill = "surface_variant"
+    foreground = "secondary"
+    id = "g3"
+    members = [ "cat", "audio_visualizer" ]
+    opacity = 1.0
+    padding = 6.0
+    radius = 6.0
+
+[brightness]
+enable_ddcutil = true
+minimum_brightness = 0.099999997764825821
+
+[calendar]
+enabled = true
+
+[[control_center.shortcuts]]
+type = "wifi"
+
+[[control_center.shortcuts]]
+type = "bluetooth"
+
+[[control_center.shortcuts]]
+type = "caffeine"
+
+[[control_center.shortcuts]]
+type = "notification"
+
+[[control_center.shortcuts]]
+type = "session"
+
+[[control_center.shortcuts]]
+type = "power_profile"
+
+[dock]
+active_monitor_only = true
+background_opacity = 0.4999999888241291
+concave_edge_corners = false
+enabled = true
+icon_size = 32
+launcher_icon = "stack-3-filled"
+launcher_position = "start"
+pinned = [ "kitty" ]
+position = "left"
+reserve_space = false
+show_dots = true
+smart_auto_hide = true
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 60.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = false
+    timeout = 900.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 180.0
+
+[location]
+auto_locate = true
+
+[notification]
+background_opacity = 0.4999999888241291
+history_retention_hours = 6
+position = "bottom_right"
+
+[osd]
+background_opacity = 0.4999999888241291
+position = "bottom_right"
+position_vertical = "bottom_right"
+
+[plugins]
+enabled = [ "noctalia/bongocat", "gustav0ar/drive-health", "noctalia/kaomoji", "8bury/mini-docker" ]
+
+[shell]
+clipboard_image_action_command = "satty -f -"
+font_family = "JetBrainsMono Nerd Font Mono"
+launch_apps_as_systemd_services = true
+niri_overview_type_to_launch_enabled = true
+password_style = "random"
+polkit_agent = true
+screen_time_enabled = true
+settings_show_advanced = true
+
+    [shell.greeter_sync]
+    auto_sync = true
+
+    [shell.launcher]
+    app_grid = true
+
+    [shell.panel]
+    clipboard_position = "auto"
+    control_center_placement = "floating"
+    launcher_position = "auto"
+    list_item_background = true
+    open_near_click_control_center = false
+    session_placement = "floating"
+    session_position = "center"
+    transparency_mode = "glass"
+    wallpaper_placement = "floating"
+
+    [shell.screenshot]
+    confirm_region = true
+    copy_to_clipboard = false
+    directory = "~/Pictures/Screenshots"
+    pipe_command = "satty -f -"
+    pipe_to_command = true
+    save_to_file = true
+
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    countdown_seconds = 3.0
+    enabled = true
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    countdown_seconds = 3.0
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    countdown_seconds = 3.0
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"
+
+[system.monitor]
+gpu_poll_seconds = 2
+
+[theme]
+custom_palette = "spotty-custom-pallete-brown-red"
+mode = "dark"
+source = "custom"
+wallpaper_scheme = "m3-tonal-spot"
+
+    [theme.templates]
+    builtin_ids = [ "alacritty", "btop", "emacs", "gtk3", "gtk4", "hyprland", "kcolorscheme", "kitty", "niri", "qt", "starship" ]
+    community_ids = [
+        "zen-browser",
+        "discord",
+        "gimp",
+        "obsidian",
+        "vscode",
+        "zed",
+        "heroiclauncher",
+        "prismlauncher",
+        "steam",
+        "fastfetch",
+        "obs",
+        "papirus-icons"
+    ]
+
+[wallpaper]
+directory = "/usr/share/wallpapers/SpottyWallpapers"
+transition_on_startup = true
+
+    [wallpaper.automation]
+    enabled = true
+    interval_seconds = 600
+
+[widget.audio_visualizer]
+color_1 = "tertiary"
+color_2 = "secondary"
+interactive = false
+show_when_idle = true
+
+[widget.cat]
+audio_spectrum = true
+input_devices = [ "/dev/input/by-id/*-event-*" ]
+tappy_mode = true
+type = "noctalia/bongocat:cat"
+
+[widget.cat_2]
+audio_spectrum = true
+input_devices = [ "/dev/input/by-id/*-evenet-*" ]
+tappy_mode = true
+type = "noctalia/bongocat:cat"
+
+[widget.clock]
+color = "secondary"
+format = "{:%H:%M %A %m/%d/%y}"
+
+[widget.launcher]
+color = "secondary"
+
+[widget.media]
+hide_when_no_media = true
+title_scroll = "on_hover"
+
+[widget.network]
+color = "secondary"
+
+[widget.notifications]
+color = "secondary"
+
+[widget.session]
+color = "error"
+
+[widget.spacer_1]
+length = 10
+type = "spacer"
+
+[widget.summary]
+type = "gustav0ar/drive-health:summary"
+
+[widget.sysmon_2]
+glyph = "gpu-usage"
+show_value = false
+stat = "gpu_temp"
+type = "sysmon"
+
+[widget.sysmon_3]
+glyph = "cpu-2"
+stat = "ram_used"
+type = "sysmon"
+
+[widget.temp]
+show_value = false
+
+[widget.tray]
+capsule = true
+capsule_fill = "on_secondary"
+
+[widget.volume]
+color = "secondary"
+
+[widget.workspaces]
+active_pill_size = 2.5
+anchor = true
+capsule = true
+capsule_fill = "on_primary"
+empty_color = "outline"
+focused_color = "tertiary"
+focused_output_only = true
+inactive_pill_size = 1.0
+label_source = "name"
+max_label_chars = 9
+occupied_color = "primary"
+pill_scale = 0.80000000000000004
+show_labels = true
+style = "minimal"
