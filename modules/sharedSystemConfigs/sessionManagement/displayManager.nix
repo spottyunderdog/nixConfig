@@ -1,13 +1,14 @@
 { self, inputs, ... }: {
 
   flake.nixosModules.displayManager = { pkgs, config, lib, ... }: {
-    
+
     imports = [
       inputs.silentSDDM.nixosModules.default
       self.nixosModules.x11
       self.nixosModules.wayland
     ];
 
+    services.displayManager.defaultSession = lib.mkForce "plasma";
     services.displayManager.sddm.enable = lib.mkOverride 1000 true;
 
     programs.silentSDDM = {

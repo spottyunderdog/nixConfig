@@ -12,7 +12,7 @@
     niri.enable = lib.mkDefault false;
     gnome.enable = lib.mkDefault false;
     hyprland.enable = lib.mkDefault false;
-    kdePlasma.enable = lib.mkDefault false;
+    kdePlasma.enable = lib.mkDefault true;
 
   };
 
