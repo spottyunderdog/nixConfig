@@ -55,7 +55,7 @@ in {
     fishConfig.enable = true;
     zshConfig.enable = true;
     starshipConfig.enable = true;
-    niriConfig.enable = true;
+    niriConfig.enable = false;
     hyprlandConfig.enable = true;
 
     home.packages = [ ];

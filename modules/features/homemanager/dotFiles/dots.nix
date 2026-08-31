@@ -11,7 +11,7 @@
 
   flake.homeModules.niriConfig = { config, pkgs, lib, ... }: {
 
-    imports = [ 
+    imports = [
       self.homeModules.kittyConfig
       self.homeModules.noctaliaConfig
     ];
@@ -36,7 +36,7 @@
 
   flake.homeModules.hyprlandConfig = { pkgs, lib, config, ... }: {
 
-    imports = [ 
+    imports = [
       self.homeModules.kittyConfig
       self.homeModules.noctaliaConfig
     ];
@@ -46,9 +46,9 @@
     };
 
     config = lib.mkIf config.hyprlandConfig.enable {
-      
-      kittyConfig.enable = lib.mkDefault true;
-      noctaliaConfig.enable = lib.mkDefault true;
+
+      kittyConfig.enable = lib.mkOverride 1001 true;
+      noctaliaConfig.enable = lib.mkOverride 1001 true;
 
       xdg.configFile."hypr" = {
         source = ./hypr;
