@@ -7,7 +7,7 @@
       self.homeModules.zed
       self.homeModules.shells
       self.homeModules.starship
-      self.homeModules.niriConfig
+      self.homeModules.dotFiles
     ];
 
     zedConfig.enable = lib.mkDefault false;
