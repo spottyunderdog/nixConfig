@@ -56,6 +56,7 @@ in {
     zshConfig.enable = true;
     starshipConfig.enable = true;
     niriConfig.enable = true;
+    hyprlandConfig.enable = true;
 
     home.packages = [ ];
     home.stateVersion = "26.05";

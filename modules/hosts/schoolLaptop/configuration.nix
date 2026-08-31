@@ -25,6 +25,7 @@
     xfce.enable = true;
     kdePlasma.enable = true;
     niri.enable = true;
+    hyprland.enable = true;
 
     # enable flatpaks
     flatpak.enable = true;
