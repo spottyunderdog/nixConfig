@@ -57,6 +57,7 @@ in {
     starshipConfig.enable = true;
     niriConfig.enable = true;
 
+
     home.packages = [ ];
     home.stateVersion = "26.05";
 
