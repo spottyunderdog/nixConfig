@@ -8,7 +8,7 @@
       self.nixosModules.wayland
     ];
 
-    services.displayManager.sddm.enable = lib.mkOverride 1000 true;
+    services.displayManager.sddm.enable = lib.mkDefault true;
 
     programs.silentSDDM = {
       enable = true;
