@@ -55,8 +55,8 @@ in {
     fishConfig.enable = true;
     zshConfig.enable = true;
     starshipConfig.enable = true;
-    niriConfig.enable = false;
-    hyprlandConfig.enable = true;
+    niriConfig.enable = true;
+
 
     home.packages = [ ];
     home.stateVersion = "26.05";

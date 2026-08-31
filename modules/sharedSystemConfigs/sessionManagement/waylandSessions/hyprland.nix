@@ -2,11 +2,6 @@
 
   flake.nixosModules.hyprland = { config, pkgs, lib, ... }: {
 
-    imports = [
-      inputs.noctalia.nixosModules.default
-    ];
-
-
     options = {
       hyprland.enable = lib.mkEnableOption "Enable the Hyprland Desktop Environment.";
     };
@@ -18,7 +13,17 @@
       #   extra-trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
       # };
 
-      programs.hyprland.enable = true;
+      programs.hyprland = {
+        enable = true;
+        withUWSM = true;
+        xwayland.enable = true;
+      };
+
+      xdg.portal = {
+        enable = true;
+        extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
+      };
+
       programs.noctalia = {
         enable = true;
         recommendedServices.enable = true;
@@ -26,7 +31,7 @@
 
       environment.systemPackages = with pkgs; [
         evtest
-        smartctl
+        #smartctl
       ];
 
     };

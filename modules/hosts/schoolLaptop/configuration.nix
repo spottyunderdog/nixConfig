@@ -24,8 +24,7 @@
     # Desktop Environment
     xfce.enable = true;
     kdePlasma.enable = true;
-    niri.enable = false;
-    hyprland.enable = true;
+    niri.enable = true;
 
     # enable flatpaks
     flatpak.enable = true;

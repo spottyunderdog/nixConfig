@@ -13,6 +13,7 @@
     zedConfig.enable = lib.mkDefault false;
     bashConfig.enable = lib.mkDefault false;
     niriConfig.enable = lib.mkDefault false;
+    hyprlandConfig.enable = lib.mkDefault false;
   };
 
 }

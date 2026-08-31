@@ -5,16 +5,13 @@
     imports = [
       self.homeModules.niriConfig
       self.homeModules.hyprlandConfig
+      self.homeModules.kittyConfig
+      self.homeModules.noctaliaConfig
     ];
 
   };
 
   flake.homeModules.niriConfig = { config, pkgs, lib, ... }: {
-
-    imports = [
-      self.homeModules.kittyConfig
-      self.homeModules.noctaliaConfig
-    ];
 
     options = {
       niriConfig.enable = lib.mkEnableOption "Niri Configuration";
@@ -26,7 +23,7 @@
       noctaliaConfig.enable = lib.mkDefault true;
 
       xdg.configFile."niri" = {
-        source = ./niri;
+        source = config.lib.file.mkOutOfStoreSymlink ./niri;
         recursive = true;
       };
 
@@ -36,22 +33,17 @@
 
   flake.homeModules.hyprlandConfig = { pkgs, lib, config, ... }: {
 
-    imports = [
-      self.homeModules.kittyConfig
-      self.homeModules.noctaliaConfig
-    ];
-
     options = {
       hyprlandConfig.enable = lib.mkEnableOption "Hyprland Configuration";
     };
 
     config = lib.mkIf config.hyprlandConfig.enable {
 
-      kittyConfig.enable = lib.mkOverride 1001 true;
-      noctaliaConfig.enable = lib.mkOverride 1001 true;
+      kittyConfig.enable = lib.mkDefault true;
+      noctaliaConfig.enable = lib.mkDefault true;
 
       xdg.configFile."hypr" = {
-        source = ./hypr;
+        source = config.lib.file.mkOutOfStoreSymlink ./hypr;
         recursive = true;
       };
 
@@ -68,7 +60,7 @@
     config = lib.mkIf config.noctaliaConfig.enable {
 
       xdg.configFile."noctalia" = {
-        source = ./noctalia;
+        source = config.lib.file.mkOutOfStoreSymlink ./noctalia;
         recursive = true;
       };
 
@@ -85,7 +77,7 @@
     config = lib.mkIf config.kittyConfig.enable {
 
       xdg.configFile."kitty" = {
-        source = ./kitty;
+        source = config.lib.file.mkOutOfStoreSymlink ./kitty;
         recursive = true;
       };
 
