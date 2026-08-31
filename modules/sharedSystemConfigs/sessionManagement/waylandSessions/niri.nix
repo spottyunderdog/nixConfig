@@ -25,9 +25,11 @@
 
       environment.systemPackages = with pkgs; [
         evtest
+        #smartctl
       ];
 
     };
 
   };
+
 }
