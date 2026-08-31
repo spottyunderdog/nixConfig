@@ -7,12 +7,13 @@
       self.homeModules.zed
       self.homeModules.shells
       self.homeModules.starship
-      self.homeModules.niriConfig
+      self.homeModules.dotFiles
     ];
 
     zedConfig.enable = lib.mkDefault false;
     bashConfig.enable = lib.mkDefault false;
     niriConfig.enable = lib.mkDefault false;
+    hyprlandConfig.enable = lib.mkDefault false;
   };
 
 }
