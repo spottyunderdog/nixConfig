@@ -12,7 +12,6 @@
       self.nixosModules.autoGarbageCollection
       self.nixosModules.localeConfiguration
       self.nixosModules.pipewire
-      self.nixosModules.users
       self.nixosModules.drivers
     ];
 

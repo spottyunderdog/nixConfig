@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.users = { config, pkgs, ... }: {
+  flake.nixosModules.crossSystemUsers = { config, pkgs, ... }: {
 
     imports = [
       # Import User Configurations Here
