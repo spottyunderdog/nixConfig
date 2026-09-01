@@ -24,6 +24,7 @@
         sublime3
         upscaler
         vim
+        wine
         winetricks
         fastfetch
       ];
