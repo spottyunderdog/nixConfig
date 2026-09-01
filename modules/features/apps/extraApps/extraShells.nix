@@ -8,10 +8,8 @@
 
     config = lib.mkIf config.extraShells.enable {
 
-      environment.systemPackages = with pkgs; [
-        zsh
-        fish
-      ];
+      programs.zsh.enable = true;
+      programs.fish.enable = true;
 
     };
   };
