@@ -22,6 +22,9 @@
     remoteAccessApps.enable = lib.mkDefault false;
     utilityApps.enable = lib.mkDefault true;
     editingApps.enable = lib.mkDefault false;
+    comsApps.enable = lib.mkDefault false;
+    flatpak.enable = lib.mkDefault false;
+    extraApps.enable = lib.mkDefault false;
 
   };
 

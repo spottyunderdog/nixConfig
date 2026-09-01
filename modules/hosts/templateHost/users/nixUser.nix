@@ -85,6 +85,12 @@ in {
     # to use.
     hyprlandConfig.enable = false;
 
+    # Enable My Noctalia dotfiles
+    noctaliaConfig.enable = false;
+
+    # My Kitty config.
+    kittyConfig.enable = false;
+
     # My Zed Editor config.
     zedConfig.enable = false;
 
