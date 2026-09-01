@@ -8,7 +8,6 @@
     # and replace it with the module that contains your hardware config.)
     # See the DrNix Configuration to see an example of this.
     # Your hardware-configuration.nix should be found in /etc/nixos
-
-  };
+    };
 
 }

@@ -7,6 +7,13 @@
       self.nixosModules.packages
       self.nixosModules.homeManager
       self.nixosModules.systemSettings
+      # module for host specific users, each host needs its own name
+      # name should be self.nixosModules.<host name>Users
+      self.nixosModules.exampleUsers
+      # If you want to use the same user account accross different hosts
+      # leave the module uncommented. Their config files are found at
+      # nixConfig/modules/sharedsystemConfigs/users
+      self.nixosModules.crossSystemUsers
     ];
 
     ############################
@@ -39,14 +46,14 @@
     #######################
 
     # Flake contains a small suite of DEs and WMs to choose from
-    # DEs are: Gnome, KDE Plasma (Wayland), and XFCE 
+    # DEs are: Gnome, KDE Plasma (Wayland), and XFCE
     # WMs are: Hyprland + Noctalia Shell, and Niri + Noctalia Shell
 
     # Gnome uses GDM As the display manager, and comes with the PaperWM
     # Shell extension if you would like to use scrolling window management
     # Within a more tradition DE
     gnome.enable = false;
-    
+
     # All Other DEs and WMs use SDDM as the display manager
     # SDDM uses the SilentSDDM theme, with the "rei" preset
     # To disable the Theme or change the Silent SDDM Preset
@@ -61,7 +68,7 @@
     #####################
     # KERNEL MANAGEMENT #
     #####################
-    
+
     # ONLY ONE KERNEL CAN BE USED AT ONCE
     # CONFIGURATION WILL FAIL TO COMPILE IF YOU USE
     # MORE THEN ONE
@@ -89,10 +96,10 @@
 
     # Included in this flake are the Server, Harded, Latest, and Latest LTS kernels
     # Latest And LTS have architechture specific varients, that i have included modules
-    # If you want to specify the one you want, If you don't know which you should use 
+    # If you want to specify the one you want, If you don't know which you should use
     # Read here: https://wiki.cachyos.org/features/optimized_repos/
-    # Or use the module that doesn't specify the specific architecture. 
-    # Architectures provided are: Zen4, x86v3, and x86v4 
+    # Or use the module that doesn't specify the specific architecture.
+    # Architectures provided are: Zen4, x86v3, and x86v4
     # Note: Zen 4 should work for both zen 4 and zen 5 cpus if i'm reading their wiki correctly.
 
     # CachyOS Server Kernel
@@ -109,9 +116,9 @@
 
     # Cachy OS Latest Kernels
     cachyLatestKernel.enable = false;
-    cachyLatestKernel-x86v3 = false;
-    cachyLatestKernel-x86v4 = false;
-    cachyLatestKernel-zen4 = false;
+    cachyLatestKernel-x86v3.enable = false;
+    cachyLatestKernel-x86v4.enable = false;
+    cachyLatestKernel-zen4.enable = false;
 
     ############
     # Software #
@@ -121,19 +128,19 @@
     # nixConfig/modules/features/apps
     # To enable specific app configs, IE hyprland or niri dotfiles
     # or shell aliases, enable them in your user's user.nix file.
-    # Found at either 
+    # Found at either
     # nixConfig/modules/sharedSystemConfigs/users or
     # nixConfig/modules/hosts/<host-name>/users
 
     # Enable Flatpak support.
     # Installs Flatseal, and any other flatpaks
-    # You specified in the flatpak.nix file 
+    # You specified in the flatpak.nix file
     flatpak.enable = true;
 
     # Enable a suite of apps that I see as nescasary for the
-    # day to day use of a system. Think webbrowers, etc. 
+    # day to day use of a system. Think webbrowers, etc.
     # See the neededApps.nix for the full list
-    neededApps = true;
+    neededApps.enable = true;
 
     # Enable some comunication apps, ie discord, whatsapp
     # See comsApps.nix for full list
@@ -161,10 +168,10 @@
 
     # Enable some utility apps like Btop, easyeffects, and filelight
     # See utilityApps.nix for full list
-    utilityApps.nix = true;
+    utilityApps.enable = true;
 
     # Enables The ZSH & Fish shells
-    extraShells.enable = false;
+    extraShells.enable = true;
 
     # Enables apps by Proton, IE protonVPN, mail, & pass
     protonApps.enable = false;
@@ -187,7 +194,7 @@
     # Required to enable the apps that are used to for
     # extra customization
     extraCosmetics.enable = false;
-    
+
     # Used to install steam Homebrew, like themes, etc
     millennium.enable = false;
 
@@ -197,7 +204,7 @@
     ###########################
     # Virtualization Software #
     ###########################
-    
+
     # Enable Vmware Workstation, For VM management
     vmwareVMs.enable = false;
 
@@ -226,7 +233,7 @@
     # Ie: Intel/Amd iGPU + Nvidia dGPU #
     ####################################
 
-    # Uncomment below and follow the wiki for setting it 
+    # Uncomment below and follow the wiki for setting it
     # Up for your computer. https://nixos.wiki/wiki/Nvidia
 
     # hardware.nvidia.prime = {
@@ -240,13 +247,13 @@
     # Enable the bus id for the GPU + iGPU combination you have.
     #  nvidiaBusId = "PCI:1@0:0:0";
     #  amdgpuBusId = "PCI:199@0:0:0";
-    #  intelBusId = "PCI:0@0:2:0"; 
+    #  intelBusId = "PCI:0@0:2:0";
     # };
 
     ####################
     # Networking stuff #
     ####################
-    
+
     # Configure network proxy if necessary
     # networking.proxy.default = "http://user:password@proxy:port/";
     # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";

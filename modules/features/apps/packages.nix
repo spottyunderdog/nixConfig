@@ -12,6 +12,7 @@
       self.nixosModules.extraApps
       self.nixosModules.editingApps
       self.nixosModules.flatpak
+      self.nixosModules.comsApps
     ];
 
     devApps.enable = lib.mkDefault false;

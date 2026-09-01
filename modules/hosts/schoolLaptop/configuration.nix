@@ -7,6 +7,7 @@
         self.nixosModules.packages
         self.nixosModules.homeManager
         self.nixosModules.systemSettings
+        self.nixosModules.crossSystemUsers
     ];
 
     # Host Name
