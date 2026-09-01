@@ -42,8 +42,8 @@
       enable = true;
       enableSSHSupport = true;
       # Uncomment this line if your using multple desktops to ensure that any conflicts between
-      # the pinetry package are overidden. Pinentry can be gtk2, qt, or tty
-      pinentryPackage = lib.mkForce pkgs.pinentry-gtk2;
+      # the pinetry package are overidden. Pinentry can be gnome3, qt, or tty
+      pinentryPackage = lib.mkForce pkgs.pinentry-qt;
     };
 
     # Enable the OpenSSH daemon.
