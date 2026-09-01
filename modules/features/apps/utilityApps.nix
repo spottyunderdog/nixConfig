@@ -11,7 +11,6 @@
       environment.systemPackages = with pkgs; [
         bottles
         btop
-        btrfs-assistant
         easyeffects
         filezilla
         gparted

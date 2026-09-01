@@ -9,6 +9,7 @@
     config = lib.mkIf config.gamingApps.enable {
       
       environment.systemPackages = with pkgs; [
+        wine
         winetricks
         gamescope
         goverlay

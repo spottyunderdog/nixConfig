@@ -10,7 +10,6 @@
 
       environment.systemPackages = with pkgs; [
         alacritty
-        bash
         curl
         firefox
         git
