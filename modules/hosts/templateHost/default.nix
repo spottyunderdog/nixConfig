@@ -2,7 +2,7 @@
 
   flake.nixosConfigurations.example = inputs.nixpkgs.lib.nixosSystem {
 
-    modules = [ self.nixosModules.exampleConfiguration ];
+    modules = [ self.nixosModule.exampleConfiguration ];
 
   };
 
