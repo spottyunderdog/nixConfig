@@ -1,15 +1,50 @@
-{ self, inputs, ... }: {
+{ self, inputs, ... }:
+let
 
-  flake.nixosModule.exampleConfiguration = { config, pkgs, lib, ... }: {
+  hostName = "example";
+
+in {
+
+  flake.nixosConfigurations.${hostName} = inputs.nixpkgs.lib.nixosSystem {
+
+    modules = [ self.nixosModule."${hostName}Configuration" ];
+
+  };
+
+  flake.nixosModules."${hostName}Users" = { config, pkgs, ... }: {
 
     imports = [
-      self.nixosModules.exampleHardware
+      # Import User Configurations Here
+      # User modules should follow the format of self.nixosModules."<hostname>-<username>"
+      self.nixosModules."${hostName}-nix"
+    ];
+
+  };
+
+  flake.nixosModules."${hostName}Hardware" = { config, lib, pkgs, modulesPath, ... }: {
+    # Use your own hardware configuration found in the /etc/nixos dir.
+    # If you want to use this, make sure to add the --impure flag to the rebuild command, as this will use the hardware-configuration.nix file from your system.
+    # imports = [ /etc/nixos/hardware-configuration.nix ];
+
+    # This is where your hardware configuration goes.
+    # Paste the contents of your hardware-configuration.nix file here
+    # (Paste the insids of the module, or delete the module thats being made here
+    # and replace it with the module that contains your hardware config.)
+    # See the DrNix Configuration to see an example of this.
+    # Your hardware-configuration.nix should be found in /etc/nixos
+    };
+
+  flake.nixosModule."${hostName}Configuration" = { config, pkgs, lib, ... }: {
+
+    imports = [
       self.nixosModules.packages
       self.nixosModules.homeManager
       self.nixosModules.systemSettings
+      # Module for hardware settings
+      self.nixosModules."${hostName}Hardware"
       # module for host specific users, each host needs its own name
       # name should be self.nixosModules.<host name>Users
-      self.nixosModules.exampleUsers
+      self.nixosModules."${hostName}Users"
       # If you want to use the same user account accross different hosts
       # leave the module uncommented. Their config files are found at
       # nixConfig/modules/sharedsystemConfigs/users
@@ -28,7 +63,7 @@
     # to be able to use accross different hosts.
 
     # Configure Host Name
-    networking.hostName = "NixOS";
+    networking.hostName = hostName;
 
     # Enable swap (This specificly enables ZSwap),
     # Swap Is required for hibernation, can be ignored
