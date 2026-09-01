@@ -22,7 +22,8 @@ in {
   };
 
   flake.nixosModules."${hostName}Hardware" = { config, lib, pkgs, modulesPath, ... }: {
-    # Below might work, i don't know so i've left it commented out for now, if you want to use it, uncomment it and see if it works.
+    # Use your own hardware configuration found in the /etc/nixos dir.
+    # If you want to use this, make sure to add the --impure flag to the rebuild command, as this will use the hardware-configuration.nix file from your system.
     # imports = [ /etc/nixos/hardware-configuration.nix ];
 
     # This is where your hardware configuration goes.
