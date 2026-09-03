@@ -7,7 +7,7 @@ include "./cfg/layout.kdl"
 include "./cfg/rules.kdl"
 include "./cfg/misc.kdl"
 
-include "./cfg/noctalia.kdl"
+include "./noctalia.kdl"
 
 debug {
          wait-for-frame-completion-before-queueing

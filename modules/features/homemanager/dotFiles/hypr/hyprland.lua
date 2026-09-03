@@ -15,7 +15,3 @@ require("config.workspaces")
 
 -- For Noctalia Color templates
 require("noctalia").apply_theme(i)
-
-
--- hyprmon: managed monitor profile include
-require("hyprmon")

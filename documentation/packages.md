@@ -49,20 +49,22 @@
 | Spotify          | spotify          |
 | VLC              | vlc              |
 # neededApps.nix
-| App       | Package(s) |
-| --------- | ---------- |
-| Alacritty | alacritty  |
-| Curl      | curl       |
-| Git       | git        |
-| Firefox   | firefox    |
-| Gzip      | gzip       |
-| Kitty     | kitty      |
-| NeoVim    | neovim     |
-| Wget      | wget       |
-| Eza       | eza        |
-| Hwinfo    | hwinfo     |
-| Fastfetch | fastfetch  |
-| Starship  | starship   |
+| App       | Package(s)            |
+| --------- | --------------------- |
+| Alacritty | alacritty             |
+| Curl      | curl                  |
+| Git       | git                   |
+| Firefox   | firefox               |
+| Gzip      | gzip                  |
+| Kitty     | kitty                 |
+| NeoVim    | neovim                |
+| Wget      | wget                  |
+| Eza       | eza                   |
+| Hwinfo    | hwinfo                |
+| Fastfetch | fastfetch             |
+| Starship  | starship              |
+| Kate      | kdePackages.kate      |
+| Dolphin   | kdePackages.dolphin   |
 # remoteAccesApps.nix
 | App       | Package(s)   |
 | --------- | ------------ |
@@ -90,3 +92,5 @@
 | Wine         | wine                       |
 | Winetricks   | winetricks                 |
 | Fastfetch    | fastfetch                  |
+| Evtest       | evtest                     |
+| Smartmontools | smartmontools             |

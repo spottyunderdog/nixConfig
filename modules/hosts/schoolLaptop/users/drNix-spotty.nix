@@ -2,8 +2,8 @@
 
 let
 
-  userName = "nix";
-  hostName = "example";
+  userName = "spotty";
+  hostName = "drNix";
 
 in {
 
@@ -65,19 +65,19 @@ in {
     # Shell Configs, Requires utilityApps.enable to be enabled, do to using the
     # fastfetch package in the shells.
     
-    bashConfig.enable = false;
-    fishConfig.enable = false;
-    zshConfig.enable = false;
+    bashConfig.enable = true;
+    fishConfig.enable = true;
+    zshConfig.enable = true;
 
     # Enable the starship prompt. Will activate for all
     # Shells
-    starshipConfig.enable = false;
+    starshipConfig.enable = true;
 
     # Enable My Niri + Noctalia dot files
     # Also enables kitty dots. Dots use the kitty
     # Terminal, you may need to enable utilityApps 
     # to use.
-    niriConfig.enable = false;
+    niriConfig.enable = true;
 
     # Enable My Hyprland + Nocatlia dotfiles
     # Also enables kitty dots. Dots use the kitty
@@ -86,13 +86,13 @@ in {
     hyprlandConfig.enable = false;
 
     # Enable My Noctalia dotfiles
-    noctaliaConfig.enable = false;
+    noctaliaConfig.enable = true;
 
     # My Kitty config.
-    kittyConfig.enable = false;
+    kittyConfig.enable = true;
 
     # My Zed Editor config.
-    zedConfig.enable = false;
+    zedConfig.enable = true;
 
     home.packages = [ ];
     home.stateVersion = "26.05";

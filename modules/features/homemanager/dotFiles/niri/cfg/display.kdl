@@ -5,25 +5,10 @@
 
 // External Primary monitor
 
-output "DP-2" {
-    mode "2560x1440@180.002"
+// Catch all for monitors
+
+output "" {
     scale 1.0
     transform "normal"
-    position x=-2560 y=0
-    focus-at-startup
-    variable-refresh-rate
-}
-
-// Internal monitor
- output "eDP-1" {
-    mode "2560x1600@60.012"
-    scale 1
-    position x=0 y=0
-
-
     focus-at-startup
 }
-
-
-// Other monitors
-

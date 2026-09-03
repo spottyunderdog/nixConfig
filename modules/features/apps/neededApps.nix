@@ -21,6 +21,8 @@
         hwinfo
         fastfetch
         starship
+        kdePackages.kate
+        kdePackages.dolphin
       ];
     };
 

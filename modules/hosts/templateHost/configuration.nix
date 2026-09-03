@@ -1,7 +1,7 @@
 { self, inputs, ... }:
 let
 
-  hostName = "example";
+  hostName = "templateHost";
 
 in {
 
@@ -32,7 +32,7 @@ in {
     # and replace it with the module that contains your hardware config.)
     # See the DrNix Configuration to see an example of this.
     # Your hardware-configuration.nix should be found in /etc/nixos
-    };
+  };
 
   flake.nixosModule."${hostName}Configuration" = { config, pkgs, lib, ... }: {
 
@@ -235,6 +235,14 @@ in {
 
     # Alternitive discord client, can be customized beyond regular discord
     vesktop.enable = false;
+
+    #########################################################################
+    # Other applications that you may want on the host, but aren't included #
+    # in the above modules.                                                 #
+    #########################################################################
+    environment.systemPackages = with pkgs; [
+        #  thunderbird
+    ];
 
     ###########################
     # Virtualization Software #

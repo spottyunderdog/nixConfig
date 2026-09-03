@@ -26,6 +26,8 @@
         wine
         winetricks
         fastfetch
+        evtest
+        smartmontools
       ];
       
     };

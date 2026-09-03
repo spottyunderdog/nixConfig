@@ -57,6 +57,15 @@
     # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
     system.stateVersion = "26.05"; # Did you read the comment?
 
+    #########################################################################
+    # Other applications that you may want on all hosts but aren't included #
+    # in the included modules.                                                 #
+    #########################################################################
+    environment.systemPackages = with pkgs; [
+        #  thunderbird
+    ];
+
+
     # Defaults
     swap.enable = lib.mkDefault false;
     hibernation.enable = lib.mkDefault false;

@@ -42,6 +42,7 @@ hl.bind(mainMod .. " + CONTROL + SHIFT + Right",      hl.dsp.window.move({ works
 hl.bind(mainMod .. " + CONTROL + SHIFT + Left",       hl.dsp.window.move({ workspace = "m-1" }))
 hl.bind(mainMod .. " + CONTROL + SHIFT + mouse_up",   hl.dsp.window.move({ workspace = "m+1" }))
 hl.bind(mainMod .. " + CONTROL + SHIFT + mouse_down", hl.dsp.window.move({ workspace = "m-1" }))
+
 for i = 1, NUM_WPM do
     local key = i % 10
     hl.bind(mainMod .. " + SHIFT + CONTROL + " .. key, hl.dsp.window.move({ workspace = "m~" .. i }))
@@ -127,8 +128,8 @@ hl.bind(mainMod .. " + A", hl.dsp.exec_cmd(noctCall .. "panel-toggle control-cen
 -- Network Menu
 hl.bind(mainMod .. " + H", hl.dsp.exec_cmd(noctCall .. "panel-toggle control-center network"))
 
--- Wifi Hotspot 
-hl.bind(mainMod .. " + SHIFT + H", hl.dsp.exec_cmd("hyprltm-net"))
+-- Wifi Hotspot and Network Toolkit
+hl.bind(mainMod .. " + SHIFT + H", hl.dsp.exec_cmd(noctCall .. "panel-toggle autumn/network-toolkit:panel"))
 
 -------------------------------
 ---- WORKSPACES & MONITORS ----

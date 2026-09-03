@@ -1,8 +1,8 @@
 # Instalation:
 ## Geting the Repo
-1. Clone the nix-stable-26.05 Branch and enter repo
+1. Clone the nix-unstable-omniflake Branch and enter repo
 ```
-git clone --single-branch --branch nix-stable-26.05 https://github.com/spottyunderdog/nixConfig
+git clone --single-branch --branch nix-unstable-omniflake https://github.com/spottyunderdog/nixConfig
 cd nixConfig
 ```
 2. Delete the .git directory if you plan on adding or deleting any files, as the flake will not recognize and new files unless they are staged or commited. If you don't plane on removing the git repo make sure you stage and/or commit any changes you make or the rebuild command won't recognize the changes you've made to the configuration.

@@ -28,11 +28,11 @@
 ## Launcher
 | Keybind              | Function                           |
 | -------------------- | ---------------------------------- |
-| `Super + Return`     | Open Terminal                      |
-| `Super + E`          | Open File Manager                  |
-| `Super + T`          | Open Text Editor                   |
-| `Super + C`          | Open Calculater                    |
-| `Super + W`          | Open Browser                       |
+| `Super + Return`     | Open Terminal (Kitty)              |
+| `Super + E`          | Open File Manager (Dolphin)        |
+| `Super + T`          | Open Text Editor (Kate)            |
+| `Super + C`          | Open Calculater (KCalc)            |
+| `Super + W`          | Open Browser (FireFox)             |
 | `Ctrl + Shift + Esc` | Open System Monitor (Btop)         |
 | `Super + Z`          | Open Noctalia Settings             |
 | `Super + X`          | Open Noctalia Control Center       |

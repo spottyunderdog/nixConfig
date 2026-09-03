@@ -7,27 +7,18 @@
 --     scale     = "1",
 -- })
 
-hl.monitor({
-    output    = MONITOR1,
-    mode      = "2560x1440@120",
-    position  = "auto-left",
-    scale     = "1",
-    supports_hdr = 0,
-    cm = "auto",
-    sdrbrightness = 1.2,
-    sdrsaturation = 0.98,
-})
-hl.monitor({
-	output = MONITOR2,
-	mode = "2560x1600@60",
-	position = "auto",
-	scale = "1",
-})
-hl.monitor({ 
-	output = "",
-	mode = "preferred", 
-	position = "auto",
-	scale = 1
-})
+-- Put your monitor configs here.
+-- I recommend using the "monitor" variables found in variables.lua 
+-- instead of hardcoding the monitor names here,
+-- as it will make it easier to change them in the future. 
+-- (for exemple, if you want to change primary monitors, etc.)
 
 
+-- Catchall for any new monitors that may be added in the future, 
+-- this will set them to preferred mode and auto position them
+hl.monitor({
+    output = "",
+    mode = "preferred",
+    position = "auto",
+    scale = "1",
+})

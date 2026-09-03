@@ -47,6 +47,11 @@
         recursive = true;
       };
 
+      xdg.configFile."uwsm" = {
+        source = config.lib.file.mkOutOfStoreSymlink ./uwsm;
+        recursive = true;
+      };
+
     };
 
   };
