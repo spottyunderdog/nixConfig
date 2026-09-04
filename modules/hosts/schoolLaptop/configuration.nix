@@ -7,7 +7,7 @@ in {
 
   flake.nixosConfigurations.${hostName} = inputs.nixpkgs.lib.nixosSystem {
 
-    modules = [ self.nixosModule."${hostName}Configuration" ];
+    modules = [ self.nixosModules."${hostName}Configuration" ];
 
   };
 
@@ -16,53 +16,39 @@ in {
     imports = [
       # Import User Configurations Here
       # User modules should follow the format of self.nixosModules."<hostname>-<username>"
-      self.nixosModules."${hostName}-nix"
+      self.nixosModules."${hostName}-spotty"
     ];
 
   };
 
   flake.nixosModules."${hostName}Hardware" = { config, lib, pkgs, modulesPath, ... }: {
 
-    imports = [ 
-      (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+    imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-    boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-    boot.initrd.kernelModules = [ ];
-    boot.kernelModules = [ "kvm-amd" ];
-    boot.extraModulePackages = [ ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
 
-    fileSystems."/" = { 
-      device = "/dev/disk/by-uuid/ea34ee39-8687-4824-8621-de5d82b78152";
-      fsType = "btrfs";
+  fileSystems."/" = {
+      device = "/dev/disk/by-uuid/da9c2d3d-5c75-42c1-a428-29cde9387dba";
+      fsType = "ext4";
     };
 
-    fileSystems."/home" = { 
-      device = "/dev/disk/by-uuid/ea34ee39-8687-4824-8621-de5d82b78152";
-      fsType = "btrfs";
-      options = [ "subvol=home" ];
-    };
-
-    fileSystems."/nix" = {
-      device = "/dev/disk/by-uuid/ea34ee39-8687-4824-8621-de5d82b78152";
-      fsType = "btrfs";
-      options = [ "subvol=nix" ];
-    };
-
-    fileSystems."/boot" = {
-      device = "/dev/disk/by-uuid/BD56-491A";
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/4075-60BF";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-    swapDevices = [ ];
+  swapDevices = [ ];
 
-    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-    hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   };
 
-  flake.nixosModule."${hostName}Configuration" = { config, pkgs, lib, ... }: {
+  flake.nixosModules."${hostName}Configuration" = { config, pkgs, lib, ... }: {
 
     imports = [
       self.nixosModules.packages

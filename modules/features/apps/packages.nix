@@ -24,7 +24,6 @@
     editingApps.enable = lib.mkDefault false;
     comsApps.enable = lib.mkDefault false;
     flatpak.enable = lib.mkDefault false;
-    extraApps.enable = lib.mkDefault false;
 
   };
 

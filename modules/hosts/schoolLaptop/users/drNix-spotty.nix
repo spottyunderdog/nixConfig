@@ -19,15 +19,15 @@ in {
       # Allows for declaritive password management.
       # hashedPassword = <paswordhash>;
 
-      # Remove the libvirtd group and vboxusers groups 
+      # Remove the libvirtd group and vboxusers groups
       # if you don't want the user to have access to vm software
       extraGroups = [ "networkmanager" "wheel" ]
-      ++ lib.optional config.virtManVMs.enable "libvirtd" 
+      ++ lib.optional config.virtManVMs.enable "libvirtd"
       ++ lib.optional config.virtualboxVMs.enable "vboxusers";
 
       # Choose your shell, If using Fish or ZSH make sure to enable the extra shells module
       # For your host
-      shell = pkgs.bash;
+      shell = pkgs.fish;
 
       # user specific programs.
       packages = with pkgs; [
@@ -58,13 +58,13 @@ in {
     imports = [
       self.homeModules.appConfigs
     ];
-    # ensures fonts can properly be configured when rebuild your system. 
+    # ensures fonts can properly be configured when rebuild your system.
     # Do not remove.
     xdg.configFile."fontconfig/conf.d/10-hm-fonts.conf".force = true;
 
     # Shell Configs, Requires utilityApps.enable to be enabled, do to using the
     # fastfetch package in the shells.
-    
+
     bashConfig.enable = true;
     fishConfig.enable = true;
     zshConfig.enable = true;
@@ -75,13 +75,13 @@ in {
 
     # Enable My Niri + Noctalia dot files
     # Also enables kitty dots. Dots use the kitty
-    # Terminal, you may need to enable utilityApps 
+    # Terminal, you may need to enable utilityApps
     # to use.
     niriConfig.enable = true;
 
     # Enable My Hyprland + Nocatlia dotfiles
     # Also enables kitty dots. Dots use the kitty
-    # Terminal, you may need to enable utilityApps 
+    # Terminal, you may need to enable utilityApps
     # to use.
     hyprlandConfig.enable = false;
 

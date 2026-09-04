@@ -7,7 +7,7 @@ in {
 
   flake.nixosConfigurations.${hostName} = inputs.nixpkgs.lib.nixosSystem {
 
-    modules = [ self.nixosModule."${hostName}Configuration" ];
+    modules = [ self.nixosModules."${hostName}Configuration" ];
 
   };
 
@@ -34,7 +34,7 @@ in {
     # Your hardware-configuration.nix should be found in /etc/nixos
   };
 
-  flake.nixosModule."${hostName}Configuration" = { config, pkgs, lib, ... }: {
+  flake.nixosModules."${hostName}Configuration" = { config, pkgs, lib, ... }: {
 
     imports = [
       self.nixosModules.packages
