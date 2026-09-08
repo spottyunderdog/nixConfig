@@ -1,0 +1,372 @@
+# Set up for a laptop with a 2560x1600 display at eDP-1 amd a 2560x1440 display at DP-2
+# Feel Free to modify and paste into your noctalia config.toml as you see fit
+
+[desktop_widgets]
+schema_version = 2
+widget_order = [
+    "desktop-widget-0000000000000001",
+    "desktop-widget-0000000000000002",
+    "desktop-widget-0000000000000003",
+    "desktop-widget-0000000000000004",
+    "desktop-widget-0000000000000005",
+    "desktop-widget-0000000000000006",
+    "desktop-widget-0000000000000007",
+    "desktop-widget-0000000000000008",
+    "desktop-widget-0000000000000009",
+    "desktop-widget-000000000000000a",
+    "desktop-widget-000000000000000b",
+    "desktop-widget-000000000000000c",
+    "desktop-widget-000000000000000d",
+    "desktop-widget-000000000000000e",
+    "desktop-widget-000000000000000f",
+    "desktop-widget-0000000000000010",
+    "desktop-widget-0000000000000011",
+    "desktop-widget-0000000000000012",
+    "desktop-widget-0000000000000013",
+    "desktop-widget-0000000000000014",
+    "desktop-widget-0000000000000015",
+    "desktop-widget-0000000000000016"
+]
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000001]
+    box_height = 96.0
+    box_width = 160.0
+    cx = 2416.0
+    cy = 144.0
+    output = "DP-2"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "clock"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000002]
+    box_height = 96.0
+    box_width = 160.0
+    cx = 2416.0
+    cy = 272.0
+    output = "DP-2"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = -0.0
+    type = "weather"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000003]
+    box_height = 96.0
+    box_width = 208.0
+    cx = 2400.0
+    cy = 400.0
+    output = "DP-2"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "media_player"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000003.settings]
+        hide_when_no_media = false
+
+    [desktop_widgets.widget.desktop-widget-0000000000000004]
+    box_height = 96.0
+    box_width = 160.0
+    cx = 144.0
+    cy = 144.0
+    output = "DP-2"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "sysmon"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000004.settings]
+        background = true
+        background_opacity = 0.80000000000000004
+        stat = "cpu_usage"
+        stat2 = "cpu_temp"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000005]
+    box_height = 96.0
+    box_width = 160.0
+    cx = 144.0
+    cy = 272.0
+    output = "DP-2"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "sysmon"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000005.settings]
+        background = true
+        background_opacity = 0.80000000000000004
+        stat = "gpu_usage"
+        stat2 = "gpu_temp"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000006]
+    box_height = 96.0
+    box_width = 160.0
+    cx = 144.0
+    cy = 400.0
+    output = "DP-2"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "sysmon"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000006.settings]
+        background = true
+        background_opacity = 0.80000000000000004
+        stat = "ram_pct"
+        stat2 = "swap_pct"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000007]
+    box_height = 16.0
+    box_width = 80.0
+    cx = 144.0
+    cy = 104.0
+    output = "DP-2"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = -0.0
+    type = "label"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000007.settings]
+        background = false
+        background_opacity = 0.0
+        opacity = 1.0
+        shadow = false
+        title = "CPU"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000008]
+    box_height = 16.0
+    box_width = 80.0
+    cx = 144.0
+    cy = 232.0
+    output = "DP-2"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = -0.0
+    type = "label"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000008.settings]
+        background = false
+        background_opacity = 0.0
+        opacity = 1.0
+        shadow = false
+        title = "GPU"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000009]
+    box_height = 16.0
+    box_width = 80.0
+    cx = 144.0
+    cy = 360.0
+    output = "DP-2"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = -0.0
+    type = "label"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000009.settings]
+        background = false
+        background_opacity = 0.0
+        opacity = 1.0
+        shadow = false
+        title = "RAM"
+
+    [desktop_widgets.widget.desktop-widget-000000000000000a]
+    box_height = 224.0
+    box_width = 224.0
+    cx = 192.0
+    cy = 1232.0
+    output = "DP-2"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "fancy_audio_visualizer"
+
+        [desktop_widgets.widget.desktop-widget-000000000000000a.settings]
+        background = false
+
+    [desktop_widgets.widget.desktop-widget-000000000000000b]
+    box_height = 224.0
+    box_width = 224.0
+    cx = 2368.0
+    cy = 1232.0
+    output = "DP-2"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "fancy_audio_visualizer"
+
+        [desktop_widgets.widget.desktop-widget-000000000000000b.settings]
+        background = false
+
+    [desktop_widgets.widget.desktop-widget-000000000000000c]
+    box_height = 96.0
+    box_width = 160.0
+    cx = 2400.0
+    cy = 160.0
+    output = "eDP-1"
+    placement_height = 1600.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "clock"
+
+    [desktop_widgets.widget.desktop-widget-000000000000000d]
+    box_height = 96.0
+    box_width = 160.0
+    cx = 2400.0
+    cy = 288.0
+    output = "eDP-1"
+    placement_height = 1600.0
+    placement_width = 2560.0
+    rotation = -0.0
+    type = "weather"
+
+    [desktop_widgets.widget.desktop-widget-000000000000000e]
+    box_height = 96.0
+    box_width = 208.0
+    cx = 2376.0
+    cy = 416.0
+    output = "eDP-1"
+    placement_height = 1600.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "media_player"
+
+        [desktop_widgets.widget.desktop-widget-000000000000000e.settings]
+        hide_when_no_media = false
+
+    [desktop_widgets.widget.desktop-widget-000000000000000f]
+    box_height = 96.0
+    box_width = 160.0
+    cx = 160.0
+    cy = 160.0
+    output = "eDP-1"
+    placement_height = 1600.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "sysmon"
+
+        [desktop_widgets.widget.desktop-widget-000000000000000f.settings]
+        background = true
+        background_opacity = 0.80000000000000004
+        stat = "cpu_usage"
+        stat2 = "cpu_temp"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000010]
+    box_height = 96.0
+    box_width = 160.0
+    cx = 160.0
+    cy = 288.0
+    output = "eDP-1"
+    placement_height = 1600.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "sysmon"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000010.settings]
+        background = true
+        background_opacity = 0.80000000000000004
+        stat = "gpu_usage"
+        stat2 = "gpu_temp"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000011]
+    box_height = 96.0
+    box_width = 160.0
+    cx = 160.0
+    cy = 416.0
+    output = "eDP-1"
+    placement_height = 1600.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "sysmon"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000011.settings]
+        background = true
+        background_opacity = 0.80000000000000004
+        stat = "ram_pct"
+        stat2 = "swap_pct"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000012]
+    box_height = 224.0
+    box_width = 224.0
+    cx = 256.0
+    cy = 1376.0
+    output = "eDP-1"
+    placement_height = 1600.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "fancy_audio_visualizer"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000012.settings]
+        background = false
+
+    [desktop_widgets.widget.desktop-widget-0000000000000013]
+    box_height = 224.0
+    box_width = 224.0
+    cx = 2368.0
+    cy = 1376.0
+    output = "eDP-1"
+    placement_height = 1600.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "fancy_audio_visualizer"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000013.settings]
+        background = false
+
+    [desktop_widgets.widget.desktop-widget-0000000000000014]
+    box_height = 16.0
+    box_width = 80.0
+    cx = 160.0
+    cy = 120.0
+    output = "eDP-1"
+    placement_height = 1600.0
+    placement_width = 2560.0
+    rotation = -0.0
+    type = "label"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000014.settings]
+        background = false
+        background_opacity = 0.0
+        opacity = 1.0
+        shadow = false
+        title = "CPU"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000015]
+    box_height = 16.0
+    box_width = 80.0
+    cx = 160.0
+    cy = 248.0
+    output = "eDP-1"
+    placement_height = 1600.0
+    placement_width = 2560.0
+    rotation = -0.0
+    type = "label"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000015.settings]
+        background = false
+        background_opacity = 0.0
+        opacity = 1.0
+        shadow = false
+        title = "GPU"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000016]
+    box_height = 16.0
+    box_width = 80.0
+    cx = 160.0
+    cy = 376.0
+    output = "eDP-1"
+    placement_height = 1600.0
+    placement_width = 2560.0
+    rotation = -0.0
+    type = "label"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000016.settings]
+        background = false
+        background_opacity = 0.0
+        opacity = 1.0
+        shadow = false
+        title = "RAM"
