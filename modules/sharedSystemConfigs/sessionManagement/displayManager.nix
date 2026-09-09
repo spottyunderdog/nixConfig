@@ -3,7 +3,7 @@
   flake.nixosModules.displayManager = { pkgs, config, lib, ... }: {
 
     imports = [
-      inputs.silentSDDM.nixosModules.default
+      inputs.inputs.omniflake.flakes.silentsddm.nixosModules.default
       self.nixosModules.x11
       self.nixosModules.wayland
     ];
