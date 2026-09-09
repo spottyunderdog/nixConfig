@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.officeSuites = { config, pkgs, lin, ... }: {
+  flake.nixosModules.officeSuites = { config, pkgs, lib, ... }: {
 
     imports = [
       self.nixosModules.libreOffice
@@ -21,7 +21,7 @@
     config = lib.mkIf config.libreOffice.enable {
 
       environment.systemPackages = with pkgs; [
-        libreoffice-qt-fresh
+        libreoffice-qt
         hunspell
         hunspellDicts.en-us-large
       ];
@@ -30,7 +30,7 @@
 
   };
 
-  flake.nixosModule.onlyOffice = { config, pkgs, lib, ... }: {
+  flake.nixosModules.onlyOffice = { config, pkgs, lib, ... }: {
     
     options = {
       onlyOffice.enable = lib.mkEnableOption "OnlyOffice Suite";
@@ -41,6 +41,7 @@
       environment.systemPackages = with pkgs; [
         onlyoffice-desktopeditors
       ];
+    };
 
   };
 
