@@ -39,7 +39,7 @@ in {
 
       # Choose your shell, If using Fish or ZSH make sure to enable the extra shells module
       # For your host
-      shell = pkgs.bash;
+      shell = pkgs.fish;
 
       # user specific programs.
       packages = with pkgs; [

@@ -22,16 +22,28 @@ in {
   };
 
   flake.nixosModules."${hostName}Hardware" = { config, lib, pkgs, modulesPath, ... }: {
-    # Use your own hardware configuration found in the /etc/nixos dir.
-    # If you want to use this, make sure to add the --impure flag to the rebuild command, as this will use the hardware-configuration.nix file from your system.
-    # imports = [ /etc/nixos/hardware-configuration.nix ];
+    imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-    # This is where your hardware configuration goes.
-    # Paste the contents of your hardware-configuration.nix file here
-    # (Paste the insids of the module, or delete the module thats being made here
-    # and replace it with the module that contains your hardware config.)
-    # See the DrNix Configuration to see an example of this.
-    # Your hardware-configuration.nix should be found in /etc/nixos
+    boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+    boot.initrd.kernelModules = [ ];
+    boot.kernelModules = [ "kvm-amd" ];
+    boot.extraModulePackages = [ ];
+
+    fileSystems."/" = {
+      device = "/dev/disk/by-uuid/da9c2d3d-5c75-42c1-a428-29cde9387dba";
+      fsType = "ext4";
+    };
+
+    fileSystems."/boot" = {
+      device = "/dev/disk/by-uuid/4075-60BF";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
+
+    swapDevices = [ ];
+
+    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+    hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
 
   flake.nixosModules."${hostName}Configuration" = { config, pkgs, lib, ... }: {
