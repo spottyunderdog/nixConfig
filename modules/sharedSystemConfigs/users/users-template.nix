@@ -29,13 +29,14 @@ in {
       ++ lib.optional config.virtManVMs.enable "libvirtd"
       ++ lib.optional config.virtualboxVMs.enable "vboxusers";
 
-      linger = if ( config.docker.enable or config.podman.enable or false ) then true else false;
+      linger = lib.mkIf (config.docker.enable or config.podman.enable) true;
 
       shell = pkgs.fish;
 
       packages = with pkgs; [
         #  thunderbird
       ];
+
     };
 
     home-manager.users.${userName} = self.homeModules."${userName}Module";

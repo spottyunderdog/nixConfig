@@ -35,7 +35,7 @@ in {
       ++ lib.optional config.virtManVMs.enable "libvirtd" 
       ++ lib.optional config.virtualboxVMs.enable "vboxusers";
 
-      linger = if ( config.docker.enable or config.podman.enable or false ) then true else false;
+      linger = lib.mkIf (config.docker.enable or config.podman.enable) true;
 
       # Choose your shell, If using Fish or ZSH make sure to enable the extra shells module
       # For your host
@@ -45,6 +45,7 @@ in {
       packages = with pkgs; [
         #  thunderbird
       ];
+
     };
 
     home-manager.users.${userName} = self.homeModules."${hostName}-${userName}Module";
