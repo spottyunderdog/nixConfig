@@ -2,7 +2,7 @@
 
   flake.nixosModules.flatpak = { config, lib, pkgs, ... }: {
     imports = [
-      inputs.inputs.omniflake.flakes.nix-flatpak.nixosModules.nix-flatpak
+      inputs.omniflake.flakes.nix-flatpak.nixosModules.nix-flatpak
     ];
 
     options = {
