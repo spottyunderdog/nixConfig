@@ -257,12 +257,18 @@ in {
     # Enable Virtual Machine Manager, For manage QEMU Virtual Machines
     virtManVMs.enable = false;
 
-    ## PODMAN IS PLANNED ON BEING ADDED NOT YET FULLY IMPLEMENTED
+    ##############
+    # Containers #
+    ##############
 
-    # DOCKER
+    # Docker
     docker.enable = false;
-    dockerRootless.enable = false;
-    dockerRootless.lingering.enable = false;
+
+    # Podman
+    # Podman will disable docker, regardless of if you enable
+    # the above setting. Podman is configured to have docker compatability.
+    podman.enable = false;
+    
 
 
     ####################

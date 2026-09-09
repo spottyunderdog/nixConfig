@@ -27,10 +27,9 @@ in {
 
       extraGroups = [ "networkmanager" "wheel" ]
       ++ lib.optional config.virtManVMs.enable "libvirtd"
-      ++ lib.optional config.virtualboxVMs.enable "vboxusers"
-      ++ lib.optional (config.docker.enable && !config.dockerRootless.enable) "docker";
+      ++ lib.optional config.virtualboxVMs.enable "vboxusers";
 
-      linger = if ( config.dockerRootless.lingering.enable or config.podman.enable or false ) then true else false;
+      linger = if ( config.docker.enable or config.podman.enable or false ) then true else false;
 
       shell = pkgs.fish;
 

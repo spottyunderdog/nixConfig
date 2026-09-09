@@ -33,10 +33,9 @@ in {
       # if you don't want the user to have access to vm software
       extraGroups = [ "networkmanager" "wheel" ]
       ++ lib.optional config.virtManVMs.enable "libvirtd" 
-      ++ lib.optional config.virtualboxVMs.enable "vboxusers"
-      ++ lib.optional (config.docker.enable && !config.dockerRootless.enable) "docker";
+      ++ lib.optional config.virtualboxVMs.enable "vboxusers";
 
-      linger = if ( config.dockerRootless.lingering.enable or config.podman.enable or false ) then true else false;
+      linger = if ( config.docker.enable or config.podman.enable or false ) then true else false;
 
       # Choose your shell, If using Fish or ZSH make sure to enable the extra shells module
       # For your host

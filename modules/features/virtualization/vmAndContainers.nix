@@ -7,14 +7,14 @@
       self.nixosModules.virtmanagerVMs
       self.nixosModules.virtualboxVMs
       self.nixosModules.docker
+      self.nixosModules.podman
     ];
 
     vmwareVMs.enable = lib.mkDefault false;
     virtManVMs.enable = lib.mkDefault false;
     virtualboxVMs.enable = lib.mkDefault false;
     docker.enable = lib.mkDefault false;
-    dockerRootless.enable = lib.mkDefault false;
-    dockerRootless.lingering.enable = lib.mkDefault false;
+    podman .enable = lib.mkDefault false;
 
   };
 
