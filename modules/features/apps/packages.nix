@@ -13,6 +13,7 @@
       self.nixosModules.editingApps
       self.nixosModules.flatpak
       self.nixosModules.comsApps
+      self.nixosModules.officeSuites
     ];
 
     devApps.enable = lib.mkDefault false;
