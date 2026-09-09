@@ -2,11 +2,9 @@
 This is my personal configuration for nixos all in one nice and lovely little flake file! It come with some of the apps i use as well as the dotfiles for my hyprland and niri setups!
 
 # Branches
-Split into 4 Branches:
-- nix-stable-26.05
+Split into 2 Branches:
 - nix-unstable
 - nix-unstable-omniflake
-- development
 
 The nix-stable-26.05 branch is based of of the stable release 26.05 of Nix OS and uses that version of the NixOS Packages Repository and home-manger release for packages and package configurations.
 
