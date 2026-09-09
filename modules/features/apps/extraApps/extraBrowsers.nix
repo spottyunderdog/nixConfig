@@ -9,11 +9,12 @@
 
     config = {
       environment.systemPackages = with pkgs;
-        lib.optional config.vivaldi.enable vivaldi;
-      services.flatpak = lib.mkIf config.flatpak.enable {
-        packages = []
-          ++ lib.optional config.zen.enable "app.zen_browser.zen";
-      };
+        lib.optional config.vivaldi.enable vivaldi
+        ++ lib.optional config.zen.enable inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      #services.flatpak = lib.mkIf config.flatpak.enable {
+      #  packages = []
+      #    ++ lib.optional config.zen.enable "app.zen_browser.zen";
+      #};
     };
 
   };
