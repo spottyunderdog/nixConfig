@@ -300,9 +300,9 @@ in {
     # Bus IDs for the Nvidia and AMD GPUs.
     # Replace these with your own GPU's bus IDs.
     # Enable the bus id for the GPU + iGPU combination you have.
-    #  nvidiaBusId = "PCI:1@0:0:0";
-    #  amdgpuBusId = "PCI:199@0:0:0";
-    #  intelBusId = "PCI:0@0:2:0";
+    #  nvidiaBusId = "PCI:1:0:0";
+    #  amdgpuBusId = "PCI:199:0:0";
+    #  intelBusId = "PCI:0:2:0";
     # };
 
     ####################
@@ -330,7 +330,7 @@ in {
       #   hardware.nvidia.prime.sync.enable = lib.mkForce true;
       #   hardware.nvidia.prime.offload = {
       #     enable = lib.mkForce false;
-      #    enableOffloadCmd = lib.mkForce false;
+      #     enableOffloadCmd = lib.mkForce false;
       #   };
 
       # };
