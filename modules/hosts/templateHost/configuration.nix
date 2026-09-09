@@ -221,6 +221,16 @@ in {
     # Vivaldi Browser
     vivaldi.enable = false;
 
+    #################
+    # Office Suites #
+    #################
+
+    # Libre Office
+    libreOffice.enable = false;
+
+    # Only Office
+    onlyOffice.enable = false;
+
     ####################################################
     # Apps used to theme other apps or replacment apps #
     # That can be used for extra theming.              #
