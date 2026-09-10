@@ -13,30 +13,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
-
-    #nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
-
     noctalia = {
       url = "github:noctalia-dev/noctalia";
       # inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # home-manager = {
-    #   url = "github:nix-community/home-manager";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # silentSDDM = {
-    #   url = "github:uiriansan/SilentSDDM";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    # zen-browser = {
-    #   url = "github:youwen5/zen-browser-flake";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
 
   };
 
