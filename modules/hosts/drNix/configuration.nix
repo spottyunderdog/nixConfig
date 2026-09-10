@@ -233,6 +233,9 @@ in {
     # Vivaldi Browser
     vivaldi.enable = false;
 
+    libreOffice.enable = true;
+    onlyOffice.enable = true;
+
     ####################################################
     # Apps used to theme other apps or replacment apps #
     # That can be used for extra theming.              #
