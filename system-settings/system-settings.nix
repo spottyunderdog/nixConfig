@@ -6,7 +6,7 @@
       self.nixosModules.bootLoader
       self.nixosModules.virtualization
       self.nixosModules.kernels
-      self.nixosModules.displayManager
+      self.nixosModules.display-manager
       self.nixosModules.desktop-enviornments
       self.nixosModules.swap
       self.nixosModules.hibernation
