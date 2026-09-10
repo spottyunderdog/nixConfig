@@ -134,7 +134,7 @@ binds {
     Mod+T hotkey-overlay-title="Open Text Editor: Kate"  { spawn "kate"; }
     Mod+C hotkey-overlay-title="Open Calculater: Kcalc" { spawn "kcalc"; }
     Mod+W hotkey-overlay-title="Open Browser: Zen"  { spawn "zen-beta"; }
-    Ctrl+Shift+Escape hotkey-overlay-title="Open System Monitor: Btop" { spawn "btop"; }
+    Ctrl+Shift+Escape hotkey-overlay-title="Open System Monitor: Btop" { spawn-sh "btop"; }
     Mod+Z hotkey-overlay-title="Open Noctalia Settings" { spawn-sh "noctalia msg settings-toggle"; }
     Mod+X hotkey-overlay-title="Open Noctalia Control Center" { spawn-sh "noctalia msg panel-toggle control-center"; }
     Mod+Space hotkey-overlay-title="Open Noctalia Application Launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
