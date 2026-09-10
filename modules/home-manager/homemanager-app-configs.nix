@@ -4,9 +4,9 @@
 
     imports = [
       # Home Manager app Config files
-      self.homeModules.zed
-      self.homeModules.shells
-      self.homeModules.starship
+      self.homeModules.zed-editor-config
+      self.homeModules.shell-config-modules
+      self.homeModules.starship-config
       self.homeModules.dot-files
     ];
 

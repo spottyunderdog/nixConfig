@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.homeModules.zed = { config, pkgs, lib, ... }: {
+  flake.homeModules.zed-editor-config = { config, pkgs, lib, ... }: {
 
     options = {
       zedConfig.enable = lib.mkEnableOption "zed-editor config";

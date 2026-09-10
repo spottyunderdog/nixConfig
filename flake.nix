@@ -21,6 +21,13 @@
   };
 
   outputs = inputs: inputs.omniflake.flakes.flake-parts.lib.mkFlake{ inherit inputs; } 
-    ( inputs.omniflake.flakes.import-tree [ ./modules ./hosts ./system-settings ] );
+    ( 
+      inputs.omniflake.flakes.import-tree [ 
+        ./modules 
+        ./hosts 
+        ./system-settings 
+        ./parts.nix 
+      ] 
+    );
 }
 
