@@ -116,19 +116,19 @@ in {
     # MORE THEN ONE
 
     # Use the default nixos kernel
-    linuxKernelNixDefault.enable = false;
+    linux-nix-default-kernel.enable = true;
 
     # Use the latest linux kernel
-    linuxLatestKernel.enable = false;
+    linux-latest-kernel.enable = false;
 
     # Use the 6.12 Linux Kernel (LTS Kernel)
-    linuxKernel6_12.enable = false;
+    linux-6_12-kernel.enable = false;
 
     # Use the 6.18 Linux Kernel (LTS Kernel)
-    linuxKernel6_18.enable = false;
+    linux-6_18-kernel.enable = false;
 
     ###################################
-    # Cachy OS Optimize Linux Kernels #
+    # Cachy OS Optimized Linux Kernels #
     ###################################
 
     # These are the kernels made by the CachyOS
@@ -144,23 +144,23 @@ in {
     # Architectures provided are: Zen4, x86v3, and x86v4
     # Note: Zen 4 should work for both zen 4 and zen 5 cpus if i'm reading their wiki correctly.
 
-    # CachyOS Server Kernel
-    cachyServerKernel.enable = false;
+    # CachyOS Hardened Kernel 
+    cachyos-hardened-kernel.enable = false;
 
-    # Cachy Hardened Kernel
-    cachyHardenedKernel.enable = false;
+    # CachyOS Server Kernel
+    cachyos-server-kernel.enable = false;
 
     # Cachy LTS Kernels
-    cachyLtsKernel.enable = false;
-    cachyLtsKernel-x86v3.enable = false;
-    cachyLtsKernel-x86v4.enable = false;
-    cachyLtsKernel-zen4.enable = false;
+    cachyos-lts-kernel.enable = false;
+    cachyos-lts-kernel-x86v3.enable = false;
+    cachyos-lts-kernel-x86v4.enable = false;
+    cachyos-lts-kernel-zen4.enable = false;
 
     # Cachy OS Latest Kernels
-    cachyLatestKernel.enable = false;
-    cachyLatestKernel-x86v3.enable = false;
-    cachyLatestKernel-x86v4.enable = false;
-    cachyLatestKernel-zen4.enable = true;
+    cachyos-latest-kernel.enable = false;
+    cachyos-latest-kernel-x86v3.enable = false;
+    cachyos-latest-kernel-x86v4.enable = false;
+    cachyos-latest-kernel-zen4.enable = false;
 
     ############
     # Software #
