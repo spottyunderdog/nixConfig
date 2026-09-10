@@ -38,17 +38,12 @@ in {
 
     imports = [
       self.nixosModules.packages
-      self.nixosModules.homeManager
       self.nixosModules.systemSettings
       # Module for hardware settings
       self.nixosModules."${hostName}Hardware"
       # module for host specific users, each host needs its own name
       # name should be self.nixosModules.<host name>Users
       self.nixosModules."${hostName}Users"
-      # If you want to use the same user account accross different hosts
-      # leave the module uncommented. Their config files are found at
-      # nixConfig/modules/sharedsystemConfigs/users
-      self.nixosModules.crossSystemUsers
     ];
 
     ############################

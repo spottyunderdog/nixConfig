@@ -13,6 +13,7 @@
       self.nixosModules.localeConfiguration
       self.nixosModules.pipewire
       self.nixosModules.drivers
+      self.nixosModules.home-manager
     ];
 
     # Thunderbolt support
