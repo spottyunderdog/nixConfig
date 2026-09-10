@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.homeModules.starship = { config, pkgs, lib, ... }: {
+  flake.homeModules.starship-config = { config, pkgs, lib, ... }: {
 
     options = {
       starshipConfig.enable = lib.mkEnableOption "Starship Configuration, used for prompts";

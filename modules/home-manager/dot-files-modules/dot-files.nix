@@ -1,9 +1,9 @@
 { self, inputs, ... }: {
 
-  flake.homeModules.dotFiles = { config, pkgs, lib, ... }: {
+  flake.homeModules.dot-files = { config, pkgs, lib, ... }: {
 
     imports = [
-      self.homeModules.niriConfig
+      self.homeModules.niri-dots
       self.homeModules.hyprlandConfig
       self.homeModules.kittyConfig
       self.homeModules.noctaliaConfig
@@ -11,26 +11,6 @@
 
   };
 
-  flake.homeModules.niriConfig = { config, pkgs, lib, ... }: {
-
-    options = {
-      niriConfig.enable = lib.mkEnableOption "Niri Configuration";
-    };
-
-    config = lib.mkIf config.niriConfig.enable {
-
-      kittyConfig.enable = lib.mkDefault true;
-      noctaliaConfig.enable = lib.mkDefault true;
-
-      xdg.configFile."niri" = {
-        source = config.lib.file.mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/nixConfig/dotFiles/niri";
-        recursive = true;
-      };
-
-    };
-
-  };
 
   flake.homeModules.hyprlandConfig = { pkgs, lib, config, ... }: {
 

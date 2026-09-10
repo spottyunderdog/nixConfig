@@ -7,22 +7,13 @@
       self.homeModules.zed
       self.homeModules.shells
       self.homeModules.starship
-      self.homeModules.dotFiles
+      self.homeModules.dot-files
     ];
 
     zedConfig.enable = lib.mkDefault false;
     bashConfig.enable = lib.mkDefault false;
     niriConfig.enable = lib.mkDefault false;
     hyprlandConfig.enable = lib.mkDefault false;
-
-    home.pointerCursor = {
-      enable = true;
-      name = "capitaine-cursors";
-      package = pkgs.capitaine-cursors;
-      size = 24; # Options: 24, 32, 48, etc.
-      gtk.enable = true;
-      x11.enable = true;
-    };
 
   };
 

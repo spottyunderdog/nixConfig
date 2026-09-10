@@ -29,7 +29,7 @@ let
 
 in {
 
-  flake.homeModules.shells = { ... }:{
+  flake.homeModules.shell-config-modules = { ... }:{
     imports = [
       self.homeModules.bash
       self.homeModules.fish
