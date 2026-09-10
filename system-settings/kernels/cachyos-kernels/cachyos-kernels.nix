@@ -1,26 +1,26 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.cachyKernels = { pkgs, config, lib, ... }: {
+  flake.nixosModules.cachyos-kernels = { pkgs, config, lib, ... }: {
 
     nixpkgs.overlays = [ inputs.omniflake.flakes.nix-cachyos-kernel.overlays.pinned ];
     nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
     nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
 
     imports = [
-      self.nixosModules.cachyLatest
-      self.nixosModules.cachyLts
-      self.nixosModules.cachyServer
-      self.nixosModules.cachyHardened
+      self.nixosModules.cachyos-latest
+      self.nixosModules.cachyos-lts
+      self.nixosModules.cachyos-server
+      self.nixosModules.cachyos-hardened
     ];
 
     # Cachy LTS Kernel Default
-    cachyLtsKernel.enable = lib.mkDefault false;
+    cachyos-lts-kernel.enable = lib.mkDefault false;
     # Cachy Latest Kernel Default
-    cachyLatestKernel.enable = lib.mkDefault false;
+    cachyos-latest-kernel.enable = lib.mkDefault false;
     # Cachy Hardened Kernel Default
-    cachyHardenedKernel.enable = lib.mkDefault false;
+    cachyos-hardened-kernel.enable = lib.mkDefault false;
     # Cachy Server Kernel
-    cachyServerKernel.enable = lib.mkDefault false;
+    cachyos-server-kernel.enable = lib.mkDefault false;
 
     # Defaults For CachyOS Linux Kernel Latest. Architechture Specific version.
     # If You don't know which version you should use, don't enable them
@@ -30,14 +30,14 @@
     # Read: https://wiki.cachyos.org/features/optimized_repos/
 
     # Latest Cachy Kernel
-    cachyLatestKernel-x86v3.enable = lib.mkDefault false;
-    cachyLatestKernel-x86v4.enable = lib.mkDefault false;
-    cachyLatestKernel-zen4.enable = lib.mkDefault false; # Note: Works on both Zen 4 and Zen 5 CPUS
+    cachyos-latest-kernel-x86v3.enable = lib.mkDefault false;
+    cachyos-latest-kernel-x86v4.enable = lib.mkDefault false;
+    cachyos-latest-kernel-zen4.enable = lib.mkDefault false; # Note: Works on both Zen 4 and Zen 5 CPUS
 
     # LTS Cachy Kernel
-    cachyLtsKernel-x86v3.enable = lib.mkDefault false;
-    cachyLtsKernel-x86v4.enable = lib.mkDefault false;
-    cachyLtsKernel-zen4.enable = lib.mkDefault false;
+    cachyos-lts-kernel-x86v3.enable = lib.mkDefault false;
+    cachyos-lts-kernel-x86v4.enable = lib.mkDefault false;
+    cachyos-lts-kernel-zen4.enable = lib.mkDefault false;
 
   };
 

@@ -5,7 +5,7 @@
     imports = [
       self.nixosModules.bootLoader
       self.nixosModules.virtualization
-      self.nixosModules.kernel
+      self.nixosModules.kernels
       self.nixosModules.displayManager
       self.nixosModules.swap
       self.nixosModules.hibernation
