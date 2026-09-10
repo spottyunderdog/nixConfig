@@ -12,7 +12,7 @@
       self.nixosModules.autoGarbageCollection
       self.nixosModules.localeConfiguration
       self.nixosModules.pipewire
-      self.nixosModules.drivers
+      self.nixosModules.graphic-drivers
       self.nixosModules.home-manager
     ];
 
@@ -25,8 +25,14 @@
     # Enable systemd services in initrd
     boot.initrd.systemd.enable = true;
 
+    # Enable Experimental Features
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
     # Allow unfree packages
     nixpkgs.config.allowUnfree = true;
+
+    # System State Verion
+    system.stateVersion = "26.05";
 
     # Enable networking
     networking.networkmanager.enable = true;
@@ -36,9 +42,6 @@
     # Enable the firewall and nftables
     networking.firewall.enable = true;
     networking.nftables.enable = lib.mkDefault true;
-
-    # Enable Experimental Features
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
     # Enable CUPS to print documents.
     services.printing.enable = lib.mkDefault true;
@@ -57,13 +60,6 @@
     # Enable the OpenSSH daemon.
     services.openssh.enable = lib.mkDefault true;
 
-    # This value determines the NixOS release from which the default
-    # settings for stateful data, like file locations and database versions
-    # on your system were taken. It‘s perfectly fine and recommended to leave
-    # this value at the release version of the first install of this system.
-    # Before changing this value read the documentation for this option
-    # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-    system.stateVersion = "26.05"; # Did you read the comment?
 
     #########################################################################
     # Other applications that you may want on all hosts but aren't included #

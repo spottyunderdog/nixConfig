@@ -1,12 +1,12 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.nvidia = { pkgs, config, lib, ... }: {
+  flake.nixosModules.nvidia-drivers = { pkgs, config, lib, ... }: {
 
     options = {
-        nvidiaDrivers.enable = lib.mkEnableOption "Enable Nvidia drivers";
+        nvidia-drivers.enable = lib.mkEnableOption "Enable Nvidia drivers";
     };
 
-    config = lib.mkIf config.nvidiaDrivers.enable {
+    config = lib.mkIf config.nvidia-drivers.enable {
       services.xserver.videoDrivers = [ "nvidia" ];
 
       hardware.nvidia = {
