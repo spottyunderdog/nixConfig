@@ -4,8 +4,7 @@
 
     imports = [
       inputs.omniflake.flakes.silentsddm.nixosModules.default
-      self.nixosModules.x11
-      self.nixosModules.wayland
+      self.nixosModules.sddm
     ];
 
     services.displayManager.defaultSession = lib.mkForce "plasma";
@@ -15,18 +14,6 @@
       enable = true;
       theme = "rei";
     };
-
-    # Enable X11 Winowing System
-    services.xserver.enable = true;
-
-    # Configure keymap in X11
-    services.xserver.xkb = {
-      layout = "us";
-      variant = "";
-    };
-
-    # Enable touchpad support (enabled default in most desktopManager).
-    services.libinput.enable = true;
 
   };
 

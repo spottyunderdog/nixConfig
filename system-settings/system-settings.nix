@@ -1,4 +1,4 @@
-{self, inputs, ...}:{
+{self, inputs, ... }: {
 
   flake.nixosModules.systemSettings = { pkgs, config, lib , ... }: {
 
@@ -7,6 +7,7 @@
       self.nixosModules.virtualization
       self.nixosModules.kernels
       self.nixosModules.displayManager
+      self.nixosModules.desktop-enviornments
       self.nixosModules.swap
       self.nixosModules.hibernation
       self.nixosModules.autoGarbageCollection
@@ -82,6 +83,18 @@
       nerd-fonts.fira-code
       nerd-fonts.jetbrains-mono
     ];
+
+    # Enable X11 Winowing System
+    services.xserver.enable = true;
+
+    # Configure keymap in X11
+    services.xserver.xkb = {
+      layout = "us";
+      variant = "";
+    };
+
+    # Enable touchpad support (enabled default in most desktopManager).
+    services.libinput.enable = true;
 
   };
 
