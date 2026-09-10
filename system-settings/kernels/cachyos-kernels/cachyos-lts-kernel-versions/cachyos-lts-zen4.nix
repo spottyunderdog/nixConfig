@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.cachy-lts-zen4 = { pkgs, config, lib, ... }: {
+  flake.nixosModules.cachyos-lts-zen4 = { pkgs, config, lib, ... }: {
 
     options = {
       cachyos-lts-kernel-zen4.enable = lib.mkEnableOption "Enable Cachos LTS Kernel";
