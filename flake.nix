@@ -20,6 +20,7 @@
 
   };
 
-  outputs = inputs: inputs.omniflake.flakes.flake-parts.lib.mkFlake{inherit inputs;} (inputs.omniflake.flakes.import-tree ./modules);
+  outputs = inputs: inputs.omniflake.flakes.flake-parts.lib.mkFlake{inherit inputs;} 
+    (inputs.omniflake.flakes.import-tree [ ./modules ./hosts ]);
 }
 
