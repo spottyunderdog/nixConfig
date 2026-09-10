@@ -12,7 +12,7 @@
       self.nixosModules.autoGarbageCollection
       self.nixosModules.localeConfiguration
       self.nixosModules.pipewire
-      self.nixosModules.graphic-drivers
+      self.nixosModules.graphics-drivers
       self.nixosModules.home-manager
     ];
 

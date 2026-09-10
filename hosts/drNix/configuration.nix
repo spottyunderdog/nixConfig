@@ -287,9 +287,9 @@ in {
 
     # These are dependent on your system enable based on what you need
 
-    nvidiaDrivers.enable = true; # Nvidia Gpus
-    amdDrivers.enable = true; # Amd Gpus
-    intelDrivers.enable = false; # Intel Gpus
+    nvidia-drivers.enable = true; # Nvidia Gpus
+    amd-drivers.enable = true; # Amd Gpus
+    intel-drivers.enable = false; # Intel Gpus
 
     ####################################
     # NVIDIA PRIME, DUAL-GPU Setups    #
