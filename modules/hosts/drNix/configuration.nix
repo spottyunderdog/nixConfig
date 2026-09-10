@@ -234,7 +234,7 @@ in {
     vivaldi.enable = false;
 
     libreOffice.enable = true;
-    onlyOffice.enable = true;
+    onlyOffice.enable = false;
 
     ####################################################
     # Apps used to theme other apps or replacment apps #
