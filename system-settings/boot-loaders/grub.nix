@@ -1,7 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.bootLoader = { pkgs, config, ... }: {
-
+  flake.nixosModules.grub = { config, lib, ... }: {
     boot.loader = {
 
       grub = {
@@ -12,10 +11,7 @@
 
       };
 
-      efi.canTouchEfiVariables = true;
-
-    };
-
   };
+
 
 }
