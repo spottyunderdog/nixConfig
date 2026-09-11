@@ -122,7 +122,7 @@ in {
     # MORE THEN ONE
 
     # Use the default nixos kernel
-    linux-nix-default-kernel.enable = true;
+    linux-nix-default-kernel.enable = false;
 
     # Use the latest linux kernel
     linux-latest-kernel.enable = false;
@@ -166,7 +166,7 @@ in {
     cachyos-latest-kernel.enable = false;
     cachyos-latest-kernel-x86v3.enable = false;
     cachyos-latest-kernel-x86v4.enable = false;
-    cachyos-latest-kernel-zen4.enable = false;
+    cachyos-latest-kernel-zen4.enable = true;
 
     ############
     # Software #

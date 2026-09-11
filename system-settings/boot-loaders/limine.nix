@@ -37,7 +37,7 @@
 
           wallpaperStyle = "centered";
           wallpapers = [ 
-            pkgs.nixos-artwork.wallpapers.catppuccin-mocha
+            #pkgs.nixos-artwork.wallpapers.catppuccin-mocha
             pkgs.nixos-artwork.wallpapers.recursive
             pkgs.nixos-artwork.wallpapers.waterfall
             pkgs.nixos-artwork.wallpapers.nineish

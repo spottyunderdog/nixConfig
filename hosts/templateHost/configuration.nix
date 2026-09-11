@@ -47,7 +47,7 @@ in {
     ];
 
     # Bootloaders
-    grub.enable - true;
+    grub.enable = true;
     limine.enable = false;
 
     ############################
