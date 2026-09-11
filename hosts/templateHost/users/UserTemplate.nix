@@ -78,13 +78,13 @@ in {
     # Shell Configs, Requires utilityApps.enable to be enabled, do to using the
     # fastfetch package in the shells.
     
-    bashConfig.enable = false;
-    fishConfig.enable = false;
-    zshConfig.enable = false;
+    bash-config.enable = false;
+    fish-config.enable = false;
+    zsh-config.enable = false;
 
     # Enable the starship prompt. Will activate for all
     # Shells
-    starshipConfig.enable = false;
+    starship-config.enable = false;
 
     # Enable My Niri + Noctalia dot files
     # Also enables kitty dots. Dots use the kitty
@@ -105,7 +105,7 @@ in {
     kitty-dots.enable = false;
 
     # My Zed Editor config.
-    zedConfig.enable = false;
+    zed-editor-config.enable = false;
 
     home.packages = [ ];
     home.stateVersion = "26.05";

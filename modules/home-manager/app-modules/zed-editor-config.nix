@@ -3,10 +3,10 @@
   flake.homeModules.zed-editor-config = { config, pkgs, lib, ... }: {
 
     options = {
-      zedConfig.enable = lib.mkEnableOption "zed-editor config";
+      zed-editor-config.enable = lib.mkEnableOption "zed-editor config";
     };
 
-    config = lib.mkIf config.zedConfig.enable {
+    config = lib.mkIf config.zed-editor-config.enable {
 
       programs.zed-editor = {
         enable = true;
