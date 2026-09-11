@@ -83,6 +83,9 @@ in {
     # Enable Automatic garbage collection
     autoGarbageCollection.enable = true;
 
+    # Bootloader
+    grub.enable = true;
+
     #######################
     # Desktop Environments #
     #######################
