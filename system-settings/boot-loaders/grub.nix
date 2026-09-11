@@ -3,7 +3,7 @@
   flake.nixosModules.grub = { config, lib, ... }: {
 
     options = {
-      grub.enable = lib.mkEnableOptiona "Grub Bootloader";
+      grub.enable = lib.mkEnableOption "Grub Bootloader";
     };
 
     config = lib.mkIf config.grub.enable {

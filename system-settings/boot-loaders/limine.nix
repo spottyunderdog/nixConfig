@@ -8,7 +8,7 @@
 
     config = lib.mkIf config.limine.enable {
 
-      enviornment.systemPackages = [ pkgs.sbctl ];
+      environment.systemPackages = [ pkgs.sbctl ];
 
       boot.loader.limine = {
         enable = true;
@@ -18,7 +18,7 @@
         enableEditor = false;
         enrollConfig = true;
         validateChecksums = true;
-        panicOnChecksumMismatch = false;
+        panicOnChecksumMismatch = true;
 
         style = {
           interface = {

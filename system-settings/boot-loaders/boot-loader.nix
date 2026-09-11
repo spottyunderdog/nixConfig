@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.boot-loader = { pkgs, config, ... }: {
+  flake.nixosModules.boot-loader = { pkgs, config, lib, ... }: {
       
     imports = [ 
       self.nixosModules.grub 

@@ -46,6 +46,10 @@ in {
       self.nixosModules."${hostName}Users"
     ];
 
+    # Bootloaders
+    grub.enable - true;
+    limine.enable = false;
+
     ############################
     # Device Specific Settings #
     ############################
