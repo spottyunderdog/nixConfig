@@ -84,7 +84,10 @@ in {
     autoGarbageCollection.enable = true;
 
     # Bootloader
+    # Grub
     grub.enable = true;
+    # Limine
+    limine.enable = false;
 
     #######################
     # Desktop Environments #
