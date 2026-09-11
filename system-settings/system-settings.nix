@@ -11,7 +11,7 @@
       self.nixosModules.swap
       self.nixosModules.hibernation
       self.nixosModules.autoGarbageCollection
-      self.nixosModules.localeConfiguration
+      self.nixosModules.locale
       self.nixosModules.pipewire
       self.nixosModules.graphics-drivers
       self.nixosModules.home-manager
