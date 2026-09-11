@@ -101,10 +101,10 @@ in {
     # To disable the Theme or change the Silent SDDM Preset
     # see the displayManger.nix file (Located at
     # nixConfig/modules/features/sharedSystemConfigs/sessionManagement)
-    hyprland.enable = false;
-    kdePlasma.enable = true;
+    hyprland.enable = true;
+    kde-plasma.enable = true;
     niri.enable = true;
-    xfce.enable = false;
+    xfce.enable = true;
 
 
     #####################

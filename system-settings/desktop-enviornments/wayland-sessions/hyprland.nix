@@ -8,7 +8,7 @@
 
     config = lib.mkIf config.hyprland.enable {
 
-       nix.settings = lib.mkIf (!config.niri.enable) {
+      nix.settings = lib.mkIf (!config.niri.enable) {
          extra-substituters = [ "https://noctalia.cachix.org" ];
          extra-trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
       };

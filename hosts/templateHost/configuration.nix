@@ -90,7 +90,7 @@ in {
     # see the displayManger.nix file (Located at
     # nixConfig/modules/features/sharedSystemConfigs/sessionManagement)
     hyprland.enable = false;
-    kdePlasma.enable = true;
+    kde-plasma.enable = true;
     niri.enable = false;
     xfce.enable = false;
 

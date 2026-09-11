@@ -6,10 +6,7 @@
       self.nixosModules.sddm
     ];
 
-    services.displayManager.defaultSession = lib.mkForce "plasma";
-    services.displayManager.sddm.enable = lib.mkOverride 1000 true;
-
-
+    services.displayManager.defaultSession = lib.mkDefault "plasma";
 
   };
 
