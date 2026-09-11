@@ -33,6 +33,9 @@
         panicOnChecksumMismatch = true;
         package = pkgs.limine-full;
         extraEntries = config.limine.otherEntries;
+        extraConfig = ''
+          remember_last_entry: yes
+        '';
 
         style = {
           interface = {
