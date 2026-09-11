@@ -8,7 +8,9 @@
 
     config = lib.mkIf config.limine.enable {
 
-      environment.systemPackages = [ pkgs.sbctl ];
+      environment.systemPackages = with pkgs; [
+        sbctl
+      ];
 
       boot.loader.limine = {
         enable = true;
@@ -37,10 +39,8 @@
 
           wallpaperStyle = "centered";
           wallpapers = [ 
-            #pkgs.nixos-artwork.wallpapers.catppuccin-mocha
-            pkgs.nixos-artwork.wallpapers.recursive
-            pkgs.nixos-artwork.wallpapers.waterfall
-            pkgs.nixos-artwork.wallpapers.nineish
+            pkgs.nixos-artwork.wallpapers.catppuccin-mocha.gnomeFilePath
+            pkgs.nixos-artwork.wallpapers.nineish.gnomeFilePath
           ];
 
         };

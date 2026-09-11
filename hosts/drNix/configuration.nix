@@ -85,9 +85,9 @@ in {
 
     # Bootloader
     # Grub
-    grub.enable = true;
+    grub.enable = false;
     # Limine
-    limine.enable = false;
+    limine.enable = true;
 
     #######################
     # Desktop Environments #
