@@ -68,7 +68,7 @@ in {
   flake.homeModules."${hostName}-${userName}Module" = { pkgs, ... }: {
 
     imports = [
-      self.homeModules.appConfigs
+      self.homeModules.app-configs
     ];
     # ensures fonts can properly be configured when rebuild your system. 
     # Do not remove.
@@ -89,19 +89,19 @@ in {
     # Also enables kitty dots. Dots use the kitty
     # Terminal, you may need to enable utilityApps 
     # to use.
-    niriConfig.enable = true;
+    niri-dots.enable = true;
 
     # Enable My Hyprland + Nocatlia dotfiles
     # Also enables kitty dots. Dots use the kitty
     # Terminal, you may need to enable utilityApps 
     # to use.
-    hyprlandConfig.enable = false;
+    hyprland-dots.enable = false;
 
     # Enable My Noctalia dotfiles
-    noctaliaConfig.enable = true;
+    noctalia-dots.enable = true;
 
     # My Kitty config.
-    kittyConfig.enable = true;
+    kitty-dots.enable = true;
 
     # My Zed Editor config.
     zedConfig.enable = true;

@@ -3,17 +3,17 @@
   flake.homeModules.niri-dots = { config, pkgs, lib, ... }: {
 
     options = {
-      niriConfig.enable = lib.mkEnableOption "Niri Configuration";
+      niri-dots.enable = lib.mkEnableOption "Niri Configuration";
     };
 
-    config = lib.mkIf config.niriConfig.enable {
+    config = lib.mkIf config.niri-dots.enable {
 
-      kittyConfig.enable = lib.mkDefault true;
-      noctaliaConfig.enable = lib.mkDefault true;
+      kitty-dots.enable = lib.mkDefault true;
+      noctalia-dots.enable = lib.mkDefault true;
 
       xdg.configFile."niri" = {
         source = config.lib.file.mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/nixConfig/dotFiles/niri";
+          "${config.home.homeDirectory}/nixConfig/dot-files/niri";
         recursive = true;
       };
 

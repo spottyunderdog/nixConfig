@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.homeModules.appConfigs = { pkgs, lib, config, ... }: {
+  flake.homeModules.app-configs = { pkgs, lib, config, ... }: {
 
     imports = [
       # Home Manager app Config files
@@ -12,8 +12,8 @@
 
     zedConfig.enable = lib.mkDefault false;
     bashConfig.enable = lib.mkDefault false;
-    niriConfig.enable = lib.mkDefault false;
-    hyprlandConfig.enable = lib.mkDefault false;
+    niri-dots.enable = lib.mkDefault false;
+    hyprland-dots.enable = lib.mkDefault false;
 
   };
 

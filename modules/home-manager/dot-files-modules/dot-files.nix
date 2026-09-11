@@ -1,77 +1,13 @@
 { self, inputs, ... }: {
 
-  flake.homeModules.dot-files = { config, pkgs, lib, ... }: {
+  flake.homeModules.dot-files = { ... }: {
 
     imports = [
       self.homeModules.niri-dots
-      self.homeModules.hyprlandConfig
-      self.homeModules.kittyConfig
-      self.homeModules.noctaliaConfig
+      self.homeModules.hyprland-dots
+      self.homeModules.kitty-dots
+      self.homeModules.noctalia-dots
     ];
-
-  };
-
-
-  flake.homeModules.hyprlandConfig = { pkgs, lib, config, ... }: {
-
-    options = {
-      hyprlandConfig.enable = lib.mkEnableOption "Hyprland Configuration";
-    };
-
-    config = lib.mkIf config.hyprlandConfig.enable {
-
-      kittyConfig.enable = lib.mkDefault true;
-      noctaliaConfig.enable = lib.mkDefault true;
-
-      xdg.configFile."hypr" = {
-        source = config.lib.file.mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/nixConfig/dotFiles/hypr";
-        recursive = true;
-      };
-
-      xdg.configFile."uwsm" = {
-        source = config.lib.file.mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/nixConfig/dotFiles/uwsm";
-        recursive = true;
-      };
-
-    };
-
-  };
-
-  flake.homeModules.noctaliaConfig = { pkgs, lib, config, ... }: {
-
-    options = {
-      noctaliaConfig.enable = lib.mkEnableOption "Noctalia Configurations";
-    };
-
-    config = lib.mkIf config.noctaliaConfig.enable {
-
-      xdg.configFile."noctalia" = {
-        source = config.lib.file.mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/nixConfig/dotFiles/noctalia";
-        recursive = true;
-      };
-
-    };
-
-  };
-
-  flake.homeModules.kittyConfig = { pkgs, lib, config, ... } : {
-
-    options = {
-      kittyConfig.enable = lib.mkEnableOption "Kitty Configurations";
-    };
-
-    config = lib.mkIf config.kittyConfig.enable {
-
-      xdg.configFile."kitty" = {
-        source = config.lib.file.mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/nixConfig/dotFiles/kitty";
-        recursive = true;
-      };
-
-    };
 
   };
 
