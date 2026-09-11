@@ -88,6 +88,15 @@ in {
     grub.enable = false;
     # Limine
     limine.enable = true;
+    limine.otherEntries = lib.mkForce ''
+      /+Other systems and bootloaders
+      //Windows
+        protocol: efi_chainload
+        image_path: guid(dd177fac-1ef3-4e7c-aa35-d312e09a48fd):/efi/Microsoft/Boot/bootmgfw.efi
+      //Efi Fallback
+        protocol: efi
+        path: boot():/EFI/BOOT/BOOTX64.EFI
+    '';
 
     #######################
     # Desktop Environments #

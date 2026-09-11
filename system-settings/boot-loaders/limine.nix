@@ -4,12 +4,22 @@
 
     options = {
       limine.enable = lib.mkEnableOption "Limine Bootloader";
+      limine.otherEntries = lib.mkOption {
+        default = ''
+          /+Other systems and bootloaders
+          //Efi Fallback
+            protocol: efi
+            path: boot():/EFI/BOOT/BOOTX64.EFI
+        '';
+        type = lib.types.str;
+      };
     };
 
     config = lib.mkIf config.limine.enable {
 
       environment.systemPackages = with pkgs; [
         sbctl
+        limine-full
       ];
 
       boot.loader.limine = {
@@ -21,6 +31,8 @@
         enrollConfig = true;
         validateChecksums = true;
         panicOnChecksumMismatch = true;
+        package = pkgs.limine-full;
+        extraEntries = config.limine.otherEntries;
 
         style = {
           interface = {
@@ -38,10 +50,7 @@
           };
 
           wallpaperStyle = "centered";
-          wallpapers = [ 
-            pkgs.nixos-artwork.wallpapers.catppuccin-mocha.gnomeFilePath
-            pkgs.nixos-artwork.wallpapers.nineish.gnomeFilePath
-          ];
+          wallpapers = [ pkgs.nixos-artwork.wallpapers.catppuccin-mocha.gnomeFilePath ];
 
         };
 
