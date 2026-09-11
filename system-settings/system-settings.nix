@@ -3,7 +3,7 @@
   flake.nixosModules.systemSettings = { pkgs, config, lib , ... }: {
 
     imports = [
-      self.nixosModules.bootLoader
+      self.nixosModules.boot-loader
       self.nixosModules.virtualization
       self.nixosModules.kernels
       self.nixosModules.display-manager

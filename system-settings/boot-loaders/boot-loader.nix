@@ -2,12 +2,9 @@
 
   flake.nixosModules.boot-loader = { pkgs, config, ... }: {
       
-      imports = [ self.nixosModules.grub ];
+    imports = [ self.nixosModules.grub ];
 
-      efi.canTouchEfiVariables = true;
-
-    };
+    boot.loader.efi.canTouchEfiVariables = true;
 
   };
-
 }
