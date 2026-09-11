@@ -13,6 +13,8 @@
          extra-trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
       };
 
+          services.displayManager.defaultSession = lib.mkOverride 960 "hyprland";
+
       programs.hyprland = {
         enable = true;
         withUWSM = true;

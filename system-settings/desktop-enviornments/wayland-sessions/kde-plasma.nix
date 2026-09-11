@@ -8,7 +8,10 @@
 
     config = lib.mkIf config.kde-plasma.enable {
       services.desktopManager.plasma6.enable = true;
-       environment.systemPackages = with pkgs; [
+
+      services.displayManager.defaultSession = lib.mkOverride 900 "plasma";
+
+      environment.systemPackages = with pkgs; [
         kdePackages.plasma-thunderbolt
       ];
     };

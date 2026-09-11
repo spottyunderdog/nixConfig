@@ -18,6 +18,9 @@
       };
 
       programs.niri.enable = true;
+
+      services.displayManager.defaultSession = lib.mkOverride 950 "niri";
+
       programs.noctalia = {
         enable = true;
         recommendedServices.enable = true;

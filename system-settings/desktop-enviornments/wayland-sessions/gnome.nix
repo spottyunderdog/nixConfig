@@ -12,6 +12,7 @@
       services.displayManager.sddm.enable = lib.mkForce false;
       services.desktopManager.gnome.enable = true;
       services.gnome.games.enable = false;
+      services.displayManager.defaultSession = lib.mkForce "gnome";
 
       environment.systemPackages = with pkgs; [
         gnome-tweaks
