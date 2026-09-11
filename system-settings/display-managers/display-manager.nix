@@ -6,7 +6,7 @@
       self.nixosModules.sddm
     ];
 
-    sddm.enable = lib.mkDefault - true;
+    sddm.enable = lib.mkDefault true;
 
   };
 

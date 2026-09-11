@@ -84,7 +84,7 @@
       nerd-fonts.jetbrains-mono
     ];
 
-    # Enable X11 Winowing System
+    # Enable X11 Windowing System
     services.xserver.enable = true;
 
     # Configure keymap in X11

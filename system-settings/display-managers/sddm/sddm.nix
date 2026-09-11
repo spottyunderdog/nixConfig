@@ -13,9 +13,10 @@
       services.displayManager.sddm = {
         enable = lib.mkDefault true;
         wayland = {
-          enable = true;
+          enable = lib.mkForce true;
           compositor = "kwin";
         };
+
       };
       
       environment.systemPackages = with pkgs; [
