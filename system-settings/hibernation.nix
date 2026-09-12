@@ -7,6 +7,7 @@
     };
 
     config = lib.mkIf config.hibernation.enable {
+      swap.enable = lib.mkForce true;
       powerManagement.enable = true;
       systemd.sleep.settings.Sleep = {
         AllowHibernation = "yes";
