@@ -1,27 +1,22 @@
-{ self, inputs, ... }: 
-let 
-  locale = "en_US.UTF-8";
-  timeZone = "America/New_York";
-in {
+{ self, inputs, ... }: {
 
   flake.nixosModules.locale-settings = { config, pkgs, lib, ... }: {
-
     # Set your time zone.
-    time.timeZone = lib.mkDefault timeZone;
+    time.timeZone = config.nix-vars.time-zone;
 
     # Select internationalisation properties.
-    i18n.defaultLocale = lib.mkDefault locale;
+    i18n.defaultLocale = config.nix-vars.locale;
 
     i18n.extraLocaleSettings = {
-      LC_ADDRESS = lib.mkDefault locale;
-      LC_IDENTIFICATION = lib.mkDefault locale;
-      LC_MEASUREMENT = lib.mkDefault locale;
-      LC_MONETARY = lib.mkDefault locale;
-      LC_NAME = lib.mkDefault locale;
-      LC_NUMERIC = lib.mkDefault locale;
-      LC_PAPER = lib.mkDefault locale;
-      LC_TELEPHONE = lib.mkDefault locale;
-      LC_TIME = lib.mkDefault locale;
+      LC_ADDRESS = config.nix-vars.locale;
+      LC_IDENTIFICATION = config.nix-vars.locale;
+      LC_MEASUREMENT = config.nix-vars.locale;
+      LC_MONETARY = config.nix-vars.locale;
+      LC_NAME = config.nix-vars.locale;
+      LC_NUMERIC = config.nix-vars.locale;
+      LC_PAPER = config.nix-vars.locale;
+      LC_TELEPHONE = config.nix-vars.locale;
+      LC_TIME = config.nix-vars.locale;
     };
 
   };
