@@ -54,7 +54,7 @@
           autoGenerateKeys = true;
           autoEnrollKeys = {
             enable = true;
-            extraArgs = [ "--microsoft" ];
+            extraArgs = [ "--microsoft" "--firmware-builtin" ];
           };
 
         };

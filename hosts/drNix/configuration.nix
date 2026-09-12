@@ -172,10 +172,10 @@ in {
     cachyos-lts-kernel-zen4.enable = false;
 
     # Cachy OS Latest Kernels
-    cachyos-latest-kernel.enable = false;
+    cachyos-latest-kernel.enable = true;
     cachyos-latest-kernel-x86v3.enable = false;
     cachyos-latest-kernel-x86v4.enable = false;
-    cachyos-latest-kernel-zen4.enable = true;
+    cachyos-latest-kernel-zen4.enable = false;
 
     ############
     # Software #
