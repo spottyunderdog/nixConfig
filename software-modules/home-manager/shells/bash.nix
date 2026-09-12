@@ -14,7 +14,7 @@
 
         initExtra = "fastfetch";
 
-        shellAliases = config.var.shell-alias;
+        shellAliases = config.home-vars.shell-alias;
 
       };
 

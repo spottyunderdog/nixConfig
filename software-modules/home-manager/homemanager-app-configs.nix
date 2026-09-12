@@ -4,6 +4,7 @@
 
     imports = [
       # Home Manager app Config files
+      self.homeModules.home-vars
       self.homeModules.zed-editor-config
       self.homeModules.shell-config-modules
       self.homeModules.starship-config

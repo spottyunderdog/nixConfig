@@ -4,15 +4,6 @@
 
     options = {
       limine.enable = lib.mkEnableOption "Limine Bootloader";
-      limine.otherEntries = lib.mkOption {
-        default = ''
-          /+Other systems and bootloaders
-          //Efi Fallback
-            protocol: efi
-            path: boot():/EFI/BOOT/BOOTX64.EFI
-        '';
-        type = lib.types.str;
-      };
     };
 
     config = lib.mkIf config.limine.enable {
@@ -32,7 +23,7 @@
         validateChecksums = true;
         panicOnChecksumMismatch = true;
         package = pkgs.limine-full;
-        extraEntries = config.limine.otherEntries;
+        extraEntries = config.nix-vars.limine-entries;
         extraConfig = ''
           remember_last_entry: yes
         '';

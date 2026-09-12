@@ -13,7 +13,7 @@
         generateCompletions = true;
         interactiveShellInit = "fastfetch";
 
-        shellAliases = config.var.shell-alias;
+        shellAliases = config.home-vars.shell-alias;
       };
 
     };

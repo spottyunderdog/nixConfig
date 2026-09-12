@@ -73,7 +73,7 @@ in {
     hibernation.enable = false;
 
     # Enable Automatic garbage collection
-    autoGarbageCollection.enable = true;
+    auto-garbage-collection.enable = true;
 
     #######################
     # Desktop Environments #

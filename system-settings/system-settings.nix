@@ -10,11 +10,12 @@
       self.nixosModules.desktop-enviornments
       self.nixosModules.swap
       self.nixosModules.hibernation
-      self.nixosModules.autoGarbageCollection
+      self.nixosModules.auto-garbage-collection
       self.nixosModules.locale-settings
       self.nixosModules.pipewire
       self.nixosModules.graphics-drivers
       self.nixosModules.home-manager
+      self.nixosModules.nix-vars
     ];
 
     # Thunderbolt support
@@ -75,7 +76,7 @@
     # Defaults
     swap.enable = lib.mkDefault false;
     hibernation.enable = lib.mkDefault false;
-    autoGarbageCollection.enable = lib.mkDefault false;
+    auto-garbage-collection.enable = lib.mkDefault false;
 
     fonts.fontconfig.enable = true;
     fonts.packages = with pkgs; [

@@ -11,7 +11,7 @@ in {
 
   };
 
-  flake.nixosModules."${hostName}Users" = { config, pkgs, ... }: {
+  flake.nixosModules."${hostName}Users" = { ... }: {
 
     imports = [
       # Import User Configurations Here
@@ -81,14 +81,14 @@ in {
     hibernation.enable = true;
 
     # Enable Automatic garbage collection
-    autoGarbageCollection.enable = true;
+    auto-garbage-collection.enable = true;
 
     # Bootloader
     # Grub
     grub.enable = false;
     # Limine
     limine.enable = true;
-    limine.otherEntries = lib.mkForce ''
+    nix-vars.limine-entries = lib.mkForce ''
       /+Other systems and bootloaders
       //Windows
         protocol: efi_chainload

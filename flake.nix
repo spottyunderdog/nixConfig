@@ -27,6 +27,7 @@
         ./hosts 
         ./system-settings 
         ./parts.nix 
+        ./variables
       ] 
     );
 }

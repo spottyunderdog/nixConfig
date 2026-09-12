@@ -3,13 +3,13 @@
   flake.homeModules.shell-aliases = { config, lib, ...}: {
 
     options = {
-      var.shell-alias = lib.mkOption {
+      home-vars.shell-alias = lib.mkOption {
         type = lib.types.attrsOf lib.types.str;
         default = {};
       };
     };
     config = { 
-      var.shell-alias = {
+      home-vars.shell-alias = {
         ".." = "cd ..";
         "..." = "cd ../..";
         "...." = "cd ../../..";

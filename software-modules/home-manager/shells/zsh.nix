@@ -19,7 +19,7 @@
           size = 20000;
         };
 
-        shellAliases = config.var.shell-alias;
+        shellAliases = config.home-vars.shell-alias;
 
         initContent = "fastfetch";
 
