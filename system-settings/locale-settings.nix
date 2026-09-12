@@ -4,7 +4,7 @@ let
   timeZone = "America/New_York";
 in {
 
-  flake.nixosModules.locale = { config, pkgs, lib, ... }: {
+  flake.nixosModules.locale-settings = { config, pkgs, lib, ... }: {
 
     # Set your time zone.
     time.timeZone = lib.mkDefault timeZone;
