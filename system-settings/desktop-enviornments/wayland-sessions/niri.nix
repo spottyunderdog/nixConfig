@@ -12,11 +12,6 @@
 
     config = lib.mkIf config.niri.enable {
 
-      nix.settings = {
-        extra-substituters = [ "https://noctalia.cachix.org" ];
-        extra-trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
-      };
-
       programs.niri.enable = true;
 
       services.displayManager.defaultSession = lib.mkOverride 950 "niri";

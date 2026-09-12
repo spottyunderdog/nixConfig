@@ -159,6 +159,12 @@ in {
     # Architectures provided are: Zen4, x86v3, and x86v4
     # Note: Zen 4 should work for both zen 4 and zen 5 cpus if i'm reading their wiki correctly.
 
+    # Wether or not to use the Omniflake as the source of the
+    # cachyos kernel. Asof 2026-09-12, the omniflake last sourced it
+    # on 2026-09-02, resulting in the kernel being built being kerne 7.2.2 
+    # rather than 7.2.4 
+    cachyos-kernel-overlay.omniflakeEnable = false;
+
     # CachyOS Hardened Kernel 
     cachyos-hardened-kernel.enable = false;
 

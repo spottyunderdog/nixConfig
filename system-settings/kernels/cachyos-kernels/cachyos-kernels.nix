@@ -2,7 +2,7 @@
 
   flake.nixosModules.cachyos-kernels = { pkgs, config, lib, ... }: {
 
-    nixpkgs.overlays = [ inputs.omniflake.flakes.nix-cachyos-kernel.overlays.default ];
+    nixpkgs.overlays = config.cachyos-kernel.overlay;
     #nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
     #nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
 
@@ -11,6 +11,7 @@
       self.nixosModules.cachyos-lts
       self.nixosModules.cachyos-server
       self.nixosModules.cachyos-hardened
+      self.nixosModules.cachyos-kernel-overlay
     ];
 
     # Cachy LTS Kernel Default
