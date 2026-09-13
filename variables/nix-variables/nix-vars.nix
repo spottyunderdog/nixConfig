@@ -7,6 +7,7 @@
       self.nixosModules.limine-entries
       self.nixosModules.time-zone
       self.nixosModules.locale
+      self.nixosModules.swap-size
     ];
 
   };

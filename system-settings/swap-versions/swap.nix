@@ -9,16 +9,8 @@
     config = lib.mkIf config.swap.enable {
       swapDevices = [{
         device = "/var/lib/swapfile";
-        size = 48*1024; # 48 GiB
+        size = config.nix-vars.swap-size * 1024; # 48 GiB
       }];
-
-      boot.zswap = {
-        enable = true;
-        acceptThresholdPercent = 90;
-        compressor = "zstd";
-        maxPoolPercent = 25;
-        shrinkerEnabled = true;
-      };
  
     };
 
