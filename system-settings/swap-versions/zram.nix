@@ -8,8 +8,6 @@
 
     config = lib.mkIf config.zram.enable {
 
-      zswap.enable = lib.mkForce false;
-
       zramSwap = {
         enable = true;
         algorithm = "zstd";
