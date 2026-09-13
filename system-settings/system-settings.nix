@@ -18,9 +18,6 @@
       self.nixosModules.nix-vars
     ];
 
-    # Thunderbolt support
-    services.hardware.bolt.enable = lib.mkDefault true;
-
     # Shells
     programs.bash.enable = true;
 
@@ -31,7 +28,7 @@
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
     # Allow unfree packages
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config.allowUnfree = lib.mkDefault true;
 
     # System State Verion
     system.stateVersion = "26.05";
@@ -60,7 +57,7 @@
     };
 
     # Enable the OpenSSH daemon.
-    services.openssh.enable = lib.mkDefault true;
+    services.openssh.enable = lib.mkDefault false;
 
 
     #########################################################################
@@ -80,6 +77,9 @@
     zram.enable = lib.mkDefault false;
     hibernation.enable = lib.mkDefault false;
     auto-garbage-collection.enable = lib.mkDefault false;
+    # Thunderbolt support
+    services.hardware.bolt.enable = lib.mkDefault true;
+
 
     fonts.fontconfig.enable = true;
     fonts.packages = with pkgs; [
@@ -96,9 +96,6 @@
       layout = "us";
       variant = "";
     };
-
-    # Enable touchpad support (enabled default in most desktopManager).
-    services.libinput.enable = true;
 
   };
 
