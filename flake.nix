@@ -3,10 +3,7 @@
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nix-cachyos-kernel = { 
-      url = "github:xddxdd/nix-cachyos-kernel/release";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
     omniflake = {
       url = "github:fzakaria/omniflake";
@@ -18,10 +15,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #noctalia.url = "github:noctalia-dev/noctalia";
+    #noctalia.inputs.nixpkgs.follows = "nixpkgs";
 
   };
 

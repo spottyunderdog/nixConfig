@@ -21,14 +21,20 @@
         extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
       };
 
-      programs.noctalia = lib.mkIf (!config.niri.enable) {
-        enable = true;
-        recommendedServices.enable = true;
-      };
+      # programs.noctalia = lib.mkIf (!config.niri.enable) {
+      #  enable = true;
+      #  recommendedServices.enable = true;
+      #};
+
+      networking.networkmanager.enable = lib.mkDefault true;
+      hardware.bluetooth.enable = lib.mkDefault true;
+      services.power-profiles-daemon.enable = lib.mkDefault true;
+      services.upower.enable = lib.mkDefault true;
 
       environment.systemPackages = with pkgs; [
         hyprmon
         bibata-cursors
+        noctalia
       ];
 
     };

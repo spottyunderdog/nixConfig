@@ -130,6 +130,7 @@ in {
     # CONFIGURATION WILL FAIL TO COMPILE IF YOU USE
     # MORE THEN ONE
 
+    cachyos-kernel.overlay = [ inputs.nix-cachyos-kernel.overlays.pinned ]; 
     # Use the default nixos kernel
     linux-nix-default-kernel.enable = false;
 
@@ -178,10 +179,10 @@ in {
     cachyos-lts-kernel-zen4.enable = false;
 
     # Cachy OS Latest Kernels
-    cachyos-latest-kernel.enable = true;
+    cachyos-latest-kernel.enable = false;
     cachyos-latest-kernel-x86v3.enable = false;
     cachyos-latest-kernel-x86v4.enable = false;
-    cachyos-latest-kernel-zen4.enable = false;
+    cachyos-latest-kernel-zen4.enable = true;
 
     ############
     # Software #

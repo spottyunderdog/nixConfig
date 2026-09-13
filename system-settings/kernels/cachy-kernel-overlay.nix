@@ -11,13 +11,13 @@
 
       cachyos-kernel.overlay = lib.mkOption {
         type = lib.types.listOf (lib.types.raw);
-        default = [ inputs.nix-cachyos-kernel.overlays.default ]; 
+        default = [ inputs.nix-cachyos-kernel.overlays.pinned ]; 
       };
 
     };
 
     config = lib.mkIf config.cachyos-kernel-overlay.omniflakeEnable {
-      cachyos-kernel.overlay = [ inputs.omniflake.flakes.nix-cachyos-kernel.overlays.default ];
+      cachyos-kernel.overlay = [ inputs.omniflake.flakes.nix-cachyos-kernel.overlays.pinned ];
     };
 
   };

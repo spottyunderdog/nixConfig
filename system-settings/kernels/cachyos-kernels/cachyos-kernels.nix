@@ -3,8 +3,8 @@
   flake.nixosModules.cachyos-kernels = { pkgs, config, lib, ... }: {
 
     nixpkgs.overlays = config.cachyos-kernel.overlay;
-    #nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
-    #nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
+    nix.settings.substituters = [ "https://attic.xuyh0120.win/lantian" ];
+    nix.settings.trusted-public-keys = [ "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc=" ];
 
     imports = [
       self.nixosModules.cachyos-latest
