@@ -74,6 +74,12 @@ in {
     # Ports Open SSH SHould use
     nix-vars.ssh-ports = [ 22 ];
     nix-vars.allowed-ssh-users = [ "spotty" ];
+    sshClient.config = lib.mkForce ''
+      Host dino
+        Hostname drdinosaurv6
+        Port 2234
+        User hyprland
+    '';
 
     # Configure Host Name
     networking.hostName = hostName;
