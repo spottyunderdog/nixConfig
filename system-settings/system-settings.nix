@@ -8,7 +8,7 @@
       self.nixosModules.kernels
       self.nixosModules.display-manager
       self.nixosModules.desktop-enviornments
-      self.nixosModules.swap
+      self.nixosModules.swap-versions
       self.nixosModules.hibernation
       self.nixosModules.auto-garbage-collection
       self.nixosModules.locale-settings
