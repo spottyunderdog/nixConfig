@@ -13,6 +13,9 @@
 
       environment.systemPackages = with pkgs; [
         kdePackages.plasma-thunderbolt
+        kdePackages.oxygen
+        kdePackages.oxygen-icons
+        kdePackages.oxygen-sounds
       ];
     };
 

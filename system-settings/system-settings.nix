@@ -70,11 +70,14 @@
     environment.systemPackages = with pkgs; [
         adwaita-icon-theme
         capitaine-cursors
+        papirus-icon-theme
     ];
 
 
     # Defaults
     swap.enable = lib.mkDefault false;
+    zswap.enable = lib.mkDefault false;
+    zram.enable = lib.mkDefault false;
     hibernation.enable = lib.mkDefault false;
     auto-garbage-collection.enable = lib.mkDefault false;
 

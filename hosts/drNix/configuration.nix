@@ -72,13 +72,15 @@ in {
     # Configure Host Name
     networking.hostName = hostName;
 
-    # Enable swap (This specificly enables ZSwap),
+    # Enable swap,
     # Swap Is required for hibernation, can be ignored
     # If swap is enabled in your hardware config.
-    swap.enable = true;
+    swap.enable = false;
+    zswap.enable = false;
+    zram.enable = false;
 
     # Enable Hibernation, Swap is required.
-    hibernation.enable = true;
+    hibernation.enable = false;
 
     # Enable Automatic garbage collection
     auto-garbage-collection.enable = true;
