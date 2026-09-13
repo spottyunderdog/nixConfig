@@ -79,6 +79,10 @@ in {
         Hostname drdinosaurv6
         Port 2234
         User hyprland
+      Host dinotail
+        Hostname drdinosaurv6
+        Port 22
+        User hyprland
     '';
 
     # Configure Host Name
