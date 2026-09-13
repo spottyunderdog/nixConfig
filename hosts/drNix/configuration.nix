@@ -69,6 +69,12 @@ in {
     # pipewire, swap, kernelss, display manager, desktop envirments, and any users you want
     # to be able to use accross different hosts.
 
+    # SSH Settings
+    openSSH.enable = true;
+    # Ports Open SSH SHould use
+    nix-vars.ssh-ports = [ 22 ];
+    nix-vars.allowed-ssh-users = [ "spotty" ];
+
     # Configure Host Name
     networking.hostName = hostName;
 

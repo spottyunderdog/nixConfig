@@ -8,6 +8,8 @@
       self.nixosModules.time-zone
       self.nixosModules.locale
       self.nixosModules.swap-size
+      self.nixosModules.allowed-ssh-users
+      self.nixosModules.ssh-ports
     ];
 
   };

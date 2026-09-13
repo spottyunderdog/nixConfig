@@ -16,6 +16,7 @@
       self.nixosModules.graphics-drivers
       self.nixosModules.home-manager
       self.nixosModules.nix-vars
+      self.nixosModules.ssh-server
     ];
 
     # Shells
@@ -57,7 +58,8 @@
     };
 
     # Enable the OpenSSH daemon.
-    services.openssh.enable = lib.mkDefault false;
+    openSSH.enable = true;
+    sshClient.config = "";
 
 
     #########################################################################
