@@ -1,4 +1,4 @@
-{self, inputs, ... }: {
+  {self, inputs, ... }: {
 
   flake.nixosModules.systemSettings = { pkgs, config, lib , ... }: {
 
@@ -17,31 +17,27 @@
       self.nixosModules.home-manager
       self.nixosModules.nix-vars
       self.nixosModules.ssh-server
+      self.nixosModules.networking
     ];
 
     # Shells
     programs.bash.enable = true;
-
     # Enable systemd services in initrd
     boot.initrd.systemd.enable = true;
-
     # Enable Experimental Features
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    # System State Verion
+    system.stateVersion = "26.05";
 
     # Allow unfree packages
     nixpkgs.config.allowUnfree = lib.mkDefault true;
-
-    # System State Verion
-    system.stateVersion = "26.05";
 
     # Enable networking
     networking.networkmanager.enable = true;
     # Enables wireless support via wpa_supplicant.
     networking.wireless.enable = true;
-
-    # Enable the firewall and nftables
-    networking.firewall.enable = true;
-    networking.nftables.enable = lib.mkDefault true;
+    # Enable the firewall.
+    firewall.enable = lib.mkDefault true;
 
     # Enable CUPS to print documents.
     services.printing.enable = lib.mkDefault true;
@@ -56,11 +52,6 @@
       # the pinetry package are overidden. Pinentry can be gnome3, qt, or tty
       pinentryPackage = lib.mkForce pkgs.pinentry-qt;
     };
-
-    # Enable the OpenSSH daemon.
-    openSSH.enable = true;
-    sshClient.config = "";
-
 
     #########################################################################
     # Other applications that you may want on all hosts but aren't included #

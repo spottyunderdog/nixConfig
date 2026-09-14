@@ -16,11 +16,6 @@
 
       services.displayManager.defaultSession = lib.mkOverride 950 "niri";
 
-      #programs.noctalia = {
-      #  enable = true;
-      #  recommendedServices.enable = true;
-      #};
-
       networking.networkmanager.enable = lib.mkDefault true;
       hardware.bluetooth.enable = lib.mkDefault true;
       services.power-profiles-daemon.enable = lib.mkDefault true;

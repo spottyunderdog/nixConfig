@@ -88,6 +88,11 @@ in {
     # Configure Host Name
     networking.hostName = hostName;
 
+    # nix-vars.allowedTcp = [ ];
+    # nix-vars.allowedTcpRanges = [ ];
+    # nix-vars.allowedUdp = [ ];
+    # nix-vars.allowedUdpRanges = [ ];
+
     # Enable swap,
     # Swap Is required for hibernation, can be ignored
     # If swap is enabled in your hardware config.

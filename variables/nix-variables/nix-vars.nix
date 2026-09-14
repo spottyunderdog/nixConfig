@@ -10,6 +10,8 @@
       self.nixosModules.swap-size
       self.nixosModules.allowed-ssh-users
       self.nixosModules.ssh-ports
+      self.nixosModules.tcp-ports
+      self.nixosModules.udp-ports
     ];
 
   };
