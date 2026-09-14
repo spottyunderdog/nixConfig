@@ -1,3 +1,5 @@
+# THIS DOCUMENTATION IS WOEFUllY OUT OF DATE  I REALLY MEAN THAT IT IS MORE OUT OF DATE THEN THE AGE OF THE DINOSAURS
+
 # Introduction
 This is my personal configuration for nixos all in one nice and lovely little flake file! It come with some of the apps i use as well as the dotfiles for my hyprland and niri setups!
 
