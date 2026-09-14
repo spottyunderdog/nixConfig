@@ -5,8 +5,8 @@
     imports = [
       self.nixosModules.firewall
       self.nixosModules.networkmanager
-      #self.nixosModules.printing
-      #self.nixosModules.bluetooth
+      self.nixosModules.printing
+      self.nixosModules.bluetooth
     ];
 
   };

@@ -32,17 +32,16 @@
     # Allow unfree packages
     nixpkgs.config.allowUnfree = lib.mkDefault true;
 
-    # Enable networking
-    #networking.networkmanager.enable = true;
-    # Enables wireless support via wpa_supplicant.
-    #networking.wireless.enable = true;
-    # Enable the firewall.
+    # Enable/Disable the firewall
     firewall.enable = lib.mkDefault true;
+    # Enable/Disable NetworkManager
     networkmanager.enable = lib.mkDefault true;
+    # Enable/Disable Wireless networking via the WPA supplicant
     wirelessWPA.enable = lib.mkDefault false;
-
-    # Enable CUPS to print documents.
-    services.printing.enable = lib.mkDefault true;
+    # Enable/Disable Printing
+    printing.enable = lib.mkDefault true;
+    # Enable/Disable Bluetooth
+    bluetooth.enable = lib.mkDefault true;
 
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
