@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.homeModules.kitty-dots = { pkgs, lib, config, ... } : {
+  flake.homeModules.kitty-dots = { pkgs, lib, config, osConfig, ... } : {
 
     options = {
       kitty-dots.enable = lib.mkEnableOption "Kitty Configurations";
@@ -10,7 +10,7 @@
 
       xdg.configFile."kitty" = {
         source = config.lib.file.mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/nixConfig/dot-files/kitty";
+          "${osConfig.nix-vars.install-dir}/nixConfig/dot-files/kitty";
         recursive = true;
       };
 

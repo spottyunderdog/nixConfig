@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.homeModules.niri-dots = { config, pkgs, lib, ... }: {
+  flake.homeModules.niri-dots = { config, pkgs, lib, osConfig, ... }: {
 
     options = {
       niri-dots.enable = lib.mkEnableOption "Niri Configuration";
@@ -13,7 +13,7 @@
 
       xdg.configFile."niri" = {
         source = config.lib.file.mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/nixConfig/dot-files/niri";
+          "${osConfig.nix-vars.install-dir}/nixConfig/dot-files/niri";
         recursive = true;
       };
 

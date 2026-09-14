@@ -12,6 +12,7 @@
       self.nixosModules.ssh-ports
       self.nixosModules.tcp-ports
       self.nixosModules.udp-ports
+      self.nixosModules.install-dir
     ];
 
   };

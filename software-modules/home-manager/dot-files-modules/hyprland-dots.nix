@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.homeModules.hyprland-dots = { pkgs, lib, config, ... }: {
+  flake.homeModules.hyprland-dots = { pkgs, lib, config, osConfig, ... }: {
 
     options = {
       hyprland-dots.enable = lib.mkEnableOption "Hyprland Configuration";
@@ -13,13 +13,13 @@
 
       xdg.configFile."hypr" = {
         source = config.lib.file.mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/nixConfig/dot-files/hypr";
+          "${osConfig.nix-vars.install-dir}/nixConfig/dot-files/hypr";
         recursive = true;
       };
 
       xdg.configFile."uwsm" = {
         source = config.lib.file.mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/nixConfig/dot-files/uwsm";
+          "${osConfig.nix-vars.install-dir}/nixConfig/dot-files/uwsm";
         recursive = true;
       };
 

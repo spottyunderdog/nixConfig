@@ -59,6 +59,8 @@ in {
       self.nixosModules."${hostName}Users"
     ];
 
+    nix-vars.install-dir = "/home/spotty";
+
     ############################
     # Device Specific Settings #
     ############################

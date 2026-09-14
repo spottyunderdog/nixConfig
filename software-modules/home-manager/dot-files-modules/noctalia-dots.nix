@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-    flake.homeModules.noctalia-dots = { pkgs, lib, config, ... }: {
+    flake.homeModules.noctalia-dots = { pkgs, lib, config, osConfig, ... }: {
 
     options = {
       noctalia-dots.enable = lib.mkEnableOption "Noctalia Configurations";
@@ -10,7 +10,7 @@
 
       xdg.configFile."noctalia" = {
         source = config.lib.file.mkOutOfStoreSymlink
-          "${config.home.homeDirectory}/nixConfig/dot-files/noctalia";
+          "${osConfig.nix-vars.install-dir}/nixConfig/dot-files/noctalia";
         recursive = true;
       };
 
