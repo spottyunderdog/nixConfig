@@ -13,13 +13,17 @@
 
       xdg.configFile."hypr" = {
         source = config.lib.file.mkOutOfStoreSymlink
-          "${osConfig.nix-vars.install-dir}/nixConfig/dot-files/hypr";
+          #"${osConfig.nix-vars.install-dir}/nixConfig/dot-files/hypr";
+          #"../../../dot-files/hypr";
+          "${config.home.homeDirectory}/nixConfig/dot-files/hypr";
         recursive = true;
       };
 
       xdg.configFile."uwsm" = {
         source = config.lib.file.mkOutOfStoreSymlink
-          "${osConfig.nix-vars.install-dir}/nixConfig/dot-files/uwsm";
+          #"${osConfig.nix-vars.install-dir}/nixConfig/dot-files/uwsm";
+          #"../../../dot-files/uwsm";
+          "${config.home.homeDirectory}/nixConfig/dot-files/uwsm";
         recursive = true;
       };
 

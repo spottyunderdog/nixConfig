@@ -10,7 +10,9 @@
 
       xdg.configFile."noctalia" = {
         source = config.lib.file.mkOutOfStoreSymlink
-          "${osConfig.nix-vars.install-dir}/nixConfig/dot-files/noctalia";
+          #"${osConfig.nix-vars.install-dir}/nixConfig/dot-files/noctalia";
+          "${config.home.homeDirectory}/nixConfig/dot-files/noctalia";
+          #../../../dot-files/noctalia;
         recursive = true;
       };
 

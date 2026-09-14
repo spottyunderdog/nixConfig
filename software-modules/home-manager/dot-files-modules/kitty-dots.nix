@@ -10,7 +10,9 @@
 
       xdg.configFile."kitty" = {
         source = config.lib.file.mkOutOfStoreSymlink
-          "${osConfig.nix-vars.install-dir}/nixConfig/dot-files/kitty";
+          #"${osConfig.nix-vars.install-dir}/nixConfig/dot-files/kitty";
+          #../../../dot-files/kitty;
+          "${config.home.homeDirectory}/nixConfig/dot-files/kitty";
         recursive = true;
       };
 
