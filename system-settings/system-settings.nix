@@ -33,11 +33,13 @@
     nixpkgs.config.allowUnfree = lib.mkDefault true;
 
     # Enable networking
-    networking.networkmanager.enable = true;
+    #networking.networkmanager.enable = true;
     # Enables wireless support via wpa_supplicant.
-    networking.wireless.enable = true;
+    #networking.wireless.enable = true;
     # Enable the firewall.
     firewall.enable = lib.mkDefault true;
+    networkmanager.enable = lib.mkDefault true;
+    wirelessWPA.enable = lib.mkDefault false;
 
     # Enable CUPS to print documents.
     services.printing.enable = lib.mkDefault true;
