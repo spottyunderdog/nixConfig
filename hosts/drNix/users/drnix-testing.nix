@@ -31,7 +31,7 @@ in {
 
       # Remove the libvirtd group and vboxusers groups 
       # if you don't want the user to have access to vm software
-      extraGroups = [ "networkmanager" "wheel" ]
+      extraGroups = [ "networkmanager" "wheel"l ]
       ++ lib.optional config.virtManVMs.enable "libvirtd" 
       ++ lib.optional config.virtualboxVMs.enable "vboxusers";
 
@@ -98,7 +98,7 @@ in {
     hyprland-dots.enable = false;
 
     # Enable My Noctalia dotfiles
-    noctalia-dots.enable = false;
+    noctalia-dots.enable = true;
 
     # My Kitty config.
     kitty-dots.enable = true;
