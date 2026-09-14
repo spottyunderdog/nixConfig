@@ -17,6 +17,7 @@ in {
       # Import User Configurations Here
       # User modules should follow the format of self.nixosModules."<hostname>-<username>"
       self.nixosModules."${hostName}-spotty"
+      self.nixosModules."${hostName}-testing"
     ];
 
   };

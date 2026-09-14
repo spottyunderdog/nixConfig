@@ -18,6 +18,7 @@
       self.nixosModules.nix-vars
       self.nixosModules.ssh-server
       self.nixosModules.networking
+      self.nixosModules.auto-update
     ];
 
     # Shells
