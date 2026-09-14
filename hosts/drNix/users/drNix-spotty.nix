@@ -31,7 +31,7 @@ in {
 
       # Remove the libvirtd group and vboxusers groups 
       # if you don't want the user to have access to vm software
-      extraGroups = [ "networkmanager" "wheel" ]
+      extraGroups = [ "networkmanager" "wheel" "dot-files" ]
       ++ lib.optional config.virtManVMs.enable "libvirtd" 
       ++ lib.optional config.virtualboxVMs.enable "vboxusers";
 

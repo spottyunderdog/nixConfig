@@ -92,6 +92,11 @@
       variant = "";
     };
 
+    users.groups.dot-files = {
+      name = "dot-files";
+      gid = 1100;
+    };
+
   };
 
 }

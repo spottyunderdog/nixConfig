@@ -300,6 +300,7 @@ in {
     #########################################################################
     environment.systemPackages = with pkgs; [
         obsidian
+        logisim-evolution
     ];
 
     ###########################

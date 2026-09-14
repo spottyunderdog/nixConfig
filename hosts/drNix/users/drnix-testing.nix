@@ -31,7 +31,7 @@ in {
 
       # Remove the libvirtd group and vboxusers groups 
       # if you don't want the user to have access to vm software
-      extraGroups = [ "networkmanager" "wheel" ]
+      extraGroups = [ "networkmanager" "wheel" "dot-files" ]
       ++ lib.optional config.virtManVMs.enable "libvirtd" 
       ++ lib.optional config.virtualboxVMs.enable "vboxusers";
 
@@ -98,13 +98,13 @@ in {
     hyprland-dots.enable = false;
 
     # Enable My Noctalia dotfiles
-    noctalia-dots.enable = true;
+    noctalia-dots.enable = false;
 
     # My Kitty config.
     kitty-dots.enable = true;
 
     # My Zed Editor config.
-    zed-editor-config.enable = true;
+    zed-editor-config.enable = false;
 
     home.packages = [ ];
     home.stateVersion = "26.05";
