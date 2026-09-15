@@ -7,7 +7,8 @@
     };
 
     config = lib.mkIf config.auto-update.enable {
-
+      # See here if you have any issues with the auto update
+      # https://wiki.nixos.org/wiki/Automatic_system_upgrades
       system.autoUpgrade = {
         enable = true;
         flake = "${config.nix-vars.install-dir}/nixConfig#${config.nix-vars.hostname}";
