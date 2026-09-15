@@ -46,6 +46,9 @@ in {
       self.nixosModules."${hostName}Users"
     ];
 
+    nix-vars.hostname = hostName;
+    nix-vars.install-dir = "/etc/nixos";
+
     # Bootloaders
     grub.enable = true;
     limine.enable = false;

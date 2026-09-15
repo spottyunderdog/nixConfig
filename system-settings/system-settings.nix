@@ -44,6 +44,20 @@
     # Enable/Disable Bluetooth
     bluetooth.enable = lib.mkDefault true;
 
+    # Swap, Uses Swap file for Swap and Zswap.
+    # Don't use zram and zswap at the same time.
+    swap.enable = lib.mkDefault false;
+    zswap.enable = lib.mkDefault false;
+    zram.enable = lib.mkDefault false;
+
+    # Hibernation, Automaticly enables swapfile
+    hibernation.enable = lib.mkDefault false;
+
+    # Enables automatic garbage collection.
+    auto-garbage-collection.enable = lib.mkDefault false;
+    # Thunderbolt support
+    services.hardware.bolt.enable = lib.mkDefault true;
+
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
     programs.mtr.enable = true;
@@ -64,17 +78,6 @@
         capitaine-cursors
         papirus-icon-theme
     ];
-
-
-    # Defaults
-    swap.enable = lib.mkDefault false;
-    zswap.enable = lib.mkDefault false;
-    zram.enable = lib.mkDefault false;
-    hibernation.enable = lib.mkDefault false;
-    auto-garbage-collection.enable = lib.mkDefault false;
-    # Thunderbolt support
-    services.hardware.bolt.enable = lib.mkDefault true;
-
 
     fonts.fontconfig.enable = true;
     fonts.packages = with pkgs; [

@@ -9,8 +9,9 @@
     config = lib.mkIf config.auto-garbage-collection.enable {
       nix.gc = {
         automatic = true;
-        dates = "10:00";
+        dates = "weekly";
         options = "--delete-older-than 2d";
+        persistent = true;
       };
 
     };

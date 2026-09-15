@@ -59,7 +59,7 @@ in {
     ];
 
     nix-vars.install-dir = "/home/spotty";
-
+    nix-vars.hostname = hostName;
     ############################
     # Device Specific Settings #
     ############################

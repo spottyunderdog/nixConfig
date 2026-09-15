@@ -13,6 +13,7 @@
       self.nixosModules.tcp-ports
       self.nixosModules.udp-ports
       self.nixosModules.install-dir
+      self.nixosModules.hostname
     ];
 
   };
