@@ -55,6 +55,9 @@
 
     # Enables automatic garbage collection.
     auto-garbage-collection.enable = lib.mkDefault false;
+    # Enable automatic updates
+    auto-update.enable = lib.mkDefault false;
+    
     # Thunderbolt support
     services.hardware.bolt.enable = lib.mkDefault true;
 

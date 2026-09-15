@@ -18,7 +18,7 @@
         dates = "09:00";
         allowReboot = true;
         persistent = true;
-        runGarbageCollection = true;
+        #runGarbageCollection = true;
         upgrade = false;
         
       };

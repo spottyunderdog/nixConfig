@@ -110,6 +110,9 @@ in {
     # Enable Automatic garbage collection
     auto-garbage-collection.enable = true;
 
+    # Enable Automatic updates
+    auto-update.enable = true;
+
     # Bootloader
     # Grub
     grub.enable = false;
