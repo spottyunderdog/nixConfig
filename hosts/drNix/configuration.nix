@@ -74,7 +74,7 @@ in {
     # SSH Settings
     openSSH.enable = true;
     # Ports Open SSH SHould use
-    nix-vars.ssh-ports = [ 22 ];
+    nix-vars.ssh-ports = [ 2234 ];
     nix-vars.allowed-ssh-users = [ "spotty" ];
     sshClient.config = lib.mkForce ''
       Host dino
@@ -95,15 +95,17 @@ in {
     # nix-vars.allowedUdp = [ ];
     # nix-vars.allowedUdpRanges = [ ];
 
-    # Enable swap,
+    # Enable swap file,
     # Swap Is required for hibernation, can be ignored
     # If swap is enabled in your hardware config.
-    swap.enable = false;
-    zswap.enable = false;
+    swap.enable = true;
+    # Size of the swap file, in GiB
+    #nix-vars.swap-size = 48;
+    zswap.enable = true;
     zram.enable = false;
 
     # Enable Hibernation, Swap is required.
-    hibernation.enable = false;
+    hibernation.enable = true;
 
     # Enable Automatic garbage collection
     auto-garbage-collection.enable = true;
@@ -155,7 +157,6 @@ in {
     # CONFIGURATION WILL FAIL TO COMPILE IF YOU USE
     # MORE THEN ONE
 
-    cachyos-kernel.overlay = [ inputs.nix-cachyos-kernel.overlays.pinned ]; 
     # Use the default nixos kernel
     linux-nix-default-kernel.enable = false;
 
@@ -189,7 +190,7 @@ in {
     # cachyos kernel. Asof 2026-09-12, the omniflake last sourced it
     # on 2026-09-02, resulting in the kernel being built being kerne 7.2.2 
     # rather than 7.2.4 
-    cachyos-kernel-overlay.omniflakeEnable = false;
+    cachyos-kernel-overlay.omniflakeEnable = true;
 
     # CachyOS Hardened Kernel 
     cachyos-hardened-kernel.enable = false;
