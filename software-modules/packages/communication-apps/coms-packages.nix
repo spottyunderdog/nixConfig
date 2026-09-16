@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.comsApps = { config, pkgs, lib, ... }: {
+  flake.nixosModules.coms-packages = { config, pkgs, lib, ... }: {
 
     imports = [
       self.nixosModules.zoom
@@ -8,10 +8,10 @@
     ];
 
     options = {
-      comsApps.enable = lib.mkEnableOption "comsApps";
+      coms-packages.enable = lib.mkEnableOption "comsApps";
     };
 
-    config = lib.mkIf config.comsApps.enable {
+    config = lib.mkIf config.coms-packages.enable {
       
       zoom.enable = lib.mkDefault true;
       discord.enable = lib.mkDefault true;

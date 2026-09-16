@@ -11,6 +11,7 @@
       environment.systemPackages = with pkgs; [
         sbctl
         limine-full
+        nixos-artwork.wallpapers.catppuccin-mocha
       ];
 
       boot.loader.limine = {

@@ -181,11 +181,11 @@ in {
 
     # Enable some comunication apps, ie discord, whatsapp
     # See comsApps.nix for full list
-    comsApps.enable = false;
+    coms-packages.enable = false;
 
     # Enable some apps that can be used for devlopment, like VS Code, or Eclipse IDE (Java)
     # See devApps.nix for full list
-    devApps.enable = false;
+    dev-packages.enable = false;
 
     # Enable apps used for editing like handbrake and kdenlive
     # See editingApps.nix for full list
