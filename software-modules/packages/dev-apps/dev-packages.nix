@@ -26,11 +26,7 @@
       java.enable = lib.mkDefault true;
       meld.enable = lib.mkDefault true;
       vscode.enable = lib.mkDefault true;
-
-      environment.systemPackages = with pkgs; [
-        zed-editor
-      ];
-
+      zed-editor.enable = lib.mkDefault true;
     };
 
   };

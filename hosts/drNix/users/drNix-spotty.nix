@@ -106,6 +106,9 @@ in {
     # My Zed Editor config.
     zed-editor-config.enable = true;
 
+    # My VS Code Config
+    vscode-config.enable = true;
+
     home.packages = [ ];
     home.stateVersion = "26.05";
 

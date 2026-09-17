@@ -9,6 +9,7 @@
       self.homeModules.shell-config-modules
       self.homeModules.starship-config
       self.homeModules.dot-files
+      self.homeModules.vscode-config
     ];
 
     zed-editor-config.enable = lib.mkDefault false;
@@ -19,6 +20,7 @@
     hyprland-dots.enable = lib.mkDefault false;
     noctalia-dots.enable = lib.mkOverride 1001 false;
     kitty-dots.enable = lib.mkOverride 1001 false;
+    vscode-config.enable = lib.mkDefault false;
 
   };
 
