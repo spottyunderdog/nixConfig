@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.neededApps = { config, pkgs, lib, ... }: {
+  flake.nixosModules.needed-packages = { config, pkgs, lib, ... }: {
 
     imports = [
       self.nixosModules.browsers
@@ -18,10 +18,10 @@
     ];
 
     options = {
-      neededApps.enable = lib.mkEnableOption "neededApps";
+      needed-packages.enable = lib.mkEnableOption "needed-packages";
     };
 
-    config = lib.mkIf config.neededApps.enable {
+    config = lib.mkIf config.needed-packages.enable {
 
       curl.enable = lib.mkDefault true;
       dolphin.enable = lib.mkDefault true;

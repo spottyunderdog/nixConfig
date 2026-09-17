@@ -176,27 +176,27 @@ in {
 
     # Enable a suite of apps that I see as nescasary for the
     # day to day use of a system. Think webbrowers, etc.
-    # See the neededApps.nix for the full list
-    neededApps.enable = true;
+    # See the needed-packages.nix for the full list
+    needed-packages.enable = true;
 
     # Enable some comunication apps, ie discord, whatsapp
-    # See comsApps.nix for full list
+    # See coms-packages.nix for full list
     coms-packages.enable = false;
 
     # Enable some apps that can be used for devlopment, like VS Code, or Eclipse IDE (Java)
-    # See devApps.nix for full list
+    # See dev-packages.nix for full list
     dev-packages.enable = false;
 
     # Enable apps used for editing like handbrake and kdenlive
-    # See editingApps.nix for full list
+    # See editing-packages.nix for full list
     editing-packages.enable = false;
 
     # Enable some apps used for gaming, like Steam, Prism Launcher and Lutris
-    # See gamingApps.nix for full list
+    # See gaming-packages.nix for full list
     gaming-packages.enable = false;
 
     # Enable some media apps, like VLC and Jellyfin
-    # See mediaApps.nix for full list
+    # See media-packages.nix for full list
     media-packages.enable = false;
 
     # Enable apps used for remote access, like sunshine/moonlight, and tailscale
@@ -228,10 +228,7 @@ in {
     #################
 
     # Libre Office
-    libreOffice.enable = false;
-
-    # Only Office
-    onlyOffice.enable = false;
+    libre-office.enable = false;
 
     ####################################################
     # Apps used to theme other apps or replacment apps #
