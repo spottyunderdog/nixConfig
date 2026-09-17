@@ -238,10 +238,6 @@ in {
     # That can be used for extra theming.              #
     ####################################################
 
-    # Required to enable the apps that are used to for
-    # extra customization
-    extraCosmetics.enable = false;
-
     # Used to install steam Homebrew, like themes, etc
     millennium.enable = false;
 

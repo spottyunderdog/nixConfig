@@ -245,7 +245,7 @@ in {
 
     # Enable apps used for editing like handbrake and kdenlive
     # See editingApps.nix for full list
-    editing-packages.enable = true;
+    editing-packages.enable = false;
 
     # Enable some apps used for gaming, like Steam, Prism Launcher and Lutris
     # See gamingApps.nix for full list
@@ -286,10 +286,6 @@ in {
     # Apps used to theme other apps or replacment apps #
     # That can be used for extra theming.              #
     ####################################################
-
-    # Required to enable the apps that are used to for
-    # extra customization
-    extraCosmetics.enable = true;
 
     # Used to install steam Homebrew, like themes, etc
     millennium.enable = true;

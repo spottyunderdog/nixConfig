@@ -2,56 +2,42 @@
 
   flake.nixosModules.gamingApps = { config, pkgs, lib, ... }: {
     
+    imports = [
+      self.nixosModules.gamemode
+      self.nixosModules.gamescope
+      self.nixosModules.goverlay
+      self.nixosModules.heroic
+      self.nixosModules.lutris
+      self.nixosModules.mangohud
+      self.nixosModules.prismlauncher
+      self.nixosModules.protonplus
+      self.nixosModules.protontricks
+      self.nixosModules.r2modman
+      self.nixosModules.steam
+      self.nixosModules.umu-launcher
+      self.nixosModules.wine
+    ];
+
     options = {
       gamingApps.enable = lib.mkEnableOption "gamingApps";
     };
     
     config = lib.mkIf config.gamingApps.enable {
       
-      environment.systemPackages = with pkgs; [
-        wine
-        winetricks
-        goverlay
-        heroic
-        lutris
-        mangohud
-        protontricks
-        prismlauncher
-        protonplus
-        r2modman
-        umu-launcher
-      ];
-
-      programs.gamemode.enable = true;
-      
-      programs.gamescope = {
-        enable = true;
-        # enableWsi = true; # Can only be enabled in The Unstable Branches
-        env = lib.mkIf config.hardware.nvidia.prime.offload.enable {
-          __NV_PRIME_RENDER_OFFLOAD = "1";
-          __VK_LAYER_NV_optimus = "NVIDIA_only";
-          __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-        };
-
-        args = [
-          "-f"
-          "-F" 
-          "fsr"
-          "--mangoapp"
-        ];
-
-      };
-
-      programs.steam = {
-        enable = true;
-        remotePlay.openFirewall = true;
-        extraCompatPackages = with pkgs; [
-          proton-ge-bin
-          dwproton-bin
-        ];
-        gamescopeSession.enable = true;
-        package = if (config.millennium.enable or false) then pkgs.millennium-steam else pkgs.steam;
-      };
+      gamemode.enable = lib.mkDefault true;
+      gamescope.enable = lib.mkDefault true;
+      goverlay.enable = lib.mkDefault true;
+      heroic.enable = lib.mkDefault true;
+      lutris.enable = lib.mkDefault true;
+      mangohud.enable = lib.mkDefault true;
+      prismlauncher.enable = lib.mkDefault true;
+      protonplus.enable = lib.mkDefault true;
+      protontricks.enable = lib.mkDefault true;
+      r2modman.enable = lib.mkDefault true;
+      steam.enable = lib.mkDefault true;
+      millennium.enable = lib.mkDefault false;
+      umu-launcher.enable = lib.mkDefault true;
+      wine.enable = lib.mkDefault true;
 
     };
 

@@ -27,6 +27,8 @@
     boot.initrd.systemd.enable = true;
     # Enable Experimental Features
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    # Auto Optimize Nix Store
+    nix.optimise.automatic = true;
     # System State Verion
     system.stateVersion = "26.05";
 
