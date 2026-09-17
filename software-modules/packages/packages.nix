@@ -7,7 +7,7 @@
       self.nixosModules.gaming-packages
       self.nixosModules.media-packages
       self.nixosModules.needed-packages
-      self.nixosModules.remoteAccessApps
+      self.nixosModules.remote-access-packages
       self.nixosModules.utilityApps
       self.nixosModules.extraApps
       self.nixosModules.editing-packages
@@ -20,7 +20,7 @@
     gaming-packages.enable = lib.mkDefault false;
     media-packages.enable = lib.mkDefault false;
     needed-packages.enable = lib.mkDefault true;
-    remoteAccessApps.enable = lib.mkDefault false;
+    remote-access-packages.enable = lib.mkDefault false;
     utilityApps.enable = lib.mkDefault true;
     editing-packages.enable = lib.mkDefault false;
     coms-packages.enable = lib.mkDefault false;

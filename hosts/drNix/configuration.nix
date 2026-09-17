@@ -256,8 +256,8 @@ in {
     media-packages.enable = true;
 
     # Enable apps used for remote access, like sunshine/moonlight, and tailscale
-    # see remoteAccess.nix for full list
-    remoteAccessApps.enable = true;
+    # see remote-access-packages.nix for full list
+    remote-access-packages.enable = true;
 
     # Enable some utility apps like Btop, easyeffects, and filelight
     # See utilityApps.nix for full list

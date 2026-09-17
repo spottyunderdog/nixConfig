@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.remoteAccessApps = { config, pkgs, lib, ... }: {
+  flake.nixosModules.remote-access-packages = { config, pkgs, lib, ... }: {
 
     imports = [
       self.nixosModules.moonlight
@@ -10,10 +10,10 @@
     ];
 
     options = {
-      remoteAccessApps.enable = lib.mkEnableOption "remoteAcces";
+      remote-access-packages.enable = lib.mkEnableOption "remoteAcces";
     };
 
-    config = lib.mkIf config.remoteAccessApps.enable {
+    config = lib.mkIf config.remote-access-packages.enable {
 
       moonlight.enable = lib.mkDefault true;
       rustdesk.enable = lib.mkDefault false;
