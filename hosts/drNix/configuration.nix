@@ -245,7 +245,7 @@ in {
 
     # Enable apps used for editing like handbrake and kdenlive
     # See editingApps.nix for full list
-    editingApps.enable = false;
+    editing-packages.enable = true;
 
     # Enable some apps used for gaming, like Steam, Prism Launcher and Lutris
     # See gamingApps.nix for full list

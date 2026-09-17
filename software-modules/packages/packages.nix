@@ -10,7 +10,7 @@
       self.nixosModules.remoteAccessApps
       self.nixosModules.utilityApps
       self.nixosModules.extraApps
-      self.nixosModules.editingApps
+      self.nixosModules.editing-packages
       self.nixosModules.flatpak
       self.nixosModules.coms-packages
       self.nixosModules.officeSuites
@@ -22,7 +22,7 @@
     neededApps.enable = lib.mkDefault true;
     remoteAccessApps.enable = lib.mkDefault false;
     utilityApps.enable = lib.mkDefault true;
-    editingApps.enable = lib.mkDefault false;
+    editing-packages.enable = lib.mkDefault false;
     coms-packages.enable = lib.mkDefault false;
     flatpak.enable = lib.mkDefault false;
 

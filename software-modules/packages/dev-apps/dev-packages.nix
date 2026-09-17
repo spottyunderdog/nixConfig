@@ -27,6 +27,7 @@
       meld.enable = lib.mkDefault true;
       vscode.enable = lib.mkDefault true;
       zed-editor.enable = lib.mkDefault true;
+
     };
 
   };
