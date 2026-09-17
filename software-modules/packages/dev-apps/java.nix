@@ -10,7 +10,8 @@
 
       environment.systemPackages = with pkgs; [ 
         jdk21 
-        jdk25 
+        jdk25
+        temurin-bin-26
       ];
 
     };
