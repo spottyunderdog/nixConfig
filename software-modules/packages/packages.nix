@@ -4,8 +4,8 @@
 
     imports = [
       self.nixosModules.dev-packages
-      self.nixosModules.gamingApps
-      self.nixosModules.mediaApps
+      self.nixosModules.gaming-packages
+      self.nixosModules.media-packages
       self.nixosModules.neededApps
       self.nixosModules.remoteAccessApps
       self.nixosModules.utilityApps
@@ -17,8 +17,8 @@
     ];
 
     dev-packages.enable = lib.mkDefault false;
-    gamingApps.enable = lib.mkDefault false;
-    mediaApps.enable = lib.mkDefault false;
+    gaming-packages.enable = lib.mkDefault false;
+    media-packages.enable = lib.mkDefault false;
     neededApps.enable = lib.mkDefault true;
     remoteAccessApps.enable = lib.mkDefault false;
     utilityApps.enable = lib.mkDefault true;

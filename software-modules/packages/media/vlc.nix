@@ -2,13 +2,13 @@
 
   flake.nixosModules.vlc = { config, lib, pkgs, ... }: {
 
-    option = {
+    options = {
       vlc.enable = lib.mkEnableOption "Vlc Media Player";
     };
 
     config = lib.mkIf config.vlc.enable {
 
-      environment.sytemPackages = [ pkgs.vlc ];
+      environment.systemPackages = [ pkgs.vlc ];
 
     };
 

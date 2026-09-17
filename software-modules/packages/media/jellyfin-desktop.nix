@@ -2,13 +2,13 @@
 
   flake.nixosModules.jellyfin-desktop = { config, lib, pkgs, ... }: {
 
-    option = {
+    options = {
       jellyfin-desktop.enable = lib.mkEnableOption "Jellyfin Desktop Client";
     };
 
     config = lib.mkIf config.jellyfin-desktop.enable {
 
-      environment.sytemPackages = [ pkgs.jellyfin-desktop ];
+      environment.systemPackages = [ pkgs.jellyfin-desktop ];
 
     };
 

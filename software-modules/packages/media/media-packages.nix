@@ -2,6 +2,13 @@
 
   flake.nixosModules.media-packages = { config, pkgs, lib, ... }: {
 
+    imports = [
+      self.nixosModules.jellyfin-desktop
+      self.nixosModules.obs-studio
+      self.nixosModules.spotify
+      self.nixosModules.vlc
+    ];
+
     options = {
       media-packages.enable = lib.mkEnableOption "mediaApps";
     };

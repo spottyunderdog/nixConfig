@@ -193,11 +193,11 @@ in {
 
     # Enable some apps used for gaming, like Steam, Prism Launcher and Lutris
     # See gamingApps.nix for full list
-    gamingApps.enable = false;
+    gaming-packages.enable = false;
 
     # Enable some media apps, like VLC and Jellyfin
     # See mediaApps.nix for full list
-    mediaApps.enable = false;
+    media-packages.enable = false;
 
     # Enable apps used for remote access, like sunshine/moonlight, and tailscale
     # see remoteAccess.nix for full list

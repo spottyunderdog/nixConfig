@@ -22,7 +22,7 @@
       gaming-packages.enable = lib.mkEnableOption "gamingApps";
     };
     
-    config = lib.mkIf config.gamingApps.enable {
+    config = lib.mkIf config.gaming-packages.enable {
       
       gamemode.enable = lib.mkDefault true;
       gamescope.enable = lib.mkDefault true;
