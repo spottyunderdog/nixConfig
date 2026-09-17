@@ -2,10 +2,6 @@
 
   flake.nixosModules.dev-packages = { config, pkgs, lib, ... }: {
 
-    options = {
-      dev-packages.enable = lib.mkEnableOption "devApps";
-    };
-
     imports =[
       self.nixosModules.cmake
       self.nixosModules.eclipseIDE-java
@@ -16,7 +12,11 @@
       self.nixosModules.vscode
       self.nixosModules.zed-editor
     ];
-    
+
+    options = {
+      dev-packages.enable = lib.mkEnableOption "devApps";
+    };
+
     config = lib.mkIf config.dev-packages.enable {
 
       cmake.enable = lib.mkDefault true;

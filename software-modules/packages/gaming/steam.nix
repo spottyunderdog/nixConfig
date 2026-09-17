@@ -19,7 +19,7 @@
           dwproton-bin
         ];
         gamescopeSession.enable = true;
-        package = if (config.millennium.enable or false) then pkgs.millennium-steam else pkgs.steam;
+        package = if config.millennium.enable then pkgs.millennium-steam else pkgs.steam;
       };
 
     };

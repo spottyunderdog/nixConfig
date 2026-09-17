@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.gamingApps = { config, pkgs, lib, ... }: {
+  flake.nixosModules.gaming-packages = { config, pkgs, lib, ... }: {
     
     imports = [
       self.nixosModules.gamemode
@@ -19,7 +19,7 @@
     ];
 
     options = {
-      gamingApps.enable = lib.mkEnableOption "gamingApps";
+      gaming-packages.enable = lib.mkEnableOption "gamingApps";
     };
     
     config = lib.mkIf config.gamingApps.enable {

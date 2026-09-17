@@ -193,7 +193,7 @@ in {
     # cachyos kernel. Asof 2026-09-12, the omniflake last sourced it
     # on 2026-09-02, resulting in the kernel being built being kerne 7.2.2 
     # rather than 7.2.4 
-    cachyos-kernel-overlay.omniflakeEnable = true;
+    cachyos-kernel-overlay.omniflakeEnable = false;
 
     # CachyOS Hardened Kernel 
     cachyos-hardened-kernel.enable = false;
