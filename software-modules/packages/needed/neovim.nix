@@ -8,7 +8,11 @@
 
     config = lib.mkIf config.neovim.enable {
 
-      environment.systemPackages = [ pkgs.neovim ];
+      programs.neovim = {
+        enable = true;
+        viAlias = true;
+        vimAlias = true;
+      };
 
     };
 

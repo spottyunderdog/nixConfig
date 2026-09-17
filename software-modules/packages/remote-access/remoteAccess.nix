@@ -3,6 +3,9 @@
   flake.nixosModules.remoteAccessApps = { config, pkgs, lib, ... }: {
 
     imports = [
+      self.nixosModules.moonlight
+      self.nixosModules.rustdesk
+      self.nixosModules.sunshine
       self.nixosModules.tailscale
     ];
 
@@ -12,46 +15,14 @@
 
     config = lib.mkIf config.remoteAccessApps.enable {
 
+      moonlight.enable = lib.mkDefault true;
+      rustdesk.enable = lib.mkDefault false;
+      sunshine.enable = lib.mkDefault true;
+      sunshine.autostart = lib.mkDefault false;
       tailscale.enable = lib.mkDefault true;
 
-      environment.systemPackages = with pkgs; [
-        rustdesk
-        sunshine
-        moonlight-qt
-      ];
-
     };
 
   };
-
-  flake.nixosModules.tailscale = { config, pkgs, lib, ... }: {
-    
-    options = {
-      tailscale.enable = lib.mkEnableOption "tailscale";
-    };
-
-    config = lib.mkIf config.tailscale.enable {
-
-      services.tailscale = {
-        enable = true;
-      };
-
-      networking.firewall = {
-        trustedInterfaces = [ config.services.tailscale.interfaceName ];
-        allowedUDPPorts = [ config.services.tailscale.port ];
-      };
-
-      systemd.services.tailscaled.serviceConfig.Environment = [ 
-        "TS_DEBUG_FIREWALL_MODE=nftables" 
-      ];
-
-      systemd.network.wait-online.enable = false; 
-      boot.initrd.systemd.network.wait-online.enable = false;
-
-
-    };
-
-  };
-
 
 }
