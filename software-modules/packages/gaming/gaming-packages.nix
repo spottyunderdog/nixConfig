@@ -15,7 +15,6 @@
       self.nixosModules.r2modman
       self.nixosModules.steam
       self.nixosModules.umu-launcher
-      self.nixosModules.wine
     ];
 
     options = {
@@ -37,7 +36,7 @@
       steam.enable = lib.mkDefault true;
       millennium.enable = lib.mkDefault false;
       umu-launcher.enable = lib.mkDefault true;
-      wine.enable = lib.mkDefault true;
+      wine.enable = lib.mkOverride 1001 true;
 
     };
 
