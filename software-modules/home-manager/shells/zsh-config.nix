@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.homeModules.zsh = { pkgs, config, lib, ... }: {
+  flake.homeModules.zsh-config = { pkgs, config, lib, ... }: {
 
     options = {
       zsh-config.enable = lib.mkEnableOption "zsh User Configs";

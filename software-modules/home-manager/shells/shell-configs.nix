@@ -3,9 +3,9 @@
   flake.homeModules.shell-configs = { osConfig, lib, config, ... }: {
 
     imports = [
-      self.homeModules.bash
-      self.homeModules.fish
-      self.homeModules.zsh
+      self.homeModules.bash-config
+      self.homeModules.fish-config
+      self.homeModules.zsh-config
     ];
 
     bash-config.enable = lib.mkDefault true;

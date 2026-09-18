@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.homeModules.fish = { pkgs, config, lib, ... }: {
+  flake.homeModules.fish-config = { pkgs, config, lib, ... }: {
 
     options = {
       fish-config.enable = lib.mkEnableOption "fish User Configs";

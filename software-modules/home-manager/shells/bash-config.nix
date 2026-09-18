@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.homeModules.bash = { pkgs, config, lib, ... }: {
+  flake.homeModules.bash-config = { pkgs, config, lib, ... }: {
 
     options = {
       bash-config.enable = lib.mkEnableOption "Bash User Configs";
