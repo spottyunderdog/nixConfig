@@ -8,8 +8,8 @@
       self.nixosModules.media-packages
       self.nixosModules.needed-packages
       self.nixosModules.remote-access-packages
-      self.nixosModules.utilityApps
-      self.nixosModules.extraApps
+      self.nixosModules.utility-packages
+      self.nixosModules.extra-packages
       self.nixosModules.editing-packages
       self.nixosModules.flatpak
       self.nixosModules.coms-packages
@@ -21,7 +21,7 @@
     media-packages.enable = lib.mkDefault false;
     needed-packages.enable = lib.mkDefault true;
     remote-access-packages.enable = lib.mkDefault false;
-    utilityApps.enable = lib.mkDefault true;
+    utility-packages.enable = lib.mkDefault true;
     editing-packages.enable = lib.mkDefault false;
     coms-packages.enable = lib.mkDefault false;
     flatpak.enable = lib.mkDefault false;

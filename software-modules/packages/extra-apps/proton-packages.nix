@@ -1,12 +1,12 @@
 { self, inputs, ...}: {
 
-  flake.nixosModules.protonApps = { config, pkgs, lib, ... }: {
+  flake.nixosModules.proton-packages = { config, pkgs, lib, ... }: {
 
     options = {
-      protonApps.enable = lib.mkEnableOption "protonApps";
+      proton-packages.enable = lib.mkEnableOption "protonApps";
     };
 
-    config = lib.mkIf config.protonApps.enable {
+    config = lib.mkIf config.proton-packages.enable {
 
       environment.systemPackages = with pkgs; [
         proton-pass

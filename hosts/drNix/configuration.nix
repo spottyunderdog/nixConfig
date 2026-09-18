@@ -261,13 +261,13 @@ in {
 
     # Enable some utility apps like Btop, easyeffects, and filelight
     # See utilityApps.nix for full list
-    utilityApps.enable = true;
+    utility-packages.enable = true;
 
     # Enables The ZSH & Fish shells
-    extraShells.enable = true;
+    extra-shells.enable = true;
 
     # Enables apps by Proton, IE protonVPN, mail, & pass
-    protonApps.enable = true;
+    proton-packages.enable = true;
 
     ################
     # Alt Browsers #

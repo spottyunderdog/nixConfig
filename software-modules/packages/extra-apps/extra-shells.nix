@@ -3,10 +3,10 @@
   flake.nixosModules.shells = { config, pkgs, lib, ... }: {
 
     options = {
-      extraShells.enable = lib.mkEnableOption "extra shells";
+      extra-shells.enable = lib.mkEnableOption "extra shells";
     };
 
-    config = lib.mkIf config.extraShells.enable {
+    config = lib.mkIf config.extra-shells.enable {
 
       programs.zsh.enable = true;
       programs.fish.enable = true;

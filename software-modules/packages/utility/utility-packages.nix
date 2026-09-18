@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.utilityApps = { config, pkgs, lib, ... }: {
+  flake.nixosModules.utility-packages = { config, pkgs, lib, ... }: {
 
     imports = [
       self.nixosModules.bottles
@@ -20,10 +20,10 @@
     ];
 
     options = {
-      utilityApps.enable = lib.mkEnableOption "utitityApps";
+      utility-packages.enable = lib.mkEnableOption "utitityApps";
     };
 
-    config = lib.mkIf config.utilityApps.enable {
+    config = lib.mkIf config.utility-packages.enable {
 
       bottles.enable = lib.mkDefault true;
       btop.enable = lib.mkDefault true;
