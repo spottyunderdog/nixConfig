@@ -279,8 +279,11 @@ in {
     # Vivaldi Browser
     vivaldi.enable = false;
 
+    # Libre Office
     libre-office.enable = true;
 
+    # Obsidian (Note taking software)
+    obsidian.enable = true;
 
     ####################################################
     # Apps used to theme other apps or replacment apps #
@@ -298,7 +301,6 @@ in {
     # in the above modules.                                                 #
     #########################################################################
     environment.systemPackages = with pkgs; [
-        obsidian
         logisim-evolution
     ];
 
@@ -307,13 +309,13 @@ in {
     ###########################
 
     # Enable Vmware Workstation, For VM management
-    vmwareVMs.enable = true;
+    vmware.enable = true;
 
     # Enable Oracle Virtual Box, For VM Management
-    virtualboxVMs.enable = true;
+    virtualbox.enable = true;
 
     # Enable Virtual Machine Manager, For manage QEMU Virtual Machines
-    virtManVMs.enable = true;
+    virt-manager.enable = true;
 
     ##############
     # Containers #

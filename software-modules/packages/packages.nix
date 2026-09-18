@@ -15,6 +15,7 @@
       self.nixosModules.coms-packages
       self.nixosModules.libre-office
       self.nixosModules.shells
+      self.nixosModules.obsidian
     ];
 
     dev-packages.enable = lib.mkDefault false;
@@ -27,6 +28,8 @@
     coms-packages.enable = lib.mkDefault false;
     flatpak.enable = lib.mkDefault false;
     extra-shells.enable = lib.mkDefault false;
+    libre-office.enable = lib.mkDefault false;
+    obsidian.enable = lib.mkDefault false;
 
   };
 

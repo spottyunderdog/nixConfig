@@ -1,12 +1,12 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.virtualboxVMs = { pkgs, lib, config, ... }: {
+  flake.nixosModules.virtualbox = { pkgs, lib, config, ... }: {
 
     options = {
-      virtualboxVMs.enable = lib.mkEnableOption "VirtualBox VMs";
+      virtualbox.enable = lib.mkEnableOption "VirtualBox VMs";
     };
 
-    config = lib.mkIf config.virtualboxVMs.enable {
+    config = lib.mkIf config.virtualbox.enable {
       virtualisation.virtualbox.host.enable = true;
       # Enable if you need to use the virtualbox extension pack for features like USB 2.0/3.0 support, RDP, disk encryption, NVMe, etc.
       # Requires frequent recompiplations.

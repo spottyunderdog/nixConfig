@@ -1,12 +1,12 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.virtmanagerVMs = { pkgs, lib, config, ... }: {
+  flake.nixosModules.virt-manager = { pkgs, lib, config, ... }: {
 
     options = {
-      virtManVMs.enable = lib.mkEnableOption "VirtManager";
+      virt-manager.enable = lib.mkEnableOption "VirtManager";
     };
 
-    config = lib.mkIf config.virtManVMs.enable {
+    config = lib.mkIf config.virt-manager.enable {
       programs.virt-manager.enable = true;
       # Uncomment to mannually add users to the libvirtd group
       # Not recommend, as this is set for you in the user module.

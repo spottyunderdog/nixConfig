@@ -254,13 +254,13 @@ in {
     ###########################
 
     # Enable Vmware Workstation, For VM management
-    vmwareVMs.enable = false;
+    vmware.enable = false;
 
     # Enable Oracle Virtual Box, For VM Management
-    virtualboxVMs.enable = false;
+    virtualbox.enable = false;
 
     # Enable Virtual Machine Manager, For manage QEMU Virtual Machines
-    virtManVMs.enable = false;
+    virt-manager.enable = false;
 
     ##############
     # Containers #

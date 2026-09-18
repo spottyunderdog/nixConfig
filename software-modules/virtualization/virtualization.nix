@@ -3,16 +3,16 @@
   flake.nixosModules.virtualization = { pkgs, lib, config, ... }: {
 
     imports = [
-      self.nixosModules.vmwareVMs
-      self.nixosModules.virtmanagerVMs
-      self.nixosModules.virtualboxVMs
+      self.nixosModules.vmware
+      self.nixosModules.virt-manager
+      self.nixosModules.virtualbox
       self.nixosModules.docker
       self.nixosModules.podman
     ];
 
-    vmwareVMs.enable = lib.mkDefault false;
-    virtManVMs.enable = lib.mkDefault false;
-    virtualboxVMs.enable = lib.mkDefault false;
+    vmware.enable = lib.mkDefault false;
+    virt-manager.enable = lib.mkDefault false;
+    virtualbox.enable = lib.mkDefault false;
     docker.enable = lib.mkDefault false;
     podman .enable = lib.mkDefault false;
 
