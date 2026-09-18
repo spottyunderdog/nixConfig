@@ -10,9 +10,9 @@
       programs.starship = {
         enable = true;
         
-        enableBashIntegration = osConfig.bashPrompt.enableStarship;
-        enableFishIntegration = osConfig.fish.enable;
-        enableZshIntegration = osConfig.zsh.enable;
+        enableBashIntegration = lib.mkIf osConfig.bashPrompt.enableStarship true;
+        enableFishIntegration = lib.mkIf osConfig.fish.enable true;
+        enableZshIntegration = lib.mkIf osConfig.zsh.enable true;
 
         presets = [ "pastel-powerline" ];
       };

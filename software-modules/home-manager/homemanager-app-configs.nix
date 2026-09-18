@@ -9,6 +9,7 @@
       self.homeModules.starship-config
       self.homeModules.dot-files
       self.homeModules.vscode-config
+      self.homeModules.shell-configs
     ];
 
     zed-editor-config.enable = lib.mkDefault osConfig.zed-editor.enable;
