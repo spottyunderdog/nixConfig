@@ -19,6 +19,8 @@ in {
       self.nixosModules."${hostName}-spotty"
     ];
 
+    users.mutableUsers = false;
+
   };
 
   flake.nixosModules."${hostName}Hardware" = { config, lib, pkgs, modulesPath, ... }: {

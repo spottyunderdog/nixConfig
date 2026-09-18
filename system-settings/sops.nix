@@ -11,10 +11,10 @@
 
     sops.age.keyFile = "/home/spotty/.config/sops/age/keys.txt";
 
-    sops.secrets."passwords/spotty" = { 
-      neededForUsers = true;
-    };
-    
+    environment.systemPackages = with pkgs; [
+      sops
+      age
+    ];
 
   };
 
