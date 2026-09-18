@@ -109,7 +109,7 @@ binds {
     Mod+Shift+W hotkey-overlay-title="Open Noctalia Wallpaper Picker" { spawn-sh "noctalia msg panel-toggle wallpaper"; }
     Mod+V hotkey-overlay-title="Open Noctalia Clipboard" { spawn-sh "noctalia msg panel-toggle clipboard"; }
     Mod+A hotkey-overlay-title="Open Noctalia Notifications" { spawn-sh "noctalia msg panel-toggle control-center notifications"; }
-    Mod+H hotkey-overlay-title="Open Noctalia Network Panel" { spawn-sh "nocatlia msg panel-toggle control-center network"; }
+    Mod+H hotkey-overlay-title="Open Noctalia Network Panel" { spawn-sh "noctalia msg panel-toggle control-center network"; }
     Mod+Shift+H hotkey-overlay-title="Open Noctalia Network Toolkit" { spawn-sh "noctalia msg panel-toggle autumn/network-toolkit:panel"; }
 
     // Hardware Controls
