@@ -18,7 +18,7 @@
 
         histSize = 20000;
 
-        shellAliases = config.home-vars.shell-alias;
+        shellAliases = config.nix-vars.shell-alias;
 
         shellInit = "fastfetch";
 
