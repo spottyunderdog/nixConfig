@@ -32,8 +32,8 @@ in {
       # Remove the libvirtd group and vboxusers groups 
       # if you don't want the user to have access to vm software
       extraGroups = [ "networkmanager" "wheel" ]
-      ++ lib.optional config.virtManVMs.enable "libvirtd" 
-      ++ lib.optional config.virtualboxVMs.enable "vboxusers";
+      ++ lib.optional config.virt-manager.enable "libvirtd" 
+      ++ lib.optional config.virtualbox.enable "vboxusers";
 
       linger = lib.mkIf (config.docker.enable or config.podman.enable) true;
 

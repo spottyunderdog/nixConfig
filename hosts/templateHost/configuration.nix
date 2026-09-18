@@ -49,10 +49,6 @@ in {
     nix-vars.hostname = hostName;
     nix-vars.install-dir = "/etc/nixos";
 
-    # Bootloaders
-    grub.enable = true;
-    limine.enable = false;
-
     ############################
     # Device Specific Settings #
     ############################
@@ -64,19 +60,53 @@ in {
     # pipewire, swap, kernelss, display manager, desktop envirments, and any users you want
     # to be able to use accross different hosts.
 
+    # SSH Settings
+    openSSH.enable = true;
+    # Ports Open SSH SHould use
+    # nix-vars.ssh-ports = [ 22 ];
+    # Users Allowed to connect to system
+    # nix-vars.allowed-ssh-users = [ "" ];
+    # Aditional SSH Client Configurations ie hosts, etc
+    # sshClient.config = "";
+    
     # Configure Host Name
     networking.hostName = hostName;
 
-    # Enable swap (This specificly enables ZSwap),
-    # Swap Is required for hibernation, can be ignored
-    # If swap is enabled in your hardware config.
-    swap.enable = false;
+    # nix-vars.allowedTcp = [ ];
+    # nix-vars.allowedTcpRanges = [ ];
+    # nix-vars.allowedUdp = [ ];
+    # nix-vars.allowedUdpRanges = [ ];
+
+    # Enable swap file,
+    # Swap Is required for hibernation
+    swap.enable = true;
+    # Size of the swap file, in GiB
+    #nix-vars.swap-size = 48;
+    # Zswap, not recommended to use with 
+    zswap.enable = true;
+    # Zram swap. not recommended to use with zswap
+    zram.enable = false;
 
     # Enable Hibernation, Swap is required.
     hibernation.enable = false;
 
     # Enable Automatic garbage collection
     auto-garbage-collection.enable = true;
+
+    # Enable Automatic updates
+    auto-update.enable = true;
+
+    # Bootloader
+    # Grub
+    grub.enable = false;
+    # Limine
+    limine.enable = true;
+    nix-vars.limine-entries = lib.mkForce ''
+      /+Other systems and bootloaders
+      //Efi Fallback
+        protocol: efi
+        path: boot():/EFI/BOOT/BOOTX64.EFI
+    '';
 
     #######################
     # Desktop Environments #
@@ -94,8 +124,7 @@ in {
     # All Other DEs and WMs use SDDM as the display manager
     # SDDM uses the SilentSDDM theme, with the "rei" preset
     # To disable the Theme or change the Silent SDDM Preset
-    # see the displayManger.nix file (Located at
-    # nixConfig/modules/features/sharedSystemConfigs/sessionManagement)
+    # see the displayManger.nix file
     hyprland.enable = false;
     kde-plasma.enable = true;
     niri.enable = false;
@@ -139,6 +168,12 @@ in {
     # Architectures provided are: Zen4, x86v3, and x86v4
     # Note: Zen 4 should work for both zen 4 and zen 5 cpus if i'm reading their wiki correctly.
 
+    # Wether or not to use the Omniflake as the source of the
+    # cachyos kernel. Asof 2026-09-12, the omniflake last sourced it
+    # on 2026-09-02, resulting in the kernel being built being kerne 7.2.2 
+    # rather than 7.2.4 
+    cachyos-kernel-overlay.omniflakeEnable = false;
+
     # CachyOS Hardened Kernel 
     cachyos-hardened-kernel.enable = false;
 
@@ -165,9 +200,6 @@ in {
     # nixConfig/modules/features/apps
     # To enable specific app configs, IE hyprland or niri dotfiles
     # or shell aliases, enable them in your user's user.nix file.
-    # Found at either
-    # nixConfig/modules/sharedSystemConfigs/users or
-    # nixConfig/modules/hosts/<host-name>/users
 
     # Enable Flatpak support.
     # Installs Flatseal, and any other flatpaks
@@ -229,6 +261,9 @@ in {
 
     # Libre Office
     libre-office.enable = false;
+    
+    # Obsidian (Note Taking Software)
+    obsidian.enable = false;
 
     ####################################################
     # Apps used to theme other apps or replacment apps #
@@ -273,8 +308,6 @@ in {
     # Podman will disable docker, regardless of if you enable
     # the above setting. Podman is configured to have docker compatability.
     podman.enable = false;
-    
-
 
     ####################
     # Graphics Drivers #

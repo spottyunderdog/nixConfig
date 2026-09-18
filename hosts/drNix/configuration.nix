@@ -58,8 +58,9 @@ in {
       self.nixosModules."${hostName}Users"
     ];
 
-    nix-vars.install-dir = "/home/spotty";
     nix-vars.hostname = hostName;
+    nix-vars.install-dir = "/home/spotty";
+
     ############################
     # Device Specific Settings #
     ############################
@@ -96,12 +97,13 @@ in {
     # nix-vars.allowedUdpRanges = [ ];
 
     # Enable swap file,
-    # Swap Is required for hibernation, can be ignored
-    # If swap is enabled in your hardware config.
+    # Swap Is required for hibernation
     swap.enable = true;
     # Size of the swap file, in GiB
     #nix-vars.swap-size = 48;
+    # Zswap, not recommended to use with 
     zswap.enable = true;
+    # Zram swap. not recommended to use with zswap
     zram.enable = false;
 
     # Enable Hibernation, Swap is required.
@@ -144,8 +146,7 @@ in {
     # All Other DEs and WMs use SDDM as the display manager
     # SDDM uses the SilentSDDM theme, with the "rei" preset
     # To disable the Theme or change the Silent SDDM Preset
-    # see the displayManger.nix file (Located at
-    # nixConfig/modules/features/sharedSystemConfigs/sessionManagement)
+    # see the displayManger.nix file
     hyprland.enable = false;
     kde-plasma.enable = true;
     niri.enable = true;
@@ -221,9 +222,6 @@ in {
     # nixConfig/modules/features/apps
     # To enable specific app configs, IE hyprland or niri dotfiles
     # or shell aliases, enable them in your user's user.nix file.
-    # Found at either
-    # nixConfig/modules/sharedSystemConfigs/users or
-    # nixConfig/modules/hosts/<host-name>/users
 
     # Enable Flatpak support.
     # Installs Flatseal, and any other flatpaks
@@ -240,16 +238,16 @@ in {
     coms-packages.enable = true;
 
     # Enable some apps that can be used for devlopment, like VS Code, or Eclipse IDE (Java)
-    # See devApps.nix for full list
+    # See dev-packages.nix for full list
     dev-packages.enable = true;
 
     # Enable apps used for editing like handbrake and kdenlive
     # See editing-packages.nix for full list
-    editing-packages.enable = false;
+    editing-packages.enable = true;
 
     # Enable some apps used for gaming, like Steam, Prism Launcher and Lutris
     # See gaming-packages.nix for full list
-    gaming-packages.enable = true;
+    gaming-packages.enable = false;
 
     # Enable some media apps, like VLC and Jellyfin
     # See media-packages.nix for full list
@@ -279,10 +277,14 @@ in {
     # Vivaldi Browser
     vivaldi.enable = false;
 
-    # Libre Office
-    libre-office.enable = true;
+    #################
+    # Office Suites #
+    #################
 
-    # Obsidian (Note taking software)
+    # Libre Office
+    libre-office.enable = false;
+    
+    # Obsidian (Note Taking Software)
     obsidian.enable = true;
 
     ####################################################
@@ -328,8 +330,6 @@ in {
     # Podman will disable docker, regardless of if you enable
     # the above setting. Podman is configured to have docker compatability.
     podman.enable = false;
-    
-
 
     ####################
     # Graphics Drivers #

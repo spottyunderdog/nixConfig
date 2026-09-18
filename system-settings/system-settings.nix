@@ -19,6 +19,7 @@
       self.nixosModules.ssh-server
       self.nixosModules.networking
       self.nixosModules.auto-update
+      self.nixosModules.sops
     ];
 
     # Enable systemd services in initrd
