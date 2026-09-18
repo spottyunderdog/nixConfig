@@ -21,8 +21,6 @@
       self.nixosModules.auto-update
     ];
 
-    # Shells
-    programs.bash.enable = true;
     # Enable systemd services in initrd
     boot.initrd.systemd.enable = true;
     # Enable Experimental Features

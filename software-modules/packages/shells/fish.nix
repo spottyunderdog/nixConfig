@@ -1,13 +1,13 @@
-{ self, inputs, ... }: {
+{ self, inputs, ...}: {
 
-  flake.homeModules.fish = { config, lib, ... }: {
+  flake.nixosModules.fish = { pkgs, config, lib, ... }: {
 
     options = {
-      fish-config.enable = lib.mkEnableOption "Fish Configs";
+      fish.enable = lib.mkEnableOption "Fish Shell";
     };
 
-    config = lib.mkIf config.fish-config.enable {
-
+    config = lib.mkIf config.fish.enable {
+      
       programs.fish = {
         enable = true;
         generateCompletions = true;
@@ -20,4 +20,4 @@
 
   };
 
- }
+}

@@ -2,15 +2,23 @@
 
   flake.nixosModules.shells = { config, pkgs, lib, ... }: {
 
+    imports = [
+      self.nixosModules.bash
+      self.nixosModules.fish
+      self.nixosModules.zsh
+    ];
+
     options = {
       extra-shells.enable = lib.mkEnableOption "extra shells";
     };
 
     config = lib.mkIf config.extra-shells.enable {
 
-      programs.zsh.enable = true;
-      programs.fish.enable = true;
+      fish.enable = lib.mkDefault true;
+      zsh.enable = lib.mkDefault true;
 
     };
+
   };
+
 }

@@ -14,6 +14,7 @@
       self.nixosModules.udp-ports
       self.nixosModules.install-dir
       self.nixosModules.hostname
+      self.nixosModules.shell-aliases
     ];
 
   };

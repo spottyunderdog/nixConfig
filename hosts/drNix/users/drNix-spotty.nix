@@ -74,13 +74,6 @@ in {
     # Do not remove.
     xdg.configFile."fontconfig/conf.d/10-hm-fonts.conf".force = true;
 
-    # Shell Configs, Requires utilityApps.enable to be enabled, do to using the
-    # fastfetch package in the shells.
-    
-    bash-config.enable = true;
-    fish-config.enable = true;
-    zsh-config.enable = true;
-
     # Enable the starship prompt. Will activate for all
     # Shells
     starship-config.enable = true;

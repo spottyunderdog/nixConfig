@@ -14,6 +14,7 @@
       self.nixosModules.flatpak
       self.nixosModules.coms-packages
       self.nixosModules.libre-office
+      self.nixosModules.shells
     ];
 
     dev-packages.enable = lib.mkDefault false;
@@ -25,6 +26,7 @@
     editing-packages.enable = lib.mkDefault false;
     coms-packages.enable = lib.mkDefault false;
     flatpak.enable = lib.mkDefault false;
+    extra-shells.enable = lib.mkDefault false;
 
   };
 

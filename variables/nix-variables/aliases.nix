@@ -1,9 +1,9 @@
 { ... }: {
 
-  flake.homeModules.shell-aliases = { config, lib, ...}: {
+  flake.nixosModules.shell-aliases = { config, lib, ...}: {
 
     options = {
-      home-vars.shell-alias = lib.mkOption {
+      nix-vars.shell-alias = lib.mkOption {
         type = lib.types.attrsOf lib.types.str;
         default = {
           ".." = "cd ..";
