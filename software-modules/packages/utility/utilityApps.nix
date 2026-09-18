@@ -16,6 +16,7 @@
       self.nixosModules.smartmontools
       self.nixosModules.upscaler
       self.nixosModules.wine
+      self.nixosModules.yazi
     ];
 
     options = {
@@ -39,6 +40,7 @@
       smartmontools.enable = lib.mkDefault true;
       upscaler.enable = lib.mkDefault true;
       wine.enable = lib.mkDefault true;
+      yazi.enable = lib.mkDefault true;
 
     };
 
