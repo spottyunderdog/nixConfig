@@ -20,6 +20,7 @@
       self.nixosModules.networking
       self.nixosModules.auto-update
       self.nixosModules.sops
+      self.nixosModules.session-variables
     ];
 
     # Enable systemd services in initrd
