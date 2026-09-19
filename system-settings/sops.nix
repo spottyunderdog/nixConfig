@@ -9,7 +9,7 @@
     sops.defaultSopsFile = ../secrets/secrets.yaml;
     sops.defaultSopsFormat = "yaml"; 
 
-    sops.age.keyFile = "/home/spotty/.config/sops/age/keys.txt";
+    sops.age.keyFile = "${config.nix-vars.default-user-path}/.config/sops/age/keys.txt";
 
     environment.systemPackages = with pkgs; [
       sops

@@ -14,8 +14,6 @@ in {
   flake.nixosModules."${hostName}Users" = { ... }: {
 
     imports = [
-      # Import User Configurations Here
-      # User modules should follow the format of self.nixosModules."<hostname>-<username>"
       self.nixosModules."spotty"
     ];
 
@@ -61,6 +59,7 @@ in {
 
     nix-vars.hostname = hostName;
     nix-vars.install-dir = "/home/spotty";
+    nix-vars.default-user = "spotty";
 
     ############################
     # Device Specific Settings #
