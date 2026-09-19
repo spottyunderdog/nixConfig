@@ -2,13 +2,12 @@
 
 let
 
-  userName = "nix";
-  hostName = "templateHost";
+  userName = "spotty";
   uuid = 1000;
 
 in {
 
-  flake.nixosModules."${hostName}-${userName}" = { config, pkgs, lib, ... }: {
+  flake.nixosModules."${userName}" = { config, pkgs, lib, ... }: {
 
     # Creates a user group for the user that matches the username and uid
     users.groups.${userName} = {
@@ -25,30 +24,29 @@ in {
       # read here: https://wiki.nixos.org/wiki/User_management
       # Paswords not included in repo/flake.
       # Allows for declaritive password management.
-      # hashedPassword = <paswordhash>;
+      hashedPasswordFile = config.sops.secrets."passwords/spotty".path;
 
       group = userName;
 
       # Remove the libvirtd group and vboxusers groups 
       # if you don't want the user to have access to vm software
-      extraGroups = [ "networkmanager" "wheel" ]
+      extraGroups = [ "networkmanager" "wheel" "dotFiles" ]
       ++ lib.optional config.virt-manager.enable "libvirtd" 
       ++ lib.optional config.virtualbox.enable "vboxusers";
 
-      linger = lib.mkIf (config.docker.enable or config.podman.enable) true;
+      linger = if ( config.docker.enable or config.podman.enable or false ) then true else false;
 
       # Choose your shell, If using Fish or ZSH make sure to enable the extra shells module
       # For your host
-      shell = pkgs.bash;
+      shell = pkgs.fish;
 
       # user specific programs.
       packages = with pkgs; [
         #  thunderbird
       ];
-
     };
 
-    home-manager.users.${userName} = self.homeModules."${hostName}-${userName}Module";
+    home-manager.users.${userName} = self.homeModules."${userName}Module";
 
   };
 
@@ -57,7 +55,7 @@ in {
     pkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
 
     modules = [
-      self.homeModules."${hostName}-${userName}Module"
+      self.homeModules."${userName}Module"
       {
         home.username = userName;
         home.homeDirectory = "/home/${userName}";
@@ -66,7 +64,7 @@ in {
 
   };
 
-  flake.homeModules."${hostName}-${userName}Module" = { pkgs, ... }: {
+  flake.homeModules."${userName}Module" = { pkgs, ... }: {
 
     imports = [
       self.homeModules.app-configs
@@ -77,13 +75,13 @@ in {
 
     # Enable the starship prompt. Will activate for all
     # Shells
-    starship-config.enable = false;
+    starship-config.enable = true;
 
     # Enable My Niri + Noctalia dot files
     # Also enables kitty dots. Dots use the kitty
     # Terminal, you may need to enable utilityApps 
     # to use.
-    niri-dots.enable = false;
+    niri-dots.enable = true;
 
     # Enable My Hyprland + Nocatlia dotfiles
     # Also enables kitty dots. Dots use the kitty
@@ -92,13 +90,16 @@ in {
     hyprland-dots.enable = false;
 
     # Enable My Noctalia dotfiles
-    noctalia-dots.enable = false;
+    noctalia-dots.enable = true;
 
     # My Kitty config.
-    kitty-dots.enable = false;
+    kitty-dots.enable = true;
 
     # My Zed Editor config.
-    zed-editor-config.enable = false;
+    zed-editor-config.enable = true;
+
+    # My VS Code Config
+    vscode-config.enable = true;
 
     home.packages = [ ];
     home.stateVersion = "26.05";

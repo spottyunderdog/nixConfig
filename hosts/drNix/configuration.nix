@@ -16,7 +16,7 @@ in {
     imports = [
       # Import User Configurations Here
       # User modules should follow the format of self.nixosModules."<hostname>-<username>"
-      self.nixosModules."${hostName}-spotty"
+      self.nixosModules."spotty"
     ];
 
     users.mutableUsers = false;
@@ -53,10 +53,7 @@ in {
     imports = [
       self.nixosModules.packages
       self.nixosModules.systemSettings
-      # Module for hardware settings
       self.nixosModules."${hostName}Hardware"
-      # module for host specific users, each host needs its own name
-      # name should be self.nixosModules.<host name>Users
       self.nixosModules."${hostName}Users"
       self.nixosModules.drNix-secrets
       self.nixosModules.drNix-ssh-settings

@@ -16,15 +16,15 @@
         sopsFile = ../../secrets/sshhosts.yaml;
       };
 
-      "drdino/alt-port" = {
+      "drdino/altPort" = {
         sopsFile = ../../secrets/sshhosts.yaml;
       };
 
-      "drdino/key" = {
+      "drdino/ssh" = {
         sopsFile = ../../secrets/sshhosts.yaml;
       };
 
-      "drino/user" = {
+      "drdino/user" = {
         sopsFile = ../../secrets/sshhosts.yaml;
       };
 
@@ -45,12 +45,12 @@
         Host dino
           HostName ${config.sops.placeholder."drdino/address"}
           Port ${config.sops.placeholder."drdino/port"}
-          Key ${config.sops.placeholder."drdino/key"}
+          Key ${config.sops.placeholder."drdino/ssh"}
           User ${config.sops.placeholder."drdino/user"}
         Host dinotail
           HostName ${config.sops.placeholder."drdino/address"}
-          Port ${config.sops.placeholder."drdino/alt-port"}
-          Key ${config.sops.placeholder."drdino/key"}
+          Port ${config.sops.placeholder."drdino/altPort"}
+          Key ${config.sops.placeholder."drdino/ssh"}
           User ${config.sops.placeholder."drdino/user"}
       '';
 

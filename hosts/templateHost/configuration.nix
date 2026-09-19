@@ -16,7 +16,7 @@ in {
     imports = [
       # Import User Configurations Here
       # User modules should follow the format of self.nixosModules."<hostname>-<username>"
-      self.nixosModules."${hostName}-nix"
+      self.nixosModules."nix"
     ];
 
   };

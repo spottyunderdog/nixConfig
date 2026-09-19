@@ -23,11 +23,12 @@
   outputs = inputs: inputs.omniflake.flakes.flake-parts.lib.mkFlake{ inherit inputs; } 
     ( 
       inputs.omniflake.flakes.import-tree [ 
+        ./hosts
         ./software-modules 
-        ./hosts 
         ./system-settings 
-        ./parts.nix 
+        ./users
         ./variables
+        ./parts.nix 
       ] 
     );
 }
