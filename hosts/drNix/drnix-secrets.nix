@@ -38,24 +38,6 @@
 
     };
 
-    sops.templates."ssh-hosts" = {
-      mode = "0400";
-      owner = "spotty";
-      content = ''
-        Host dino
-          HostName ${config.sops.placeholder."drdino/address"}
-          Port ${config.sops.placeholder."drdino/port"}
-          Key ${config.sops.placeholder."drdino/ssh"}
-          User ${config.sops.placeholder."drdino/user"}
-        Host dinotail
-          HostName ${config.sops.placeholder."drdino/address"}
-          Port ${config.sops.placeholder."drdino/altPort"}
-          Key ${config.sops.placeholder."drdino/ssh"}
-          User ${config.sops.placeholder."drdino/user"}
-      '';
-
-    };
-
   };
 
 }

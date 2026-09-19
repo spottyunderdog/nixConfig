@@ -12,6 +12,24 @@
       Include ${config.sops.templates."ssh-hosts".path}
     '';
 
+    sops.templates."ssh-hosts" = {
+      mode = "0400";
+      owner = "spotty";
+      content = ''
+        Host dino
+          HostName ${config.sops.placeholder."drdino/address"}
+          Port ${config.sops.placeholder."drdino/port"}
+          IdentityFile ${config.sops.placeholder."drdino/ssh"}
+          User ${config.sops.placeholder."drdino/user"}
+        Host dinotail
+          HostName ${config.sops.placeholder."drdino/address"}
+          Port ${config.sops.placeholder."drdino/altPort"}
+          IdentityFile ${config.sops.placeholder."drdino/ssh"}
+          User ${config.sops.placeholder."drdino/user"}
+      '';
+
+    };
+
     systemd.services.ssh-port-firewalld = {
       description = "Open secret SSH port in firewalld";
       wantedBy = [ "multi-user.target" ];
