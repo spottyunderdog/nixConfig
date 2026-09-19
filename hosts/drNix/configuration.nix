@@ -58,6 +58,8 @@ in {
       # module for host specific users, each host needs its own name
       # name should be self.nixosModules.<host name>Users
       self.nixosModules."${hostName}Users"
+      self.nixosModules.drNix-secrets
+      self.nixosModules.drNix-ssh-settings
     ];
 
     nix-vars.hostname = hostName;
@@ -73,22 +75,6 @@ in {
     # There you can configure the bootloader, hibernation, locale,
     # pipewire, swap, kernelss, display manager, desktop envirments, and any users you want
     # to be able to use accross different hosts.
-
-    # SSH Settings
-    openSSH.enable = true;
-    # Ports Open SSH SHould use
-    nix-vars.ssh-ports = [ 2234 ];
-    nix-vars.allowed-ssh-users = [ "spotty" ];
-    sshClient.config = lib.mkForce ''
-      Host dino
-        Hostname drdinosaurv6
-        Port 2234
-        User hyprland
-      Host dinotail
-        Hostname drdinosaurv6
-        Port 22
-        User hyprland
-    '';
 
     # Configure Host Name
     networking.hostName = hostName;

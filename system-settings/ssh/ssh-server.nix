@@ -13,7 +13,7 @@
       services.openssh = {
         enable = true;
         ports = config.nix-vars.ssh-ports;
-        openFirewall = lib.mkDefault true;
+        openFirewall = lib.mkDefault false;
         authorizedKeysInHomedir = true;
         enableRecommendedAlgorithms = true;
         settings = {

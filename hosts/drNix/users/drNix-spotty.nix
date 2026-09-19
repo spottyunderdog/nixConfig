@@ -10,10 +10,6 @@ in {
 
   flake.nixosModules."${hostName}-${userName}" = { config, pkgs, lib, ... }: {
 
-    sops.secrets."passwords/spotty" = { 
-      neededForUsers = true;
-    };
-
     # Creates a user group for the user that matches the username and uid
     users.groups.${userName} = {
       name = userName;
@@ -30,7 +26,7 @@ in {
       # Paswords not included in repo/flake.
       # Allows for declaritive password management.
       hashedPasswordFile = config.sops.secrets."passwords/spotty".path;
-      p
+
       group = userName;
 
       # Remove the libvirtd group and vboxusers groups 

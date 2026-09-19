@@ -5,7 +5,7 @@
     options = {
       nix-vars.ssh-ports = lib.mkOption {
         type = lib.types.listOf lib.types.int;
-        default = [ 22 ];
+        default = [ ];
       };
     };
 
