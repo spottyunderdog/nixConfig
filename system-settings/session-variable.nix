@@ -2,8 +2,8 @@
 
   flake.nixosModules.session-variables = { config, pkgs, lib, ... }: {
 
-    environment.sessionVariables = rec {
-      REPO_DIR = "${config.nix-vars.install-dir}/nixConfig";
+    environment.variables = {
+      REPO_DIR = "/home/spotty/nixConfig";
     };
 
   };

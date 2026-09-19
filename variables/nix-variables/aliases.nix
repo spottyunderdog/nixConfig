@@ -20,7 +20,8 @@
           "flakeupdate" = "sudo nix flake update";
           "checkflake" = "nix flake check --no-build";
           "checkflake-impure" = "nix flake check --no-build --impure";
-          "optimize" = "nix-store --optimize";
+          "optimize" = "sudo nix-store --optimize";
+          "rmold-optimize" = "echo 'removing garbage' & rmgarbage & echo 'optimizing nix store' & optimize"; 
           "hw" = "hwinfo --short";
           "jctl" = "journalctl -p 3 -xb";
           "la" = "eza -a --color=always --group-directories-first --icons=always";
