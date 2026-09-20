@@ -128,6 +128,8 @@ binds {
     XF86MonBrightnessUp allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn-sh "noctalia msg brightness-down"; }
 
+    XF86Calculator { spawn "kcalc"; }
+
     // Launcher
     Mod+Return hotkey-overlay-title="Open Terminal: Kitty" { spawn "kitty"; }
     Mod+E hotkey-overlay-title="Open File Manager: Dolphin"  { spawn "dolphin"; }
