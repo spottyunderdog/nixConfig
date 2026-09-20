@@ -238,7 +238,7 @@ in {
 
     # Enable some apps used for gaming, like Steam, Prism Launcher and Lutris
     # See gaming-packages.nix for full list
-    gaming-packages.enable = false;
+    gaming-packages.enable = true;
 
     # Enable some media apps, like VLC and Jellyfin
     # See media-packages.nix for full list

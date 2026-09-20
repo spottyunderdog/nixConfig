@@ -17,6 +17,11 @@
       environment.systemPackages = with pkgs; [
         (sddm-astronaut.override {
           embeddedTheme = "${config.astronaut-theme.embeddedTheme}";
+          themeConfig = {
+            HideSystemButtons = "false";
+          };
+
+
         })
       ];
 

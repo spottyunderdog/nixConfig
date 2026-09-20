@@ -135,15 +135,24 @@ in {
     # DEs are: Gnome, KDE Plasma (Wayland), and XFCE
     # WMs are: Hyprland + Noctalia Shell, and Niri + Noctalia Shell
 
-    
-    # Default login manager is SDDM, themed with the silent SDDM theme,
-    # With the "rei" styling. you can find them here:
-    # https://github.com/uiriansan/SilentSDDM
+    # Default login manager is SDDM, by default uses the "silentSDDM"
+    # Theme. I provide both SDDM Astronaut theme and Silent SDDM in the
+    # Flake, they are incompatable with each other.
     sddm.enable = true;
+    # Silent SDDM Theming
+    # Configuration option can be found here: https://github.com/uiriansan/SilentSDDM
     silentSDDM.enable = true;
     silentSDDM.theme = "rei";
+    # SDDM Astronaut Theme, 
+    # Configuration options can be found here: https://github.com/Keyitdev/sddm-astronaut-theme
+    astronaut-theme.enable = false;
+    astronaut-theme.embeddedTheme = "hyprland_kath";
 
-
+    # The Default DE is KDE-Plasma.
+    # If you wish to use a different DE without KDE installed, 
+    # make sure to set kde-plasm.enable to false.
+    # Also, enabling GNOME will change the login manager
+    # To GDM and disables SDDM. 
     gnome.enable = false;
     hyprland.enable = false;
     kde-plasma.enable = true;

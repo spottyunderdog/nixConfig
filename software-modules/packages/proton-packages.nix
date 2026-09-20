@@ -3,7 +3,7 @@
   flake.nixosModules.proton-packages = { config, pkgs, lib, ... }: {
 
     options = {
-      proton-packages.enable = lib.mkEnableOption "protonApps";
+      proton-packages.enable = lib.mkEnableOption "proton suite";
     };
 
     config = lib.mkIf config.proton-packages.enable {

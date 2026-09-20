@@ -8,7 +8,14 @@
 
     config = lib.mkIf config.heroic.enable {
 
-      environment.systemPackages = [ pkgs.heroic ];
+      environment.systemPackages = with pkgs; [ 
+        (heroic.override {
+          extraPkgs = pkgs': with pkgs'; [
+            gamescope
+            gamemode
+          ];
+        })
+      ];
 
     };
 
