@@ -122,6 +122,13 @@ in {
     # DEs are: Gnome, KDE Plasma (Wayland), and XFCE
     # WMs are: Hyprland + Noctalia Shell, and Niri + Noctalia Shell
 
+    sddm.enable = true;
+    silentSDDM.enable = false;
+    silentSDDM.theme = "rei";
+    astronaut-theme.enable = true;
+    astronaut-theme.embeddedTheme = "hyprland_kath";
+
+
     # Gnome uses GDM As the display manager, and comes with the PaperWM
     # Shell extension if you would like to use scrolling window management
     # Within a more tradition DE

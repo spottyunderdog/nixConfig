@@ -13,9 +13,9 @@ in {
 
   flake.nixosModules."${hostName}Users" = { config, pkgs, ... }: {
 
+    # Import User Configurations Here
+    # User modules should follow the format of self.nixosModules."userName"
     imports = [
-      # Import User Configurations Here
-      # User modules should follow the format of self.nixosModules."userName"
       self.nixosModules."nix"
     ];
 
@@ -104,11 +104,19 @@ in {
     # Enable Automatic updates
     auto-update.enable = false;
 
-    # Bootloaders
+    ################
+    # Boot Loaders #
+    ################
 
-    # Grub
+    # Bootloaders are incompatable with each other
+    # Only have one enabled at a time.
+    # I recommend using Limine if you are
+    # Plannning on enabling secure boot on your system.
+
+    # Grub Bootloader
     grub.enable = true;
-    # Limine
+
+    # Limine  Bootloader
     limine.enable = false;
     # Adds the efi fallback boot option to your limine boot options
     # You can also add other oses like, windows, here
@@ -119,23 +127,24 @@ in {
         path: boot():/EFI/BOOT/BOOTX64.EFI
     '';
 
-    #######################
-    # Desktop Environments #
-    #######################
+    ##########################################
+    # Desktop Environments + Display Manager #
+    ##########################################
 
     # Flake contains a small suite of DEs and WMs to choose from
     # DEs are: Gnome, KDE Plasma (Wayland), and XFCE
     # WMs are: Hyprland + Noctalia Shell, and Niri + Noctalia Shell
 
-    # Gnome uses GDM As the display manager, and comes with the PaperWM
-    # Shell extension if you would like to use scrolling window management
-    # Within a more tradition DE
-    gnome.enable = false;
+    
+    # Default login manager is SDDM, themed with the silent SDDM theme,
+    # With the "rei" styling. you can find them here:
+    # https://github.com/uiriansan/SilentSDDM
+    sddm.enable = true;
+    silentSDDM.enable = true;
+    silentSDDM.theme = "rei";
 
-    # All Other DEs and WMs use SDDM as the display manager
-    # SDDM uses the SilentSDDM theme, with the "rei" preset
-    # To disable the Theme or change the Silent SDDM Preset
-    # see the displayManger.nix file
+
+    gnome.enable = false;
     hyprland.enable = false;
     kde-plasma.enable = true;
     niri.enable = false;
