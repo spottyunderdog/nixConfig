@@ -3,7 +3,7 @@
   flake.nixosModules.sops = { config, pkgs, ... }: {
 
     imports = [
-      inputs.sops-nix.nixosModules.default
+      inputs.omniflake.flakes.sops-nix.nixosModules.default
     ];
 
     sops.defaultSopsFile = ../secrets/secrets.yaml;

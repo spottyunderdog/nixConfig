@@ -15,8 +15,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    # sops-nix.url = "github:Mic92/sops-nix";
+    # sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    # To add for non-omniflake branch
+    # - Flake Parts (following nixpkgs)
+    # - Home Manager (following nixpkgs)
+    # - import tree (following nixpkgs)
+    # - Silent SDDM (following nixpkgs)
+    # - Zen Browser (following nixpkgs)
+    # - Remove Omniflake option for cachy kernel
 
   };
 
