@@ -15,7 +15,7 @@ in {
 
     imports = [
       # Import User Configurations Here
-      # User modules should follow the format of self.nixosModules."<hostname>-<username>"
+      # User modules should follow the format of self.nixosModules."userName"
       self.nixosModules."nix"
     ];
 
@@ -39,15 +39,9 @@ in {
     imports = [
       self.nixosModules.packages
       self.nixosModules.systemSettings
-      # Module for hardware settings
       self.nixosModules."${hostName}Hardware"
-      # module for host specific users, each host needs its own name
-      # name should be self.nixosModules.<host name>Users
       self.nixosModules."${hostName}Users"
     ];
-
-    nix-vars.hostname = hostName;
-    nix-vars.install-dir = "/etc/nixos";
 
     ############################
     # Device Specific Settings #
@@ -60,30 +54,44 @@ in {
     # pipewire, swap, kernelss, display manager, desktop envirments, and any users you want
     # to be able to use accross different hosts.
 
-    # SSH Settings
-    openSSH.enable = true;
-    # Ports Open SSH SHould use
-    # nix-vars.ssh-ports = [ 22 ];
-    # Users Allowed to connect to system
-    # nix-vars.allowed-ssh-users = [ "" ];
-    # Aditional SSH Client Configurations ie hosts, etc
-    # sshClient.config = "";
     
     # Configure Host Name
+    # nix-vars.hostname stores the hostname for use
+    # in the auto upgrade service.
     networking.hostName = hostName;
+    nix-vars.hostname = hostName;
 
+    # Where you have installed the repository on
+    # your host
+    nix-vars.install-dir = "/etc/nixos";
+
+    # Firewall Ports, Make sure these are
+    # not made public as showing what ports are open
+    # is a security risk
     # nix-vars.allowedTcp = [ ];
     # nix-vars.allowedTcpRanges = [ ];
     # nix-vars.allowedUdp = [ ];
     # nix-vars.allowedUdpRanges = [ ];
 
+    # SSH Settings
+    openSSH.enable = false;
+    # Ports Open SSH SHould use
+    # Don't publicly disclose your ssh ports, and it is typicly
+    # a good idea to change it from the default port 22
+    # as it is a commonly tested attack vecotor
+    # nix-vars.ssh-ports = [ ];
+    # Users Allowed to connect to system
+    # nix-vars.allowed-ssh-users = [ "" ];
+    # Aditional SSH Client Configurations ie hosts, etc
+    # sshClient.config = "";
+
     # Enable swap file,
     # Swap Is required for hibernation
-    swap.enable = true;
+    swap.enable = false;
     # Size of the swap file, in GiB
-    #nix-vars.swap-size = 48;
+    #nix-vars.swap-size = 32;
     # Zswap, not recommended to use with 
-    zswap.enable = true;
+    zswap.enable = false;
     # Zram swap. not recommended to use with zswap
     zram.enable = false;
 
@@ -91,16 +99,19 @@ in {
     hibernation.enable = false;
 
     # Enable Automatic garbage collection
-    auto-garbage-collection.enable = true;
+    auto-garbage-collection.enable = false;
 
     # Enable Automatic updates
-    auto-update.enable = true;
+    auto-update.enable = false;
 
-    # Bootloader
+    # Bootloaders
+
     # Grub
-    grub.enable = false;
+    grub.enable = true;
     # Limine
-    limine.enable = true;
+    limine.enable = false;
+    # Adds the efi fallback boot option to your limine boot options
+    # You can also add other oses like, windows, here
     nix-vars.limine-entries = lib.mkForce ''
       /+Other systems and bootloaders
       //Efi Fallback
@@ -168,10 +179,8 @@ in {
     # Architectures provided are: Zen4, x86v3, and x86v4
     # Note: Zen 4 should work for both zen 4 and zen 5 cpus if i'm reading their wiki correctly.
 
-    # Wether or not to use the Omniflake as the source of the
-    # cachyos kernel. Asof 2026-09-12, the omniflake last sourced it
-    # on 2026-09-02, resulting in the kernel being built being kerne 7.2.2 
-    # rather than 7.2.4 
+    # Omniflake can be up to 8 days behind the master branch of the nix-cachyos-kernels
+    # flake. Use if you don't mind being behind on the latest version of the cachyos kernel
     cachyos-kernel-overlay.omniflakeEnable = false;
 
     # CachyOS Hardened Kernel 

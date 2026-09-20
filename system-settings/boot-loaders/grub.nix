@@ -12,7 +12,7 @@
         enable = true;
         device = "nodev";
         efiSupport = true;
-        useOSProber = true;
+        useOSProber = true; # Enables grub to auto detect other Operating system.
       };
 
     };

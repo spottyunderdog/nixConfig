@@ -70,9 +70,6 @@ in {
     imports = [
       self.homeModules.app-configs
     ];
-    # ensures fonts can properly be configured when rebuild your system. 
-    # Do not remove.
-    xdg.configFile."fontconfig/conf.d/10-hm-fonts.conf".force = true;
 
     # Enable the starship prompt. Will activate for all
     # Shells

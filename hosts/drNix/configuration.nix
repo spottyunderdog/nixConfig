@@ -20,6 +20,7 @@ in {
   };
 
   flake.nixosModules."${hostName}Hardware" = { config, lib, pkgs, modulesPath, ... }: {
+
     imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
     boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
@@ -42,6 +43,7 @@ in {
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
   };
 
   flake.nixosModules."${hostName}Configuration" = { config, pkgs, lib, ... }: {
@@ -368,14 +370,14 @@ in {
 
     specialisation = {
       #### Exampple For different prime modes
-      gaming-time.configuration = {
+      Gaming-time.configuration = {
         hardware.nvidia.prime.sync.enable = lib.mkForce true;
         hardware.nvidia.prime.offload = {
           enable = lib.mkForce false;
           enableOffloadCmd = lib.mkForce false;
        };
 
-     };
+      };
 
     };
 

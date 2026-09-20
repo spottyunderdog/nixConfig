@@ -8,6 +8,10 @@
 
     config = lib.mkIf config.limine.enable {
 
+      # Adds utilities for limine
+      # sbctl allows for signing of secure boot
+      # keys. As well as another wallpaper used for
+      # the background in the boot menu
       environment.systemPackages = with pkgs; [
         sbctl
         limine-full
