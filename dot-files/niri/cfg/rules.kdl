@@ -31,6 +31,14 @@
        open-focused false
 }
 
+    window-rule {
+        match title="^([Pp]icture[-\\s]?[Ii]n[-\\s]?[Pp]icture)(.*)$"
+        open-floating true
+        default-column-width { proportion 0.25; }
+        default-window-height {proportion 0.25; }
+        default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+
     layer-rule {
         match namespace="^noctalia-wallpaper"
         place-within-backdrop true

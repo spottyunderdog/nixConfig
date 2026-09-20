@@ -21,6 +21,11 @@
         extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
       };
 
+      kitty.enable = lib.mkOverride 991 true;
+      zen.enable = lib.mkOverride 991 true;
+      kate.enable = lib.mkOverride 991 true;
+      kcalc.enable = lib.mkOverrid 991 true;
+
       # programs.noctalia = lib.mkIf (!config.niri.enable) {
       #  enable = true;
       #  recommendedServices.enable = true;

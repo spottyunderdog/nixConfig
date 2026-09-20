@@ -5,7 +5,7 @@
     # SSH Settings
     openSSH.enable = true;
     # Ports Open SSH SHould use
-    nix-vars.ssh-ports = [ ];
+    nix-vars.ssh-ports = lib.mkForce [ ];
     services.openssh.openFirewall = false;
     nix-vars.allowed-ssh-users = [ "spotty" ];
     sshClient.config = lib.mkForce ''

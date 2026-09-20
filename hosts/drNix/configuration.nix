@@ -14,10 +14,8 @@ in {
   flake.nixosModules."${hostName}Users" = { ... }: {
 
     imports = [
-      self.nixosModules."spotty"
+      self.nixosModules."${config.nix-vars.default-user}"
     ];
-
-    users.mutableUsers = false;
 
   };
 

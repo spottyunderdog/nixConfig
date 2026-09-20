@@ -2,7 +2,7 @@
 
 TERMINAL     = "kitty"
 FILE_MANAGER = "dolphin"
-BROWSER      = "firefox"
+BROWSER      = "zen-beta"
 EDITOR       = "kate"
 CALCULATOR   = "kcalc"
 

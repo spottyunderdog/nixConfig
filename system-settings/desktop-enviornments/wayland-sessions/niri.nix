@@ -16,6 +16,11 @@
 
       services.displayManager.defaultSession = lib.mkOverride 950 "niri";
 
+      kitty.enable = lib.mkOverride 990 true;
+      zen.enable = lib.mkOverride 990 true;
+      kate.enable = lib.mkOverride 990 true;
+      kcalc.enable = lib.mkOverride 990 true;
+
       networking.networkmanager.enable = lib.mkDefault true;
       hardware.bluetooth.enable = lib.mkDefault true;
       services.power-profiles-daemon.enable = lib.mkDefault true;
