@@ -8,7 +8,7 @@
 
     home-manager = {
       useGlobalPkgs = true;
-      useUserPackages = true;
+      useUserPackages = false;
     };
 
     home-manager.backupFileExtension = "backup";

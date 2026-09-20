@@ -11,10 +11,10 @@ in {
 
   };
 
-  flake.nixosModules."${hostName}Users" = { ... }: {
+  flake.nixosModules."${hostName}Users" = { config, ... }: {
 
     imports = [
-      self.nixosModules."${config.nix-vars.default-user}"
+      self.nixosModules."spotty"
     ];
 
   };
