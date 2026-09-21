@@ -20,7 +20,7 @@
         allowReboot = true;
         persistent = true;
         #runGarbageCollection = true;
-        upgrade = false;
+        upgrade = true;
         
       };
 

@@ -24,10 +24,11 @@
       kitty.enable = lib.mkOverride 991 true;
       zen.enable = lib.mkOverride 991 true;
       kate.enable = lib.mkOverride 991 true;
-      kcalc.enable = lib.mkOverrid 991 true;
+      kcalc.enable = lib.mkOverride 991 true;
 
-      networking.networkmanager.enable = lib.mkDefault true;
-      hardware.bluetooth.enable = lib.mkDefault true;
+      bluetooth.enable = lib.mkOverride 991 true;
+      networkmanager.enable = lib.mkOverride 991 true;
+
       services.power-profiles-daemon.enable = lib.mkDefault true;
       services.upower.enable = lib.mkDefault true;
 

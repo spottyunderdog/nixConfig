@@ -17,10 +17,10 @@
       kate.enable = lib.mkOverride 990 true;
       kcalc.enable = lib.mkOverride 990 true;
 
-      networking.networkmanager.enable = lib.mkDefault true;
-      hardware.bluetooth.enable = lib.mkDefault true;
-      services.power-profiles-daemon.enable = lib.mkDefault true;
-      services.upower.enable = lib.mkDefault true;
+      bluetooth.enable = lib.mkOverride 990 true;
+      networkmanager.enable = lib.mkOverride 990 true;
+      services.power-profiles-daemon.enable = lib.mkOverride 990 true;
+      services.upower.enable = lib.mkOverride 990 true;
 
       environment.systemPackages = with pkgs; [
         noctalia
