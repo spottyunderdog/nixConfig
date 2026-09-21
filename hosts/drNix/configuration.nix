@@ -61,6 +61,8 @@ in {
     nix-vars.install-dir = "/home/spotty";
     nix-vars.default-user = "spotty";
 
+    hardware.enableAllFirmware = true;
+
     ############################
     # Device Specific Settings #
     ############################
@@ -100,7 +102,7 @@ in {
     auto-update.enable = true;
 
     # Fix Bluetooth Disconnect Problems
-    bluetooth.disconnects-fix.enable = true;
+    bluetooth.disconnects-fix.enable = false;
 
     # Bootloader
     # Grub

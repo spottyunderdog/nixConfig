@@ -44,7 +44,7 @@
     printing.enable = lib.mkDefault true;
     # Enable/Disable Bluetooth
     bluetooth.enable = lib.mkDefault true;
-    # Fix any issues relating to frquent device dropouts
+    # Fix bluetooth dropout related to the intel ax210 wifi/bluetooth card: https://nixos.wiki/wiki/Bluetooth
     bluetooth.disconnects-fix.enable = lib.mkDefault false;
 
     # Swap, Uses Swap file for Swap and Zswap.
