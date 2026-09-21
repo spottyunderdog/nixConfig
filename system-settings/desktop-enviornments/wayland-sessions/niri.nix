@@ -2,10 +2,6 @@
 
   flake.nixosModules.niri = { config, pkgs, lib, ... }: {
 
-   # imports = [
-   #   inputs.noctalia.nixosModules.default
-   # ];
-
     options = {
       niri.enable = lib.mkEnableOption "Enable the Niri Desktop Environment.";
     };

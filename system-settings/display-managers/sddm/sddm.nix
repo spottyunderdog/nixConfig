@@ -16,11 +16,14 @@
       services.displayManager.sddm = {
         
         enable = lib.mkDefault true;
+
         wayland = {
           enable = lib.mkForce true;
           compositor = "kwin";
         };
+
         package = lib.mkForce pkgs.kdePackages.sddm;
+
         extraPackages = with pkgs; [
           kdePackages.qtmultimedia
         ];

@@ -15,7 +15,9 @@
     };
 
     config = lib.mkIf (config.sddm.enable && config.silentSDDM.enable) {
+
       services.displayManager.sddm.theme = "silent";
+
       programs.silentSDDM = {
         enable = true;
         theme = "rei";

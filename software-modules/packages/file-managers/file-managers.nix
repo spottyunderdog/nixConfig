@@ -5,6 +5,7 @@
     imports = [
       self.nixosModules.dolphin
       self.nixosModules.thunar
+      self.nixosModules.yazi
     ];
 
   };

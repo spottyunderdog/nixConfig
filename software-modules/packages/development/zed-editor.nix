@@ -7,7 +7,9 @@
     };
 
     config = lib.mkIf config.zed-editor.enable {
+
       environment.systemPackages = [ pkgs.zed-editor ];
+
     };
 
   };

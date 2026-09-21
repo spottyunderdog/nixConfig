@@ -7,7 +7,9 @@
     };
 
     config = lib.mkIf config.zoom.enable {
+
       environment.systemPackages = [ pkgs.zoom-us ];
+
     };
 
   };

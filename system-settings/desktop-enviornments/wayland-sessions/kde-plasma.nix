@@ -20,6 +20,7 @@
         kdePackages.oxygen-icons
         kdePackages.oxygen-sounds
       ];
+
     };
 
   };

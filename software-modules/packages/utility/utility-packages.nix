@@ -16,7 +16,6 @@
       self.nixosModules.smartmontools
       self.nixosModules.upscaler
       self.nixosModules.wine
-      self.nixosModules.yazi
     ];
 
     options = {

@@ -20,10 +20,6 @@
       mkv-toolnix.enable = lib.mkDefault true;
       subtitle-editor.enable = lib.mkDefault true;
 
-      environment.systemPackages = with pkgs; [
-        subtitleeditor
-      ];
-
     };
 
   };

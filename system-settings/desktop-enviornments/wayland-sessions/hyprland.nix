@@ -26,11 +26,6 @@
       kate.enable = lib.mkOverride 991 true;
       kcalc.enable = lib.mkOverrid 991 true;
 
-      # programs.noctalia = lib.mkIf (!config.niri.enable) {
-      #  enable = true;
-      #  recommendedServices.enable = true;
-      #};
-
       networking.networkmanager.enable = lib.mkDefault true;
       hardware.bluetooth.enable = lib.mkDefault true;
       services.power-profiles-daemon.enable = lib.mkDefault true;

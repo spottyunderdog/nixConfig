@@ -8,9 +8,11 @@
     };
 
     config = {
+
       environment.systemPackages = with pkgs;
         lib.optional (!config.vesktop.enable && config.discord.enable) discord
         ++ lib.optional config.vesktop.enable vesktop;
+
     };
 
   };

@@ -20,7 +20,6 @@
       self.nixosModules.networking
       self.nixosModules.auto-update
       self.nixosModules.sops
-      self.nixosModules.session-variables
     ];
 
     # Enable systemd services in initrd
@@ -98,11 +97,6 @@
     services.xserver.xkb = {
       layout = "us";
       variant = "";
-    };
-
-    users.groups.dot-files = {
-      name = "dotFiles";
-      gid = 1100;
     };
 
   };
