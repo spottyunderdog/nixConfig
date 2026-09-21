@@ -12,6 +12,11 @@ in  {
         neededForUsers = true;
       };
 
+      "passwords/hyprland" = {
+        sopsFile = secrets-file1;
+        neededForUsers = true;
+      };
+
       "drdino/address" = {
         sopsFile = secrets-file2;
       };

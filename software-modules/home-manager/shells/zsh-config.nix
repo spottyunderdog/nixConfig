@@ -8,7 +8,7 @@
 
     config = lib.mkIf config.zsh-config.enable {
       programs.zsh = {
-        enable = true;
+        enable = lib.mkDefault true;
         history = {
           share = true;
           size = 20000;

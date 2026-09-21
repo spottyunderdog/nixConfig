@@ -16,7 +16,7 @@ in {
     # Import User Configurations Here
     # User modules should follow the format of self.nixosModules."userName"
     imports = [
-      self.nixosModules."nix"
+      self.nixosModules."user-nix"
     ];
 
   };

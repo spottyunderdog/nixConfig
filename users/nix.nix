@@ -7,7 +7,7 @@ let
 
 in {
 
-  flake.nixosModules."${userName}" = { config, pkgs, lib, ... }: {
+  flake.nixosModules."user-${userName}" = { config, pkgs, lib, ... }: {
 
     # Creates a user group for the user that matches the username and uid
     users.groups.${userName} = {

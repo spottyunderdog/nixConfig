@@ -8,7 +8,7 @@
 
     config = lib.mkIf config.bash-config.enable {
       programs.bash = {
-        enable = true;
+        enable = lib.mkDefault true;
         historySize = 20000;
       };
     };

@@ -8,7 +8,7 @@
 
     config = lib.mkIf config.fish-config.enable {
       programs.fish = {
-        enable = true;
+        enable = lib.mkDefault true;
       };
 
     };

@@ -14,7 +14,7 @@ in {
   flake.nixosModules."${hostName}Users" = { config, ... }: {
 
     imports = [
-      self.nixosModules."spotty"
+      self.nixosModules."user-spotty"
     ];
 
   };
