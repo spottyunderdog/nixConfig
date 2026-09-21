@@ -4,12 +4,13 @@
 
     options = {
       bluetooth.enable = lib.mkEnableOption "Use Bluetooth";
+      bluetooth.disconnects-fix.enable = lib.mkEnableOption "Fixes Issue were BT devices may frequently disconnect";
     };
 
     config = lib.mkIf config.bluetooth.enable {
 
       # This is to fix frequent Bluetooth audio dropouts.
-      boot.extraModprobeConfig = ''
+      boot.extraModprobeConfig = lib.mkIf config.bluetooth.disconnects-fix.enable ''
         # Keep Bluetooth coexistence disabled for better BT audio stability
         options iwlwifi bt_coex_active=0
 

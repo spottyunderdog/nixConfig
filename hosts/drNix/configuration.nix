@@ -99,6 +99,9 @@ in {
     # Enable Automatic updates
     auto-update.enable = true;
 
+    # Fix Bluetooth Disconnect Problems
+    bluetooth.disconnects-fix.enable = true;
+
     # Bootloader
     # Grub
     grub.enable = false;
