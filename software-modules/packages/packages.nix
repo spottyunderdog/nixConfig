@@ -16,6 +16,7 @@
       self.nixosModules.shells
       self.nixosModules.obsidian
       self.nixosModules.proton-packages
+      self.nixosModules.noctalia-shell
     ];
 
     dev-packages.enable = lib.mkDefault false;
@@ -31,6 +32,7 @@
     libre-office.enable = lib.mkDefault false;
     obsidian.enable = lib.mkDefault false;
     proton-packages.enable = lib.mkDefault false;
+    noctalia-shell.enable = lib.mkDefault false;
 
   };
 

@@ -80,12 +80,13 @@
 
     #########################################################################
     # Other applications that you may want on all hosts but aren't included #
-    # in the included modules.                                                 #
+    # in the included modules.                                              #
     #########################################################################
     environment.systemPackages = with pkgs; [
         adwaita-icon-theme
         capitaine-cursors
         papirus-icon-theme
+        adw-gtk3
     ];
 
     fonts.fontconfig.enable = true;

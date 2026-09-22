@@ -17,17 +17,10 @@
       kate.enable = lib.mkOverride 990 true;
       kcalc.enable = lib.mkOverride 990 true;
 
-      bluetooth.enable = lib.mkOverride 990 true;
-      networkmanager.enable = lib.mkOverride 990 true;
-      services.power-profiles-daemon.enable = lib.mkOverride 990 true;
-      services.upower.enable = lib.mkOverride 990 true;
+      noctalia-shell.enable = lib.mkOverride 990 true;
 
       environment.systemPackages = with pkgs; [
-        noctalia
         xwayland-satellite
-        nwg-look
-        kdePackages.qt6ct
-        adw-gtk3
       ];
 
     };

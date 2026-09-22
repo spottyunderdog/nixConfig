@@ -26,18 +26,11 @@
       kate.enable = lib.mkOverride 991 true;
       kcalc.enable = lib.mkOverride 991 true;
 
-      bluetooth.enable = lib.mkOverride 991 true;
-      networkmanager.enable = lib.mkOverride 991 true;
-
-      services.power-profiles-daemon.enable = lib.mkDefault true;
-      services.upower.enable = lib.mkDefault true;
+      noctalia-shell.enable = lib.mkOverride 991 true;
 
       environment.systemPackages = with pkgs; [
         hyprmon
         bibata-cursors
-        noctalia
-        nwg-look
-        kdePackages.qt6ct
       ];
 
     };
