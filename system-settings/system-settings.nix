@@ -45,7 +45,10 @@
     # Enable/Disable Bluetooth
     bluetooth.enable = lib.mkDefault true;
     # Fix bluetooth dropout related to the intel ax210 wifi/bluetooth card: https://nixos.wiki/wiki/Bluetooth
-    bluetooth.disconnects-fix.enable = lib.mkDefault false;
+    bluetooth.enable-disconnects-fix = lib.mkDefault false;
+    # Enable blueman Bluetooth manager, shouldn't be needed unless you change the flake to not use
+    # one of the de or a use one of the compositors without the noctalia shell.
+    bluetooth.enable-blueman = lib.mkDefault false; 
 
     # Swap, Uses Swap file for Swap and Zswap.
     # Don't use zram and zswap at the same time.

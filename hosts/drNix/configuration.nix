@@ -102,7 +102,9 @@ in {
     auto-update.enable = true;
 
     # Fix Bluetooth Disconnect Problems
-    bluetooth.disconnects-fix.enable = false;
+    bluetooth.enable-disconnects-fix = false;
+    bluetooth.enable = true;
+    bluetooth.enable-blueman = false;
 
     # Bootloader
     # Grub
@@ -143,7 +145,7 @@ in {
     # SDDM uses the SilentSDDM theme, with the "rei" preset
     # To disable the Theme or change the Silent SDDM Preset
     # see the displayManger.nix file
-    hyprland.enable = false;
+    hyprland.enable = true;
     kde-plasma.enable = true;
     niri.enable = true;
     xfce.enable = false;
@@ -271,14 +273,14 @@ in {
     zen.enable = true;
 
     # Vivaldi Browser
-    vivaldi.enable = false;
+    vivaldi.enable = true;
 
     #################
     # Office Suites #
     #################
 
     # Libre Office
-    libre-office.enable = false;
+    libre-office.enable = true;
     
     # Obsidian (Note Taking Software)
     obsidian.enable = true;
@@ -308,13 +310,13 @@ in {
     ###########################
 
     # Enable Vmware Workstation, For VM management
-    vmware.enable = true;
+    vmware.enable = false;
 
     # Enable Oracle Virtual Box, For VM Management
-    virtualbox.enable = true;
+    virtualbox.enable = false;
 
     # Enable Virtual Machine Manager, For manage QEMU Virtual Machines
-    virt-manager.enable = true;
+    virt-manager.enable = false;
 
     ##############
     # Containers #

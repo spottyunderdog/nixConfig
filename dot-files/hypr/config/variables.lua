@@ -7,8 +7,8 @@ EDITOR       = "kate"
 CALCULATOR   = "kcalc"
 
 -- Monitors
-MONITOR1 = "DP-1"
-MONITOR2 = "eDP-1"
+MONITOR1 = "eDP-1"
+MONITOR2 = "DP-4"
 MONITOR3 = ""
 PRIMARY_MONITOR = MONITOR1
 

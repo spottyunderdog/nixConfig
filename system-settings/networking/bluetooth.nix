@@ -4,14 +4,15 @@
 
     options = {
       bluetooth.enable = lib.mkEnableOption "Use Bluetooth";
-      bluetooth.disconnects-fix.enable = lib.mkEnableOption "Fixes Issue were BT devices may frequently disconnect";
+      bluetooth.enable-disconnects-fix = lib.mkEnableOption "Fixes Issue were BT devices may frequently disconnect";
+      bluetooth.enable-blueman = lib.mkEnableOption "Enable the Blueman Bluetooth service";
     };
 
-    config = lib.mkIf config.bluetooth.enable {
+    config = lib.mkIf (config.bluetooth.enable or config.bluetooth.enable-blueman) {
       
       # This is to fix frequent Bluetooth audio dropouts.
       # Only works for  Intel AX210 card: https://nixos.wiki/wiki/Bluetooth
-      boot.extraModprobeConfig = lib.mkIf config.bluetooth.disconnects-fix.enable ''
+      boot.extraModprobeConfig = lib.mkIf config.bluetooth.enable-disconnects-fix ''
         # Keep Bluetooth coexistence disabled for better BT audio stability
         options iwlwifi bt_coex_active=0
         # Enable software crypto (helps BT coexistence sometimes)
@@ -26,7 +27,7 @@
         options iwlmvm power_scheme=1
       '';
 
-      services.blueman.enable = true;
+      services.blueman.enable = lib.mkIf config.bluetooth.enable-blueman true;
 
       hardware.bluetooth = {
         enable = true;

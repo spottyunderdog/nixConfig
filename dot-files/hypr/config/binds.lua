@@ -13,8 +13,8 @@ local launchPrefix = "uwsm app -- " -- if you are not using UWSM, make this empt
 hl.bind(mainMod .. " + Escape",      hl.dsp.exec_cmd("hyprctl kill"))
 hl.bind(mainMod .. " + Q",           hl.dsp.window.close())
 hl.bind(mainMod .. " + ALT + Space", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + D",           hl.dsp.window.fullscreen({ mode = 1 }))
-hl.bind(mainMod .. " + F",           hl.dsp.window.fullscreen())
+hl.bind(mainMod .. " + D",           hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
+hl.bind(mainMod .. " + F",           hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 
 -- Change focus
 hl.bind(mainMod .. " + Left",  hl.dsp.focus({ direction = "left" }))
@@ -107,6 +107,8 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd(noctCall .. "media previous"), { locke
 hl.bind("XF86MonBrightnessUp",   hl.dsp.exec_cmd(noctCall .. "brightness-up"),   { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(noctCall .. "brightness-down"), { locked = true, repeating = true })
 
+hl.bind("XF86Calculator", hl.dsp.exec_cmd(launchPrefix .. CALCULATOR))
+
 -------------------
 ---- UTILITIES ----
 -------------------
@@ -192,6 +194,8 @@ local function layout_bind(bind_table)
         end
     end
 end
+
+
 
 -- Keybinds
 hl.bind(mainMod .. " + ALT + Right", layout_bind({
