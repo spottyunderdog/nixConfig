@@ -36,8 +36,8 @@
         hyprmon
         bibata-cursors
         noctalia
-        #nwg-look
-        #kdePackages.qt6ct
+        nwg-look
+        kdePackages.qt6ct
       ];
 
     };

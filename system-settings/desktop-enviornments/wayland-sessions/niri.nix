@@ -25,6 +25,9 @@
       environment.systemPackages = with pkgs; [
         noctalia
         xwayland-satellite
+        nwg-look
+        kdePackages.qt6ct
+        adw-gtk3
       ];
 
     };
