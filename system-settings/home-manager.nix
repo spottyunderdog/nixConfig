@@ -11,7 +11,7 @@
       useUserPackages = false;
     };
 
-    home-manager.backupFileExtension = "backup";
+    home-manager.backupFileExtension = "";
 
   };
 

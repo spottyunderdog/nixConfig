@@ -10,6 +10,7 @@
       self.homeModules.dot-files
       self.homeModules.vscode-config
       self.homeModules.shell-configs
+      self.homeModules.gtk-config
     ];
 
     zed-editor-config.enable = lib.mkDefault osConfig.zed-editor.enable;
@@ -18,15 +19,6 @@
     noctalia-dots.enable = lib.mkOverride 1001 osConfig.noctalia.enable;
     kitty-dots.enable = lib.mkOverride 1001 osConfig.kitty.enable;
     vscode-config.enable = lib.mkDefault osConfig.vscode.enable;
-
-    # gtk = {
-    #   enable = true;
-    #   theme = {
-    #     name = "adw-gtk3";
-    #     package = pkgs.adw-gtk3;
-    #   };
-    # };
-    # xdg.configFile."mimeapps.list".force = true;
 
   };
 

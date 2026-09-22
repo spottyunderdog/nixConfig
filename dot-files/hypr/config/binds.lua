@@ -174,6 +174,35 @@ hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special())
 hl.bind(mainMod .. " + G", hl.dsp.focus({ workspace = "name:gaming"}))
 hl.bind(mainMod .. " + SHIFT + G", hl.dsp.window.move({ workspace = "name:gaming" }))
 
+
+-----------------------
+---- WINDOW GROUPS ----   (niri-style tabbed stacking)
+-----------------------
+
+-- Create/dissolve a group from the focused window
+hl.bind(mainMod .. " + ALT + G", hl.dsp.group.toggle())
+
+-- Pull a neighboring window into the focused window's group (or make one if none exists)
+hl.bind(mainMod .. " + CONTROL + ALT + Left",  hl.dsp.window.move({ into_or_create_group = "l" }))
+hl.bind(mainMod .. " + CONTROL + ALT + Right", hl.dsp.window.move({ into_or_create_group = "r" }))
+hl.bind(mainMod .. " + CONTROL + ALT + Up",    hl.dsp.window.move({ into_or_create_group = "u" }))
+hl.bind(mainMod .. " + CONTROL + ALT + Down",  hl.dsp.window.move({ into_or_create_group = "d" }))
+
+-- Pop the focused window back out of its group
+hl.bind(mainMod .. " + ALT + SHIFT + G", hl.dsp.window.move({ out_of_group = true }))
+
+-- Cycle the active tab within a group
+hl.bind(mainMod .. " + ALT + Tab",         hl.dsp.group.next())
+hl.bind(mainMod .. " + ALT + SHIFT + Tab", hl.dsp.group.prev())
+
+-- Reorder the focused window within its group's tab order
+hl.bind(mainMod .. " + ALT + SHIFT + Right", hl.dsp.group.move_window({ forward = true }))
+hl.bind(mainMod .. " + ALT + SHIFT + Left",  hl.dsp.group.move_window({ forward = false }))
+
+-- Lock the active group so new windows don't get auto-absorbed into it
+hl.bind(mainMod .. " + ALT + L", hl.dsp.group.lock_active({ action = "toggle" }))
+
+
 -------------------------------
 -- Layout Dependent Keybinds --
 -------------------------------

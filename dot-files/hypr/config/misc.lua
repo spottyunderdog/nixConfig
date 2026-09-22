@@ -2,6 +2,9 @@ hl.config({
     dwindle = {
         preserve_split = true,
     },
+    binds = {
+        movefocus_cycles_fullscreen = true;
+    },
     misc = {
         col = {
             splash = CACHYLGREEN,

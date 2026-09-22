@@ -145,7 +145,7 @@ in {
     # SDDM uses the SilentSDDM theme, with the "rei" preset
     # To disable the Theme or change the Silent SDDM Preset
     # see the displayManger.nix file
-    hyprland.enable = false;
+    hyprland.enable = true;
     kde-plasma.enable = true;
     niri.enable = true;
     xfce.enable = false;
