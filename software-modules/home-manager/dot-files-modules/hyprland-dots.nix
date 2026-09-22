@@ -17,6 +17,7 @@
           #"../../../dot-files/hypr";
           "${config.home.homeDirectory}/nixConfig/dot-files/hypr";
         recursive = true;
+        force = true;
       };
 
       xdg.configFile."uwsm" = {
@@ -25,6 +26,7 @@
           #"../../../dot-files/uwsm";
           "${config.home.homeDirectory}/nixConfig/dot-files/uwsm";
         recursive = true;
+        force = true;
       };
 
       gtk = {

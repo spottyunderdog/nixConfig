@@ -145,7 +145,7 @@ in {
     # SDDM uses the SilentSDDM theme, with the "rei" preset
     # To disable the Theme or change the Silent SDDM Preset
     # see the displayManger.nix file
-    hyprland.enable = true;
+    hyprland.enable = false;
     kde-plasma.enable = true;
     niri.enable = true;
     xfce.enable = false;
@@ -269,7 +269,7 @@ in {
     # Alt Browsers #
     ################
 
-    # Zen Browser ( Requires Flatpaks to be enabled )
+    # Zen Browser
     zen.enable = true;
 
     # Vivaldi Browser

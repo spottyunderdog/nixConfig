@@ -17,6 +17,7 @@
           "${config.home.homeDirectory}/nixConfig/dot-files/niri";
           #../../../dot-files/niri;
         recursive = true;
+        force = true;
       };
 
     };

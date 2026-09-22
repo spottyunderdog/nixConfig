@@ -14,6 +14,7 @@
           "${config.home.homeDirectory}/nixConfig/dot-files/noctalia";
           #../../../dot-files/noctalia;
         recursive = true;
+        force = true;
       };
 
     };

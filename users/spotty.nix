@@ -87,7 +87,7 @@ in {
     # Also enables kitty dots. Dots use the kitty
     # Terminal, you may need to enable utilityApps 
     # to use.
-    hyprland-dots.enable = true;
+    hyprland-dots.enable = false;
 
     # Enable My Noctalia dotfiles
     noctalia-dots.enable = true;

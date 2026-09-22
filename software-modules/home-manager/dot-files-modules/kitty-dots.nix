@@ -14,6 +14,7 @@
           #../../../dot-files/kitty;
           "${config.home.homeDirectory}/nixConfig/dot-files/kitty";
         recursive = true;
+        force = true;
       };
 
     };
