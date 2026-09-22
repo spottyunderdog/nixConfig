@@ -19,7 +19,7 @@
       
       xdg.configFile."gtk-3.0/settings.ini".force = true;
       xdg.configFile."gtk-4.0/settings.ini".force = true;
-
+      home.file."${config.home.homeDirectory}/.gtkrc-2.0".force = lib.mkDefault true;
 
   };
 

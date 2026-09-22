@@ -19,6 +19,7 @@
     noctalia-dots.enable = lib.mkOverride 1001 osConfig.noctalia.enable;
     kitty-dots.enable = lib.mkOverride 1001 osConfig.kitty.enable;
     vscode-config.enable = lib.mkDefault osConfig.vscode.enable;
+    neovim-dots.enable = lib.mkDefault osConfig.neovim.enable;
 
   };
 

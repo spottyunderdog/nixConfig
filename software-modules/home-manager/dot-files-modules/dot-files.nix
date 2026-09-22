@@ -7,6 +7,7 @@
       self.homeModules.hyprland-dots
       self.homeModules.kitty-dots
       self.homeModules.noctalia-dots
+      self.homeModules.neovim-dots
     ];
 
   };
