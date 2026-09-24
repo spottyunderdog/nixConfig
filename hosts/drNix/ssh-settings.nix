@@ -6,11 +6,23 @@
     openSSH.enable = true;
     # Ports Open SSH SHould use
     nix-vars.ssh-ports = lib.mkForce [ ];
-    services.openssh.openFirewall = false;
+    services.openssh.openFirewall = lib.mkForce false;
     nix-vars.allowed-ssh-users = [ "spotty" ];
     sshClient.config = lib.mkForce ''
       Include ${config.sops.templates."ssh-hosts".path}
     '';
+
+    services.openssh.extraConfig = ''
+      Include ${config.sops.templates."ssh-port.conf".path}
+    '';
+
+    sops.templates."ssh-port.conf" = {
+      mode = "0444";
+      content = ''
+        Port ${config.sops.placeholder."drnix/port"}
+        ListenAddress ${config.sops.placeholder."drnix/address"}
+      '';
+    };
 
     sops.templates."ssh-hosts" = {
       mode = "0400";
@@ -43,11 +55,11 @@
       };
       script = ''
         port=$(cat ${config.sops.secrets."drnix/port".path})
-        firewall-cmd --zone=public --add-port="$port/tcp"
+        firewall-cmd --zone=trusted --add-port="$port/tcp"
       '';
       preStop = ''
         port=$(cat ${config.sops.secrets."drnix/port".path})
-        firewall-cmd --zone=public --remove-port="$port/tcp" || true
+        firewall-cmd --zone=trusted --remove-port="$port/tcp" || true
       '';
     };
 
