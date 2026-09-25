@@ -5,6 +5,13 @@
 
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
 
+    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+
     omniflake = {
       url = "github:fzakaria/omniflake";
       inputs.nixpkgs.follows = "nixpkgs";

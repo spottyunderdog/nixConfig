@@ -105,6 +105,31 @@
       variant = "";
     };
 
+    nixpkgs.overlays = config.cachyos-kernel.overlay;
+    nix.settings = {
+
+      auto-optimise-store = true;
+
+      substituters = [ 
+        "https://attic.xuyh0120.win/lantian"
+        "https://hyprland.cachix.org"
+      ];
+
+      trusted-substituters = [
+        "https://attic.xuyh0120.win/lantian"
+        "https://hyprland.cachix.org"
+      ];
+
+      trusted-public-keys = [
+        "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      ];
+
+      allowed-users = [ "*" ];
+      trusted-users = ["root" "@wheel"];
+
+    };
+
   };
 
 }
