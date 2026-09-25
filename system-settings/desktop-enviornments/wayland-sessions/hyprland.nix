@@ -20,7 +20,7 @@
 
       xdg.portal = {
         enable = true;
-        extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
+        extraPortals = [ inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland ];
       };
 
       kitty.enable = lib.mkOverride 991 true;

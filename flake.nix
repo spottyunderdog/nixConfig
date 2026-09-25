@@ -5,12 +5,15 @@
 
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
 
+    noctalia = { 
+      url = "github:noctalia-dev/noctalia/cachix";
+    };
+
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-
 
     omniflake = {
       url = "github:fzakaria/omniflake";
