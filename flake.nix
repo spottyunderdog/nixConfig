@@ -5,9 +5,7 @@
 
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
 
-    noctalia = { 
-      url = "github:noctalia-dev/noctalia/cachix";
-    };
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
 
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-plugins = {
@@ -15,25 +13,48 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    omniflake = {
-      url = "github:fzakaria/omniflake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     millennium = {
       url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # sops-nix.url = "github:Mic92/sops-nix";
-    # sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    # To add for non-omniflake branch
-    # - Flake Parts (following nixpkgs)
-    # - Home Manager (following nixpkgs)
-    # - import tree (following nixpkgs)
-    # - Silent SDDM (following nixpkgs)
-    # - Zen Browser (following nixpkgs)
-    # - Remove Omniflake option for cachy kernel
+    # silentSDDM = {
+    #   url = "github:uiriansan/SilentSDDM";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # zen-browser = {
+    #   url = "github:0xc000022070/zen-browser-flake";
+    #   inputs = {
+    #     nixpkgs.follows = "nixpkgs";
+    #     home-manager.follows = "home-manager";
+    #   };
+    # };
+
+    ################################################
+    # Omni flake Included stuff                    #
+    # This is for spotty's purposes when he pushes #
+    # The refactor-testing branch to the main ones #
+    ################################################
+
+    # sops-nix = {
+    #   url = "github:Mic92/sops-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    # home-manager = {
+    #   url = "github:nix-community/home-manager";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    # flake-parts = {
+    #   url = "github:vic/import-tree";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    # import-tree = {
+    #   url = "github:denful/import-tree";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
   };
 
