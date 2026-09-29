@@ -18,17 +18,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # silentSDDM = {
-    #   url = "github:uiriansan/SilentSDDM";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # zen-browser = {
-    #   url = "github:0xc000022070/zen-browser-flake";
-    #   inputs = {
-    #     nixpkgs.follows = "nixpkgs";
-    #     home-manager.follows = "home-manager";
-    #   };
-    # };
+    silentSDDM = {
+      url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "omniflake"; # Change to home-manager for non-omniflake
+      };
+    };
+
+    omniflake = {
+      url = "github:fzakaria/omniflake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     ################################################
     # Omni flake Included stuff                    #

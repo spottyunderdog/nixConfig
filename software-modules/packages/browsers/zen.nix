@@ -9,7 +9,7 @@
     config = lib.mkIf config.zen.enable {
 
       environment.systemPackages = with pkgs; [ 
-        inputs.omniflake.flakes.zen-browser-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
+        inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
       ];
 
     };

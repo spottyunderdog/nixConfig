@@ -2,9 +2,7 @@
 
   flake.nixosModules.silentSDDM = {pkgs, config, lib, ... }: {
 
-    imports = [
-      inputs.omniflake.flakes.silentsddm.nixosModules.default
-    ];
+    imports = [ inputs.silentSDDM.nixosModules.default ];
 
     options = {
       silentSDDM.enable = lib.mkEnableOption "Silent SDDM Theme";
