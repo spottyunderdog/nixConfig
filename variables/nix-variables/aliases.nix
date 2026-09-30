@@ -18,8 +18,8 @@
           "rebuild-flake" = "sudo nixos-rebuild switch --flake";
           "rebuild" = "sudo nixos-rebuild switch";
           "flakeupdate" = "sudo nix flake update";
-          "checkflake" = "nix flake check --no-build";
-          "checkflake-impure" = "nix flake check --no-build --impure";
+          "checkflake" = "nix flake check";
+          "checkflake-impure" = "nix flake check --impure";
           "optimize" = "sudo nix-store --optimize";
           "rmold-optimize" = "echo 'removing garbage' & rmgarbage & echo 'optimizing nix store' & optimize"; 
           "hw" = "hwinfo --short";

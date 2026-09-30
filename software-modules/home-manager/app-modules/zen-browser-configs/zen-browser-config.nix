@@ -17,8 +17,104 @@
       programs.zen-browser = {
         enable = true;
         setAsDefaultBrowser = true;
-        policies = self.homeModules.zen-polices;
-          
+        policies = let
+          mkLockedAttrs = builtins.mapAttrs (_: value: {
+            Value = value;
+              Status = "locked";
+          });
+
+          mkPluginUrl = id: "https://addons.mozilla.org/firefox/downloads/latest/${id}/latest.xpi";
+
+          mkExtensionEntry = {
+            id,
+            pinned ? false,
+          }: let
+            base = {
+              install_url = mkPluginUrl id;
+              installation_mode = "force_installed";
+            };
+          in
+            if pinned
+            then base // {default_area = "navbar";}
+            else base;
+
+          mkExtensionSettings = builtins.mapAttrs (_: entry:
+            if builtins.isAttrs entry
+            then entry
+            else mkExtensionEntry {id = entry;});
+
+        in {
+          AutofillAddressEnabled = false;
+          AutofillCreditCardEnabled = false;
+          DisableAppUpdate = true;
+          DisableFeedbackCommands = false;
+          DisableFirefoxStudies = true;
+          DisablePocket = true;
+          DisableTelemetry = true;
+          DisableProfileImport = true;
+          DontCheckDefaultBrowser = true;
+          NoDefaultBookmarks = true;
+          OfferToSaveLogins = false;
+          EnableTrackingProtection = {
+            Value = true;
+            Locked = false;
+            Cryptomining = true;
+            Fingerprinting = true;
+          };
+          SanitizeOnShutdown = {
+            FormData = true;
+            Cache = true;
+          };
+
+          ExtensionSettings = mkExtensionSettings {
+            "uBlock0@raymondhill.net" = mkExtensionEntry {
+              id = "ublock-origin";
+              pinned = true;
+            }; # Ublock Origin
+
+            "78272b6fa58f4a1abaac99321d503a20@proton.me" = mkExtensionEntry {
+              id = "proton-pass";
+              pinned = true;
+            }; # Proton Pass: Pasword manager
+
+            "sponsorBlocker@ajay.app" = "sponsorblock"; # Sponser Block
+            "id1-MnnxcxisBPnSXQ@jetpack" = "privacy-badger17"; # Privacy Badger
+            "firefox@betterttv.net" = "betterttv"; # Better TTV
+            "@searchengineadremover" = "searchengineadremover"; # Search Engine Ad Remover
+            "firefox-extension@steamdb.info" = "steam-database";
+            "github-no-more@ihatereality.space" = "github-no-more";
+            "github-repository-size@pranavmangal" = "gh-repo-size";
+            "jid1-BoFifL9Vbdl2zQ@jetpack" = "decentraleyes";
+            "remove.youtube.tracking@moreo.app" = "remove-youtube-tracking";
+            "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}" = "refined-github-"; # Refined GitHub
+            "{cb31ec5d-c49a-4e5a-b240-16c767444f62}" = "indie-wiki-buddy"; # Indie Wiki Buddy
+            "{74145f27-f039-47ce-a470-a662b129930a}" = "clearurls"; # Clear URLs
+            "{85860b32-02a8-431a-b2b1-40fbd64c9c69}" = "github-file-icons"; # File Icon for Gihub, gitlab and bitbucket
+          };
+
+          "3rdparty".Extensions."uBlock0@raymondhill.net".toOverwrite = {
+            filterLists = [
+              "user-filters"
+              "ublock-filters"
+              "ublock-badware"
+              "ublock-privacy"
+              "ublock-quick-fixes"
+              "ublock-unbreak"
+            ];
+            filters = ["||doubleclick.net^"];
+          };
+
+          Preferences = mkLockedAttrs {
+            "browser.aboutConfig.showWarning" = false;
+            "browser.gesture.swipe.left" = "";
+            "browser.gesture.swipe.right" = "";
+            "browser.newtabpage.activity-stream.feeds.topsites" = false;
+            "browser.startup.homepage" = "about:home";
+            "browser.tabs.warnOnClose" = "true";
+            "browser.topsites.contile.enabled" = false;
+            "browser.translations.enable" = false;
+          };
+        };
 
         profiles.default = {
           mods = [
@@ -31,37 +127,122 @@
             "03a8e7ef-cf00-4f41-bf24-a90deeafc9db" # Zen Color Picker
           ];
 
-          search = self.homeModules.zen-search;
+          search = {
+            force = true;
+            default = "ddg";
+            privateDefault = "ddg";
+            engines = let
+              nixSnowflakeIcon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            in {
+              "Nix Packages" = {
+                urls = [
+                  {
+                    template = "https://search.nixos.org/packages";
+                    params = [
+                      {
+                        name = "type";
+                        value = "packages";
+                      }
+                      {
+                        name = "channel";
+                        value = "unstable";
+                      }
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
+                icon = nixSnowflakeIcon;
+                definedAliases = ["@pkgs"];
+              };
+              "Nix Options" = {
+                urls = [
+                  {
+                    template = "https://search.nixos.org/options";
+                    params = [
+                      {
+                        name = "channel";
+                        value = "unstable";
+                      }
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
+                icon = nixSnowflakeIcon;
+                definedAliases = ["@nop"];
+              };
+              "Home Manager Options" = {
+                urls = [
+                  {
+                    template = "https://home-manager-options.extranix.com/";
+                    params = [
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
+                      {
+                        name = "release";
+                        value = "master"; # unstable
+                      }
+                    ];
+                  }
+                ];
+                icon = nixSnowflakeIcon;
+                definedAliases = ["hmop"];
+              };
 
-          containersForce = true;
+              "Google Maps" = {
+                urls = [
+                  {
+                    template = "http://maps.google.com";
+                    params = [
+                      {
+                        name = "q";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
+                definedAliases = ["@maps" "@gmaps"];
+              };
+              "StartPage" = {
+                urls = [
+                  {
+                    template = "https://www.startpage.com/sp/search";
+                    params = [
+                      {
+                        name = "q";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
+                definedAliases = ["@startpage" "@sp" "@pp"];
+                icon = "https://www.startpage.com/sp/cdn/favicons/favicon-gradient.ico";
+                updateInterval = 24 * 60 * 60 * 1000;
+              };
+              "ddg" = {
+                urls = [
+                  {
+                    template = "https://duckduckgo.com";
+                    params = [
+                      {
+                        name = "q";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
+                definedAliases = ["@duck" "@ddg" "@dck" "@dckk"];
+              };
 
-          containers = {
-            Homwork = {
-              color = "blue";
-              icon = "purple";
-              id = 1;
+              bing.metaData.hidden = "true";
             };
-            Computer = {
-              color = "blue";
-              icon = "briefcase";
-              id = 2;
-            };
-            Shopping = {
-              color = "yellow";
-              icon = "shopping cart";
-              id = 3;
-            };
-            Finaces = {
-              color = "green";
-              icon = "dollar sign";
-              id = 4;
-            };
-            Gaming = {
-              color = "purple";
-              icon = "fence";
-              id = 5;
-            };
-
           };
 
           settings = {
@@ -74,18 +255,276 @@
             "zen.view.sidebar-expanded" = true;
             "zen.view.sidebar-expanded.max-width" = 500;
             "zen.welcome-screen.seen" = true;
-            "zen.show-newtab-button-top" = true;
+            "zen.show-newtab-button-top" = false;
             "zen.workspaces.show-workspace-indicator" = true;
             "permissions.default.loopback-network" = 2;
             "permissions.default.local-network" = 2;
             "media.videocontrols.picture-in-picture.enabled" = true;
             "zen.mediacontrols.enabled" = true;
             "browser.toolbars.bookmars.visibility" = true;
+            "font.name.serif.x-western" = "JetBrainsMono Nerd Font";
+          };
+
+          containersForce = true;
+          containers = {
+            Personal = {
+              color = "yellow";
+              icon = "chill";
+              id = 1;
+            };
+            Shopping = {
+              color = "purple";
+              icon = "cart";
+              id = 2;
+            };
+            Banking = {
+              color = "yellow";
+              icon = "dollar";
+              id = 3;
+            };
+
           };
 
           spacesForce = true;
 
-          spaces = {};
+          spaces = {
+
+            "Computer" = {
+              id = "99d4c387-f2eb-492b-a9f1-92f5cb5474d1";
+              icon = "chrome://browser/skin/zen-icons/selectable/terminal.svg";
+              position = 1000;
+              container = 1;
+              pins = {
+                "Nixos Wiki" = {
+                  id = "5d0bb7be-4441-490a-996b-305f1e449108";
+                  url = "https://wiki.nixos.org/wiki/NixOS_Wiki";
+                  position = 100;
+                };
+                "Unofficial Nixos Wiki" = {
+                  id = "42e15004-d0c1-4e25-99a3-059b3935390f";
+                  url = "https://nixos.wiki/";
+                  position = 101;
+                };
+                "Cachy OS Wiki" = {
+                  id = "03bbeceb-477e-4777-9754-aa8f31ae6f80";
+                  url = "https://wiki.cachyos.org/";
+                  position = 102;
+                };
+              };
+              theme = {
+                opacity = 0.5;
+                texture = 0.0;
+                rotation = 45;
+                type = "gradient";
+                colors = [
+                  {
+                    red = 38;
+                    green = 217;
+                    blue = 173;
+                    algorithm = "floating";
+                    type = "explicit-lightness";
+                    lightness = 100;
+                  }
+                  {
+                    red = 173;
+                    green = 38;
+                    blue = 217;
+                    algorithm = "floating";
+                    type = "explicit-lightness";
+                    lightness = 100;
+                  }
+                  {
+                    red = 217;
+                    green = 173;
+                    blue = 38;
+                    algorithm = "floating";
+                    type = "explicit-lightness";
+                    lightness = 100;
+                  }
+                ];
+              };
+            };
+
+            "Gaming" = {
+              id = "c739868a-8646-4706-8560-d26cd37dc1dc";
+              icon = "chrome://browser/skin/zen-icons/selectable/game-controller.svg";
+              position = 2000;
+              container = 1;
+              theme = {
+                opacity = 0.5;
+                texture = 0.0;
+                rotation = 45;
+                type = "gradient";
+                colors = [
+                  {
+                    red = 38;
+                    green = 217;
+                    blue = 173;
+                    algorithm = "floating";
+                    type = "explicit-lightness";
+                    lightness = 100;
+                  }
+                  {
+                    red = 173;
+                    green = 38;
+                    blue = 217;
+                    algorithm = "floating";
+                    type = "explicit-lightness";
+                    lightness = 100;
+                  }
+                  {
+                    red = 217;
+                    green = 173;
+                    blue = 38;
+                    algorithm = "floating";
+                    type = "explicit-lightness";
+                    lightness = 100;
+                  }
+                ];
+              };
+            };
+
+            "Personal" = {
+              id = "4bbf583d-5e7b-4448-b5af-4744e397006e";
+              icon = "chrome://browser/skin/zen-icons/selectable/chat.svg";
+              position = 3000;
+              container = 1;
+              theme = {
+                opacity = 0.5;
+                texture = 0.0;
+                rotation = 45;
+                type = "gradient";
+                colors = [
+                  {
+                    red = 38;
+                    green = 217;
+                    blue = 173;
+                    algorithm = "floating";
+                    type = "explicit-lightness";
+                    lightness = 100;
+                  }
+                  {
+                    red = 173;
+                    green = 38;
+                    blue = 217;
+                    algorithm = "floating";
+                    type = "explicit-lightness";
+                    lightness = 100;
+                  }
+                  {
+                    red = 217;
+                    green = 173;
+                    blue = 38;
+                    algorithm = "floating";
+                    type = "explicit-lightness";
+                    lightness = 100;
+                  }
+                ];
+              };
+            };
+
+            "Shopping" = {
+              id = "3cd730ad-0f1e-4f38-8cb0-b92c8ba2b8d7";
+              icon = "chrome://browser/skin/zen-icons/selectable/basket.svg";
+              position = 4000;
+              container = 2;
+              theme = {
+                opacity = 0.5;
+                texture = 0.0;
+                rotation = 45;
+                type = "gradient";
+                colors = [
+                  {
+                    red = 38;
+                    green = 217;
+                    blue = 173;
+                    algorithm = "floating";
+                    type = "explicit-lightness";
+                    lightness = 100;
+                  }
+                  {
+                    red = 173;
+                    green = 38;
+                    blue = 217;
+                    algorithm = "floating";
+                    type = "explicit-lightness";
+                    lightness = 100;
+                  }
+                  {
+                    red = 217;
+                    green = 173;
+                    blue = 38;
+                    algorithm = "floating";
+                    type = "explicit-lightness";
+                    lightness = 100;
+                  }
+                ];
+              };
+            };
+
+            "School" = {
+              id = "07373558-8ef4-488b-835d-43ad89b119c7";
+              icon = "chrome://browser/skin/zen-icons/selectable/school.svg";
+              position = 5000;
+              container = 1;
+              theme = {
+                opacity = 0.5;
+                texture = 0.0;
+                rotation = 45;
+                type = "gradient";
+                colors = [
+                  {
+                    red = 38;
+                    green = 217;
+                    blue = 173;
+                    algorithm = "floating";
+                    type = "explicit-lightness";
+                    lightness = 100;
+                  }
+                  {
+                    red = 173;
+                    green = 38;
+                    blue = 217;
+                    algorithm = "floating";
+                    type = "explicit-lightness";
+                    lightness = 100;
+                  }
+                  {
+                    red = 217;
+                    green = 173;
+                    blue = 38;
+                    algorithm = "floating";
+                    type = "explicit-lightness";
+                    lightness = 100;
+                  }
+                ];
+              };
+            };
+
+            "Banking" = {
+              id = "cee40526-19ae-4e61-8267-1f575413a41d";
+              icon = "chrome://browser/skin/zen-icons/selectable/briefcase.svg";
+              position = 6000;
+              container = 3;
+              theme = {
+                opacity = 0.5;
+                texture = 0.0;
+                rotation = 45;
+                type = "gradient";
+                colors = [
+                  {
+                    red = 200;
+                    green = 200;
+                    blue = 200;
+                    algorithm = "floating";
+                    type = "explicit-lightness";
+                    lightness = 100;
+                  }
+                ];
+              };
+            };
+
+          };
         
         };
 

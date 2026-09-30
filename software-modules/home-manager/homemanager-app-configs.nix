@@ -11,6 +11,7 @@
       self.homeModules.vscode-config
       self.homeModules.shell-configs
       self.homeModules.gtk-config
+      self.homeModules.zen-browser-config
     ];
 
     zed-editor-config.enable = lib.mkDefault osConfig.zed-editor.enable;
@@ -20,6 +21,7 @@
     kitty-dots.enable = lib.mkOverride 1001 osConfig.kitty.enable;
     vscode-config.enable = lib.mkDefault osConfig.vscode.enable;
     neovim-dots.enable = lib.mkDefault osConfig.neovim.enable;
+    zen-browser-config.enable = true;
 
   };
 

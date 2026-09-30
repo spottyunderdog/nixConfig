@@ -27,7 +27,7 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "omniflake"; # Change to home-manager for non-omniflake
+        #home-manager.follows = "omniflake"; # Change to home-manager for non-omniflake
       };
     };
 
