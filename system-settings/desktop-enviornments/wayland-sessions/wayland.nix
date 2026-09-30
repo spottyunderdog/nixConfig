@@ -13,6 +13,7 @@
     gnome.enable = lib.mkDefault false;
     hyprland.enable = lib.mkDefault false;
     kde-plasma.enable = lib.mkDefault true;
+    hyprland.useLatestGit = lib.mkDefault false;
 
   };
 

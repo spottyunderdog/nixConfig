@@ -285,6 +285,8 @@ in {
     # Obsidian (Note Taking Software)
     obsidian.enable = true;
 
+    goverlay.enable = lib.mkForce false;
+
     ####################################################
     # Apps used to theme other apps or replacment apps #
     # That can be used for extra theming.              #

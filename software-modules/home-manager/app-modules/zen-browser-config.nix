@@ -113,10 +113,19 @@
             "browser.tabs.warnOnClose" = "true";
             "browser.topsites.contile.enabled" = false;
             "browser.translations.enable" = false;
+            "zen.window-sync.sync-only-pinned-tabs" = true;
+            "zen.window-sync.enabled" = true;
+            "zen.welcome-screen.seen" = true;
+            "zen.show-newtab-button-top" = false;
           };
         };
 
-        profiles.default = {
+        profiles.default = let 
+            conIDPersonal = 1; 
+            conIDShopping = 2;
+            conIDBanking = 3;
+            nixSnowflakeIcon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          in  {
           mods = [
             "2317fd93-c3ed-4f37-b55a-304c1816819e" # Audio Indicator Enhanced
             "f7c71d9a-bce2-420f-ae44-a64bd92975ab" # Better Unloaded Tabs 
@@ -131,9 +140,7 @@
             force = true;
             default = "ddg";
             privateDefault = "ddg";
-            engines = let
-              nixSnowflakeIcon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            in {
+            engines = {
               "Nix Packages" = {
                 urls = [
                   {
@@ -249,13 +256,10 @@
             "zen.urlbar.behavior" = "normal";
             "zen.urlbar.replace-newtab" = true;
             "zen.workspaces.continue-where-left-off" = true;
-            "zen.workspaces.seperate-essentials" = false;
             "zen.view.show-clear-tabs-button" = true;
             "zen.view.use-single-toolbar" = false;
             "zen.view.sidebar-expanded" = true;
             "zen.view.sidebar-expanded.max-width" = 500;
-            "zen.welcome-screen.seen" = true;
-            "zen.show-newtab-button-top" = false;
             "zen.workspaces.show-workspace-indicator" = true;
             "permissions.default.loopback-network" = 2;
             "permissions.default.local-network" = 2;
@@ -263,6 +267,8 @@
             "zen.mediacontrols.enabled" = true;
             "browser.toolbars.bookmars.visibility" = true;
             "font.name.serif.x-western" = "JetBrainsMono Nerd Font";
+            "zen.workspaces.separate-essentials" = false;
+            "zen.workspaces.force-container-workspace" = true;
           };
 
           containersForce = true;
@@ -270,203 +276,158 @@
             Personal = {
               color = "yellow";
               icon = "chill";
-              id = 1;
+              id = conIDPersonal;
             };
             Shopping = {
               color = "purple";
               icon = "cart";
-              id = 2;
+              id = conIDShopping;
             };
             Banking = {
               color = "yellow";
               icon = "dollar";
-              id = 3;
+              id = conIDBanking; 
             };
 
           };
 
+          pinsForce = true;
+          pinsForceAction = "demote";
+          pins = {
+            "Email" = {
+              id = "280754c3-096e-4ac5-9144-401ae22a5e78";
+              url = "https://mail.protonmail.com";
+              position = 100;
+              container = conIDPersonal;
+              isEssential = true;
+            };
+            "Youtube" = {
+              id = "901d0338-d473-46c0-a445-31d86da9c41f";
+              url = "https://www.youtube.com";          
+              position = 100;
+              container = conIDPersonal;
+              isEssential = true;
+            };
+          };
+
           spacesForce = true;
 
-          spaces = {
+          spaces = let
+            funColors = {
+              opacity = 0.5;
+              texture = 0.0;
+              rotation = 45;
+              type = "gradient";
+              colors = [
+                {
+                  red = 38;
+                  green = 217;
+                  blue = 173;
+                  algorithm = "floating";
+                  type = "explicit-lightness";
+                  lightness = 100;
+                }
+                {
+                  red = 173;
+                  green = 38;
+                  blue = 217;
+                  algorithm = "floating";
+                  type = "explicit-lightness";
+                  lightness = 100;
+                }
+                {
+                  red = 217;
+                  green = 173;
+                  blue = 38;
+                  algorithm = "floating";
+                  type = "explicit-lightness";
+                  lightness = 100;
+                }
+              ];
+            };
+            boringColors = {
+              opacity = 0.5;
+              texture = 0.0;
+              rotation = 0;
+              type = "gradient";
+              colors = [
+                {
+                  red = 100;
+                  green = 150;
+                  blue = 100;
+                  lightness = 100;
+                }
+              ];
+            };
+            
+          in {
 
             "Computer" = {
               id = "99d4c387-f2eb-492b-a9f1-92f5cb5474d1";
               icon = "chrome://browser/skin/zen-icons/selectable/terminal.svg";
               position = 1000;
-              container = 1;
+              container = conIDPersonal;
               pins = {
-                "Nixos Wiki" = {
-                  id = "5d0bb7be-4441-490a-996b-305f1e449108";
-                  url = "https://wiki.nixos.org/wiki/NixOS_Wiki";
-                  position = 100;
+                "Nix Stuff" = {
+                  isGroup = true;
+                  isFolderCollapsed = true;
+                  folderIcon = nixSnowflakeIcon;
+                  id = "6721113f-1c22-4ec0-b0ae-2d2e1183de86";
+                  pins = {
+                    "Nixos Wiki" = {
+                      id = "5d0bb7be-4441-490a-996b-305f1e449108";
+                      url = "https://wiki.nixos.org/wiki/NixOS_Wiki";
+                      position = 500;
+                      container = conIDPersonal;
+                    };
+                    "Unofficial Nixos Wiki" = {
+                      id = "42e15004-d0c1-4e25-99a3-059b3935390f";
+                      url = "https://nixos.wiki/";
+                      position = 501;
+                      container = conIDPersonal;
+                    };
+                  };
                 };
-                "Unofficial Nixos Wiki" = {
-                  id = "42e15004-d0c1-4e25-99a3-059b3935390f";
-                  url = "https://nixos.wiki/";
-                  position = 101;
-                };
+                
                 "Cachy OS Wiki" = {
                   id = "03bbeceb-477e-4777-9754-aa8f31ae6f80";
                   url = "https://wiki.cachyos.org/";
-                  position = 102;
+                  position = 502;
+                  container = conIDPersonal;
                 };
               };
-              theme = {
-                opacity = 0.5;
-                texture = 0.0;
-                rotation = 45;
-                type = "gradient";
-                colors = [
-                  {
-                    red = 38;
-                    green = 217;
-                    blue = 173;
-                    algorithm = "floating";
-                    type = "explicit-lightness";
-                    lightness = 100;
-                  }
-                  {
-                    red = 173;
-                    green = 38;
-                    blue = 217;
-                    algorithm = "floating";
-                    type = "explicit-lightness";
-                    lightness = 100;
-                  }
-                  {
-                    red = 217;
-                    green = 173;
-                    blue = 38;
-                    algorithm = "floating";
-                    type = "explicit-lightness";
-                    lightness = 100;
-                  }
-                ];
-              };
+              theme = funColors;
             };
 
             "Gaming" = {
               id = "c739868a-8646-4706-8560-d26cd37dc1dc";
               icon = "chrome://browser/skin/zen-icons/selectable/game-controller.svg";
-              position = 2000;
-              container = 1;
-              theme = {
-                opacity = 0.5;
-                texture = 0.0;
-                rotation = 45;
-                type = "gradient";
-                colors = [
-                  {
-                    red = 38;
-                    green = 217;
-                    blue = 173;
-                    algorithm = "floating";
-                    type = "explicit-lightness";
-                    lightness = 100;
-                  }
-                  {
-                    red = 173;
-                    green = 38;
-                    blue = 217;
-                    algorithm = "floating";
-                    type = "explicit-lightness";
-                    lightness = 100;
-                  }
-                  {
-                    red = 217;
-                    green = 173;
-                    blue = 38;
-                    algorithm = "floating";
-                    type = "explicit-lightness";
-                    lightness = 100;
-                  }
-                ];
-              };
+              position = 1001;
+              container = conIDPersonal;
+              theme = funColors;
             };
 
             "Personal" = {
               id = "4bbf583d-5e7b-4448-b5af-4744e397006e";
               icon = "chrome://browser/skin/zen-icons/selectable/chat.svg";
-              position = 3000;
-              container = 1;
-              theme = {
-                opacity = 0.5;
-                texture = 0.0;
-                rotation = 45;
-                type = "gradient";
-                colors = [
-                  {
-                    red = 38;
-                    green = 217;
-                    blue = 173;
-                    algorithm = "floating";
-                    type = "explicit-lightness";
-                    lightness = 100;
-                  }
-                  {
-                    red = 173;
-                    green = 38;
-                    blue = 217;
-                    algorithm = "floating";
-                    type = "explicit-lightness";
-                    lightness = 100;
-                  }
-                  {
-                    red = 217;
-                    green = 173;
-                    blue = 38;
-                    algorithm = "floating";
-                    type = "explicit-lightness";
-                    lightness = 100;
-                  }
-                ];
-              };
+              position = 1002;
+              container = conIDPersonal;
+              theme = funColors;
             };
 
             "Shopping" = {
               id = "3cd730ad-0f1e-4f38-8cb0-b92c8ba2b8d7";
               icon = "chrome://browser/skin/zen-icons/selectable/basket.svg";
-              position = 4000;
-              container = 2;
-              theme = {
-                opacity = 0.5;
-                texture = 0.0;
-                rotation = 45;
-                type = "gradient";
-                colors = [
-                  {
-                    red = 38;
-                    green = 217;
-                    blue = 173;
-                    algorithm = "floating";
-                    type = "explicit-lightness";
-                    lightness = 100;
-                  }
-                  {
-                    red = 173;
-                    green = 38;
-                    blue = 217;
-                    algorithm = "floating";
-                    type = "explicit-lightness";
-                    lightness = 100;
-                  }
-                  {
-                    red = 217;
-                    green = 173;
-                    blue = 38;
-                    algorithm = "floating";
-                    type = "explicit-lightness";
-                    lightness = 100;
-                  }
-                ];
-              };
+              position = 1003;
+              container = conIDShopping;
+              theme = boringColors;
             };
 
             "School" = {
               id = "07373558-8ef4-488b-835d-43ad89b119c7";
               icon = "chrome://browser/skin/zen-icons/selectable/school.svg";
-              position = 5000;
-              container = 1;
+              position = 1004;
+              container = conIDPersonal;
               theme = {
                 opacity = 0.5;
                 texture = 0.0;
@@ -485,14 +446,6 @@
                     red = 173;
                     green = 38;
                     blue = 217;
-                    algorithm = "floating";
-                    type = "explicit-lightness";
-                    lightness = 100;
-                  }
-                  {
-                    red = 217;
-                    green = 173;
-                    blue = 38;
                     algorithm = "floating";
                     type = "explicit-lightness";
                     lightness = 100;
@@ -504,24 +457,9 @@
             "Banking" = {
               id = "cee40526-19ae-4e61-8267-1f575413a41d";
               icon = "chrome://browser/skin/zen-icons/selectable/briefcase.svg";
-              position = 6000;
-              container = 3;
-              theme = {
-                opacity = 0.5;
-                texture = 0.0;
-                rotation = 45;
-                type = "gradient";
-                colors = [
-                  {
-                    red = 200;
-                    green = 200;
-                    blue = 200;
-                    algorithm = "floating";
-                    type = "explicit-lightness";
-                    lightness = 100;
-                  }
-                ];
-              };
+              position = 1005;
+              container = conIDBanking;
+              theme = boringColors;
             };
 
           };

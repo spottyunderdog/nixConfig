@@ -12,6 +12,7 @@
       self.homeModules.shell-configs
       self.homeModules.gtk-config
       self.homeModules.zen-browser-config
+      self.homeModules.jdks
     ];
 
     zed-editor-config.enable = lib.mkDefault osConfig.zed-editor.enable;
