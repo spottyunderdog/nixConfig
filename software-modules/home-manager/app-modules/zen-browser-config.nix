@@ -294,7 +294,7 @@
           pinsForce = true;
           pinsForceAction = "demote";
           pins = {
-            "Email" = {
+            "Proton Mail" = {
               id = "280754c3-096e-4ac5-9144-401ae22a5e78";
               url = "https://mail.protonmail.com";
               position = 100;
@@ -304,7 +304,7 @@
             "Youtube" = {
               id = "901d0338-d473-46c0-a445-31d86da9c41f";
               url = "https://www.youtube.com";          
-              position = 100;
+              position = 101;
               container = conIDPersonal;
               isEssential = true;
             };
@@ -367,23 +367,42 @@
               icon = "chrome://browser/skin/zen-icons/selectable/terminal.svg";
               position = 1000;
               container = conIDPersonal;
+              theme = funColors;
               pins = {
                 "Nix Stuff" = {
                   isGroup = true;
                   isFolderCollapsed = true;
-                  folderIcon = nixSnowflakeIcon;
+                  folderIcon = "file://${nixSnowflakeIcon}";
                   id = "6721113f-1c22-4ec0-b0ae-2d2e1183de86";
                   pins = {
                     "Nixos Wiki" = {
                       id = "5d0bb7be-4441-490a-996b-305f1e449108";
                       url = "https://wiki.nixos.org/wiki/NixOS_Wiki";
-                      position = 500;
+                      position = 200;
                       container = conIDPersonal;
                     };
                     "Unofficial Nixos Wiki" = {
                       id = "42e15004-d0c1-4e25-99a3-059b3935390f";
                       url = "https://nixos.wiki/";
-                      position = 501;
+                      position = 201;
+                      container = conIDPersonal;
+                    };
+                    "Nixos Packages Search" = {
+                      id = "23486a45-f84a-446c-a908-e5aa3bb09adf";
+                      url = "https://search.nixos.org/packages?channel=unstable";
+                      position = 202;
+                      container = conIDPersonal;
+                    };
+                    "Nixos Option Search" = {
+                      id = "96a40b8a-41e0-4960-9b99-d66732652ec5";
+                      url = "https://search.nixos.org/options?channel=unstable";
+                      position = 203;
+                      container = conIDPersonal;
+                    };
+                    "Home Manager Option Search" = {
+                      id = "2d3c27fb-13c0-44b7-91cf-0ba540ee359c";
+                      url = "https://home-manager-options.extranix.com/";
+                      position = 204;
                       container = conIDPersonal;
                     };
                   };
@@ -392,11 +411,16 @@
                 "Cachy OS Wiki" = {
                   id = "03bbeceb-477e-4777-9754-aa8f31ae6f80";
                   url = "https://wiki.cachyos.org/";
-                  position = 502;
+                  position = 205;
+                  container = conIDPersonal;
+                };
+                "Arch Wiki" = {
+                  id = "a1adb71b-8a9d-462c-b6d2-f4d15a8ae6ee";
+                  url = "https://wiki.archlinux.org/title/Main_page";
+                  position = 206;
                   container = conIDPersonal;
                 };
               };
-              theme = funColors;
             };
 
             "Gaming" = {
@@ -405,6 +429,23 @@
               position = 1001;
               container = conIDPersonal;
               theme = funColors;
+              pins = {
+                "ProtonDB" = {
+                  id = "bde81d96-d86d-4ab7-93dd-7864dc977159";
+                  url = "https://www.protondb.com/";
+                  container = conIDPersonal;
+                };
+                "Nexus Mods" = {
+                  id = "05c1971c-b275-4d58-9f31-ce4f74cd7b94";
+                  url = "https://www.nexusmods.com/";
+                  container = conIDPersonal;
+                };
+                "Thunder Store" = {
+                  id = "edcc38d9-bb6c-4d11-a989-d9da080e6b7f";
+                  url = "https://thunderstore.io/";
+                  container = conIDPersonal;
+                };
+              };
             };
 
             "Personal" = {
@@ -421,6 +462,28 @@
               position = 1003;
               container = conIDShopping;
               theme = boringColors;
+              pins = {
+                "Amazon" = {
+                  id = "30f6da74-7bd9-4ff9-879b-ce52a3712730";
+                  url = "https://www.amazon.com";
+                  container = conIDShopping;
+                };
+                "Target" = {
+                  id = "c573f96d-d2c1-4927-9ab9-88f9fa05cdb6";
+                  url = "https://www.target.com";
+                  container = conIDShopping;
+                };
+                "Walmart" = {
+                  id = "3c58f5a7-42f3-4ce7-a9a1-6fbbbbc6e78e";
+                  url = "https://www.walmart.com";
+                  container = conIDShopping;
+                };
+                "eBay" = {
+                  id = "a85d3843-f524-4720-890e-d68d58a3846a";
+                  url = "https://www.ebay.com";
+                  container = conIDShopping;
+                };
+              };
             };
 
             "School" = {
