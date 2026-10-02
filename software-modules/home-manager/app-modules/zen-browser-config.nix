@@ -550,14 +550,6 @@
                 control = true;
               };
             }
-            {
-              id = "zen-toggle-sidebar";
-              key = "z";
-              modifiers = {
-                control = true;
-                alt = true;
-              };
-            }
           ];
         
         };
