@@ -260,6 +260,9 @@
             "zen.view.use-single-toolbar" = false;
             "zen.view.sidebar-expanded" = true;
             "zen.view.sidebar-expanded.max-width" = 500;
+            "zen.view.compact.enable-at-startup" = false;
+            "zen.view.compact.hide-tabbar" = true;
+            "zen.view.compact.hide-toolbar" = true;
             "zen.workspaces.show-workspace-indicator" = true;
             "permissions.default.loopback-network" = 2;
             "permissions.default.local-network" = 2;
@@ -454,6 +457,18 @@
               position = 1002;
               container = conIDPersonal;
               theme = funColors;
+              pins = {
+                "Gmail 1" = {
+                  id = "09414383-67f8-497e-bec5-978c0be1b3d2";
+                  url = "https://mail.google.com/mail/u/0/#inbox";
+                  container = conIDPersonal;
+                };
+                "Gmail 2" = {
+                  id = "9df85132-feb4-45b9-9f52-f6397a39f2dc";
+                  url = "https://mail.google.com/mail/u/1/#inbox";
+                  container = conIDPersonal;
+                };
+              };
             };
 
             "Shopping" = {
@@ -526,6 +541,24 @@
             };
 
           };
+          keyboardShortcutsVersion = 20;
+          keyboardShortcuts = [
+            {
+              id = "zen-compact-mode-toggle";
+              key = "s";
+              modifiers = {
+                control = true;
+              };
+            }
+            {
+              id = "zen-toggle-sidebar";
+              key = "z";
+              modifiers = {
+                control = true;
+                alt = true;
+              };
+            }
+          ];
         
         };
 
