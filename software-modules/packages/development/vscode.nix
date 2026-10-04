@@ -8,7 +8,7 @@
 
     config = lib.mkIf config.vscode.enable {
 
-      environment.systemPackages = [ pkgs.vscode ];
+      environment.systemPackages = [ pkgs.vscodium ];
 
     };
 
