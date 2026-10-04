@@ -5,36 +5,24 @@ This is my personal configuration for nixos all in one nice and lovely little fl
 
 # Branches
 Split into 2 Branches:
-- nix-unstable
-- nix-unstable-omniflake
+- main
+- old-config
 
-The nix-stable-26.05 branch is based of of the stable release 26.05 of Nix OS and uses that version of the NixOS Packages Repository and home-manger release for packages and package configurations.
-
-The nix-unstable and nix-unstable-omniflake use the unstable(Rolling) release of nixos for the Nix packages repository. The nix-unstable-omniflake uses a flake by fzakaria called omniflake found here: https://github.com/fzakaria/omniflake/tree/main.
-
-The development is created from the nix-stable-26.05 branch and is were I work on adding new features first before adding them into the sub branches. I would caution against using this branch as this branch will see frequent commits and they are not gurenteed to be functioning.
-
+The `main` branch is my current configuration, and is pretty consitantly getting updated. The `old-config` branch is were my old nixos config lives and is only kept around so i can see how far my config has come.
 # Installing
-Follow the install steps for each branch, linked below
-MAKE SURE TO READ THE IMPORTENT INFO SECTION BELLOW SO YOU KNOW WHAT EACH FILE DOES
 
-- nix-stable-26.05: link-to-file
-- nix-unstable: link-to-file
-- nix-unstable-omniflake: link-to-file
-
+Read the file here [Install Guide](./documentation/install-guide.md)
 
 # Importent Info
 ## Window Manger Keybinds
-- hyprland.md
-- niri.md
+- [Hyprland Binds](./documentation/hyprland-keys.md)
+- [Niri Binds](./documentation/niri-keys.md)
 ## Package List
-- Packagelist.md link
+- [Package List](./documentation/packages.md)
 ## Options
 - Optionlist.md link
 ## File Structure
-- Based of the nix-stable-26.05 branch
-[![GitHubTree](https://img.shields.io/badge/GitHubTree-nixConfig-blue?style=flat-square)](https://githubtree.mgks.dev/repo/spottyunderdog/nixConfig/nix-stable-26.05/?ref=badge)
-
+- [![GitHubTree](https://img.shields.io/badge/GitHubTree-nixConfig-blue?style=flat-square)](https://githubtree.mgks.dev/repo/spottyunderdog/nixConfig/main/?ref=badge)
 ## Module Breakdown by folder
 ### features
 This part of the flake contains all of the modules that determine the apps sets you can use, the dotfiles and declare app configs, and virulization.

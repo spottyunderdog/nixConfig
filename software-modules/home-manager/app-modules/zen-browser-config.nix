@@ -110,6 +110,7 @@
             "browser.gesture.swipe.right" = "";
             "browser.newtabpage.activity-stream.feeds.topsites" = false;
             "browser.startup.homepage" = "about:home";
+            "browser.startup.page" = 3;
             "browser.tabs.warnOnClose" = "true";
             "browser.topsites.contile.enabled" = false;
             "browser.translations.enable" = false;
@@ -548,6 +549,14 @@
               key = "s";
               modifiers = {
                 control = true;
+              };
+            }
+            {
+              id = "zen-toggle-sidebar";
+              key = "d";
+              modifiers = {
+                control = true;
+                alt = true;
               };
             }
           ];
