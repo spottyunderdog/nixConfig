@@ -21,6 +21,7 @@
 
       environment.systemPackages = with pkgs; [
         xwayland-satellite
+        seahorse
       ];
 
     };
