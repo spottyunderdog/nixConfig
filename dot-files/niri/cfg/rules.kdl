@@ -1,4 +1,4 @@
-    window-rule {
+   window-rule {
         geometry-corner-radius 20 // Set every window radius to 20
         clip-to-geometry true
 }
@@ -19,6 +19,14 @@
 }
 
     // if you use steam you will probably like these
+    window-rule { match app-id=r"^steam$" title=r"^Steam Big Picture Mode$";
+	          open-fullscreen true;
+		  open-floating false;
+	  }
+    window-rule { match app-id=r"^(steam_app.*)|gamescope$";
+    		  open-fullscreen true;
+		  open-floating false;
+	  }
     window-rule {
         match app-id="steam"
         exclude title=r"^[Ss]team$"
@@ -30,19 +38,25 @@
        default-floating-position x=10 y=10 relative-to="bottom-right"
        open-focused false
 }
-
     window-rule {
-        match title="^([Pp]icture[-\\s]?[Ii]n[-\\s]?[Pp]icture)(.*)$"
-        open-floating true
-        default-column-width { proportion 0.25; }
-        default-window-height {proportion 0.25; }
-        default-floating-position x=10 y=10 relative-to="bottom-right"
+	match title="^([Pp]icture[-\\s]?[Ii]n[-\\s]?[Pp]icture)(.*)$"
+	open-floating true
+	default-column-width { proportion 0.25; }
+	default-window-height { proportion 0.25; }
+	default-floating-position x=10 y=10 relative-to="bottom-right"
 }
+
+
+  //  layer-rule {
+  //      match namespace="^noctalia-wallpaper"
+  //      place-within-backdrop true
+//}
 
     layer-rule {
         match namespace="^noctalia-backdrop"
         place-within-backdrop true
 }
+
 
     layer-rule {
         match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
