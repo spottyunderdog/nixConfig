@@ -24,6 +24,7 @@ in {
       # read here: https://wiki.nixos.org/wiki/User_management
       # Paswords not included in repo/flake.
       # Allows for declaritive password management.
+      # Use sops-nix to securely declare and store your password hash.
       # hashedPassword = <paswordhash>;
 
       group = userName;

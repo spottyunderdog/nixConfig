@@ -305,6 +305,7 @@ in {
     environment.systemPackages = with pkgs; [
         logisim-evolution
         pciutils
+        intellij-idea
     ];
 
     ###########################
