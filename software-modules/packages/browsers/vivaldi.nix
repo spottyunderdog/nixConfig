@@ -9,7 +9,11 @@
     config = lib.mkIf config.vivaldi.enable {
 
       environment.systemPackages = with pkgs; [ 
-        vivaldi
+        (vivaldi.override {
+          commandLineArgs = [
+            "--password-store=kwallet6"
+          ];
+        })
         vivaldi-ffmpeg-codecs
       ];
 

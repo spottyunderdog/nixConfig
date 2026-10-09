@@ -31,6 +31,28 @@
     # System State Verion
     system.stateVersion = "26.05";
 
+    services.gnome.gnome-keyring.enable = lib.mkForce false;
+    # Ensures that SDDM While be able to unlock the Kwallet via
+    # Kwallet pam.
+    security.pam.services.sddm = {
+      enableKwallet = true;
+      rules = {
+        auth.kwallet = {
+          order = 12100;
+          control = "optional";
+          modulePath = "${pkgs.kdePackages.kwallet-pam}/lib/security/pam_kwallet5.so";
+          args = [ "try_first_pass" ];
+        };
+
+        session.kwallet = {
+          order = 12500;
+          control = "optional";
+          modulePath = "${pkgs.kdePackages.kwallet-pam}/lib/security/pam_kwallet5.so";
+          args = [ "auto_start" ];
+        };
+      };
+    };
+
     # Allow unfree packages
     nixpkgs.config.allowUnfree = lib.mkDefault true;
 
@@ -87,6 +109,12 @@
         capitaine-cursors
         papirus-icon-theme
         adw-gtk3
+        kdePackages.kwallet
+        kdePackages.kwallet-pam
+        kdePackages.kwalletmanager
+        (pkgs.writeShellScriptBin "pam-kwallet-init" ''
+            exec ${pkgs.kdePackages.kwallet-pam}/libexec/pam_kwallet_init "$@"
+          '')
     ];
 
     fonts.fontconfig.enable = true;

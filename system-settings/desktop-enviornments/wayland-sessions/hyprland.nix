@@ -34,7 +34,7 @@
       environment.systemPackages = with pkgs; [
         hyprmon
         bibata-cursors
-      ];
+      ] ++ lib.optional (!config.niri.enable) seahorse;
 
     };
 

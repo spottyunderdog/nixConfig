@@ -14,8 +14,10 @@
     config = lib.mkIf config.sddm.enable {
       
       services.displayManager.sddm = {
-        
+
         enable = lib.mkDefault true;
+
+        autoNumlock = true;
 
         wayland = {
           enable = lib.mkForce true;

@@ -1,6 +1,9 @@
 // ────────────── Startup Applications ──────────────
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
 
+    // Calls a Script in bin that makes sure that the kwall
+    // Gets unlocked
+    spawn-at-startup "pam-kwallet-init"
+    //Starts Noctalia
     spawn-at-startup "noctalia"
-    spawn-sh-at-startup "gnome-keyring-daemon --start --components=secrets"
 
