@@ -59,7 +59,6 @@ in {
 
     nix-vars.hostname = hostName;
     nix-vars.install-dir = "/home/spotty";
-    nix-vars.default-user = "spotty";
 
     hardware.enableAllFirmware = true;
 
@@ -306,6 +305,8 @@ in {
         logisim-evolution
         pciutils
         intellij-idea
+        clion
+        teams-for-linux
     ];
 
     ###########################

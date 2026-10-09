@@ -15,7 +15,6 @@
       self.nixosModules.install-dir
       self.nixosModules.hostname
       self.nixosModules.shell-aliases
-      self.nixosModules.default-user
     ];
 
   };
