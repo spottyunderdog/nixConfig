@@ -57,8 +57,10 @@ in {
       self.nixosModules.drNix-ssh-settings
     ];
 
+    # Set Host name
     nix-vars.hostname = hostName;
     nix-vars.install-dir = "/home/spotty";
+    sops.keyPath = "/home/spotty/.config/sops/age/keys.txt";
 
     hardware.enableAllFirmware = true;
 

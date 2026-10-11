@@ -1,20 +1,28 @@
 { self, inputs, ... }: {
 
-  flake.nixosModules.sops = { config, pkgs, ... }: {
+  flake.nixosModules.sops = { config, lib, pkgs, ... }: {
+
+    options = {
+        sops.keyPath = lib.mkOption {
+            type = lib.types.path;
+            default = "/home/spotty/.config/sops/age/keys.txt";
+        };
+    };
 
     imports = [
       inputs.omniflake.flakes.sops-nix.nixosModules.default
     ];
+    config = {
+        sops.defaultSopsFile = ../secrets/secrets.yaml;
+        sops.defaultSopsFormat = "yaml";
 
-    sops.defaultSopsFile = ../secrets/secrets.yaml;
-    sops.defaultSopsFormat = "yaml"; 
+        sops.age.keyFile = "${config.sops.keyPath}";
 
-    sops.age.keyFile = "${config.nix-vars.default-user-path}/.config/sops/age/keys.txt";
-
-    environment.systemPackages = with pkgs; [
-      sops
-      age
-    ];
+        environment.systemPackages = with pkgs; [
+          sops
+          age
+        ];
+    };
 
   };
 
