@@ -20,6 +20,18 @@
         kdePackages.oxygen-icons
         kdePackages.oxygen-sounds
       ];
+      environment.plasma6.excludePackages = with pkgs.kdePackages; [
+        kwallet
+        kwallet-pam
+        kwalletmanager
+      ] ++ lib.optional config.kate.enable kate
+        ++ lib.optional config.filelight.enable filelight
+        ++ lib.optional config.kcalc.enable kcalc
+        ++ lib.optional config.dolphin.enable dolphin
+        ++ lib.optional config.dolphin.enable qtsvg
+        ++ lib.optional config.dolphin.enable kio 
+        ++ lib.optional config.dolphin.enable kio-fuse
+        ++ lib.optional config.dolphin.enable kio-extras;
 
     };
 
