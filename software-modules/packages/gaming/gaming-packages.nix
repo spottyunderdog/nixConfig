@@ -15,6 +15,7 @@
       self.nixosModules.r2modman
       self.nixosModules.steam
       self.nixosModules.umu-launcher
+      self.nixosModule.vulkan-low-latency-layer
     ];
 
     options = {
@@ -27,6 +28,7 @@
       gamescope.enable = lib.mkDefault true;
       goverlay.enable = lib.mkDefault true;
       heroic.enable = lib.mkDefault true;
+      low-latency-layer.enable = lib.mkDefault true;
       lutris.enable = lib.mkDefault true;
       mangohud.enable = lib.mkDefault true;
       prismlauncher.enable = lib.mkDefault true;
