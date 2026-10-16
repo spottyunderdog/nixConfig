@@ -72,7 +72,7 @@ in {
     # for system settings used across different hosts go to the
     # nixConfig/modules/sharedSystemConfigs,
     # There you can configure the bootloader, hibernation, locale,
-    # pipewire, swap, kernelss, display manager, desktop envirments, and any users you want
+    # pipewire, swap, kernels, display manager, desktop envirments, and any users you want
     # to be able to use accross different hosts.
 
     # Configure Host Name
@@ -272,6 +272,9 @@ in {
 
     # Zen Browser
     zen.enable = true;
+    # Update the shortcut version, will need to be bumped
+    # From time to time.
+    zen.shortcut-version = 21;
 
     # Vivaldi Browser
     vivaldi.enable = true;
@@ -308,7 +311,6 @@ in {
         pciutils
         intellij-idea
         clion
-        teams-for-linux
     ];
 
     ###########################

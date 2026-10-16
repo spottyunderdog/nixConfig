@@ -14,6 +14,16 @@
        inputs.hyprland.follows = "hyprland";
     };
 
+    nixdatifier = {
+      url = "github:Muddyblack/nixdatifier";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    low-latency-layer = {
+        url = "github:nmetschke/nixos-low-latency-layer?shallow=1";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
     millennium = {
       url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
       inputs.nixpkgs.follows = "nixpkgs";

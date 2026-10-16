@@ -17,6 +17,7 @@
       self.nixosModules.obsidian
       self.nixosModules.proton-packages
       self.nixosModules.noctalia-shell
+      inputs.nixdatifier.nixosModules.default
     ];
 
     dev-packages.enable = lib.mkDefault false;
@@ -33,6 +34,11 @@
     obsidian.enable = lib.mkDefault false;
     proton-packages.enable = lib.mkDefault false;
     noctalia-shell.enable = lib.mkDefault false;
+
+    programs.nixdatifier = {
+      enable = true;
+      autostart = true; # default: true, starts in tray at login
+    };
 
   };
 
