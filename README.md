@@ -1,193 +1,70 @@
-# THIS DOCUMENTATION IS WOEFUllY OUT OF DATE  I REALLY MEAN THAT IT IS MORE OUT OF DATE THEN THE AGE OF THE DINOSAURS
+# Nix Config
 
-# Introduction
-This is my personal configuration for nixos all in one nice and lovely little flake file! It come with some of the apps i use as well as the dotfiles for my hyprland and niri setups!
+### **AI Disclosure**
+Almost all the code here is written by me, however, I do you Claude, and occasionally ChatGPT to review my code.
+Only 2 things (that I can remember), were generated with Claude/GPT and those are a Systemd service for my drNix config
+(handles opening a secret ssh port in my firewall) and the sercurity.pam.sddm settings for ensuring wallet is opened
 
-# Branches
-Split into 2 Branches:
-- main
-- old-config
+# About
+Look my Configurations a mess, but it's my mess. I figure I'll explain some stuff here, like my design philosophy when
+building the project (though at some points i most certainly broke said philosophy and have yet to bring it in line, I'm
+looking at you maxdatafiles settings(this is a not to me, so I remember to bring that package in line with the rest))
 
-The `main` branch is my current configuration, and is pretty consitantly getting updated. The `old-config` branch is were my old nixos config lives and is only kept around so i can see how far my config has come.
-# Installing
+## To Do List
+1. move maxdatafiles from `software-modules/packages/packages.nix` to its own file and module
+2. Update the `software-modules/home-manager/app-modules/jdks.nix` to have and enable option with default value tied to 
+java.enable
+3. Update the `software-modules/home-manager/gtk-config.nix` to have a `.enable` option. Defaults to `true`
+4. Move any `nix-vars` options in the `variables/` directory to a corresponding module/file where reasonable.
+5. Finish README.md
 
-Read the file here [Install Guide](./documentation/install-guide.md)
+## Design Philosophy
+1. Each module deels with the settings for its corresponding Software/Package/Program. If the program needs to add other
+packages installed alongside it, only add those packages, if those packages need their own configuration, they go into
+their own module, and that module gets enabled by the other module. Example of a module that has Multiple packages: Steam/Millenium
+Shared since the configuration is for steam and the packages swap out; Ex: Dolphin, installs some extra packages to help
+with network shares and other functionality
+2. One Module Per file. All files (except for my configuration.nix file for hosts, and my user files) have 
+one Module (flake.nixosModules.<name> or flake.homeModules.<name>). Each file should have that focused scope and do one
+thing so that settings can be updated quicker. The exception is my configuration.nix files for host and my users-<name>.nix
+files, because those use variable to allow me to more quickly update things like host name, or usernames and anything
+tied to said name.
+3. Modules in the `software-modules/` directory should all have `.enable` options for their software, to allow each
+software configuration to be more quickly disabled if theirs a build error in it. Modules that serve ONLY to import the 
+modules and set a default setting do not have to have a `.enable` option.
+4. Modules in the `system-settings/` directory, that have a setting that may change from host to host, should have an
+option for changing said setting IE: Extra Limine Boot entries, setting a specific Astronaut SDDM Theme Preset, etc.
+5. Keep files/modules in appropriate places. IE: Hosts in the `hosts/` directory, users in the `user/` dir. Any host
+specific or user specific modules should be kept in a directory for that host/user, and if needed subdirectories specifying
+what they do.
 
-# Importent Info
-## Window Manger Keybinds
-- [Hyprland Binds](./documentation/hyprland-keys.md)
-- [Niri Binds](./documentation/niri-keys.md)
-## Package List
-- [Package List](./documentation/packages.md)
-## Options
-- Optionlist.md link
 ## File Structure
-- [![GitHubTree](https://img.shields.io/badge/GitHubTree-nixConfig-blue?style=flat-square)](https://githubtree.mgks.dev/repo/spottyunderdog/nixConfig/main/?ref=badge)
-## Module Breakdown by folder
-### features
-This part of the flake contains all of the modules that determine the apps sets you can use, the dotfiles and declare app configs, and virulization.
+Hopefully The file structure isn't too crazy but I'll still do a light breakdown from top down of each directorys purpose
 
-First up in here is the folder called *apps*. This folder contains all the modules the flake uses to determine what apps the user may or not want on their host. Apps are split into the following modules:
-- Coms Apps
-- Dev Apps
-- Editing Apps
-- Extra Apps
-	- Cosmetic Apps
-	- Extra Apps
-	- Extra Browsers
-	- Extra Shells
-	- Proton Apps
-- Flatpak Support
-- Gaming Apps
-- Media Apps
-- Needed Apps
-- Packages
-- Remote Access Apps
-- Utility Apps
-
-The packages.nix module and Extra Apps module act as nodes collecting the other app modules all together in on module so we don't have to import a long slog of files in our host. The full list of packages can be found here[place a link to the final list here]
-
-Next Up is our *homemanager* folder. This is were any per app configurations, like shell aliases, and dotfiles, like my niri and noctalia dots, live. You'll find the modules that define the per app configs inside the *appConfigs* folder, and any dotfile stuff inside the *dotFiles* folder
-
-Lastly we have the *virtualization* folder and the homemanager.nix file. This folder quiete plainly contains the modules that allow us to pick and choose different virtualizaion software to use, ie VMWare or Virtual Machine manager, this is also where container software will live once i get around to figuring out how to properly add podman and docker to the flake. The homemanager.nix file enables and sets up our homemanager settings, I'd advise against messing with this file unless you know what your doing.
-
-### hosts
-This folder is were your host configurations will live.
-
-As of the time of writing there are 2 existing host configurations. The one I myself am using in the folder "schoolLaptop" and templateHost.
-
-The template host contains most of the files you'll need to configure your own system (the exception is for any users that you want accross all your systems those are located in sharedSystemConfigs). 
-
-Its files look something like this:
-├── users
-│ └── nixUser.nix
-└── configuration.nix
-
-The users folder contains all host specific users configuration files, the example user here is nixUser.nix, as well as the options to toggle certain app specific configs, like bash settings, and dotfiles, like the niri configs.
-
-the configuration.nix file contains all modules needed to set up your system. It also contains all toggles for system settings and packages.
-
-#### configuration.nix
-Contains Modules:
-	flake.nixosConfigurations.\<hostName\>
-	flake.nixosModules.\<hostName\>Users
-	flake.nixosModules.\<hostName\>Hardware
-	flake.nixosModules.\<hostName\>Configuration
-
-the \<hostName\> is controled by the hostName variable.
-
-nixosConfigurations.\<hostName\>\: 
-	Declares the system and sets the \<hostName\>Configuration module for configs.
-
-nixosModules.\<hostName\>Users: 
-	Imports your host specific users.
-
-nixosModules.\<hostName\>Hardware:
-	Where the hosts hardware config lives. Can optionally import the hardware-configuration.nix file located in the /etc/nixos directory, however this is not recommended as it requires the --impure option added to your flake. To add your hardware config just paste the contents of the hardware-configuration.nix file into the module.
-
-nixosModules.\<hostName\>Configuration:
-	Imports the packages, homeManager, systemSettings, crossSystemUsers, \<hostName\>Hardware, & \<hostName\>Users modules. 
-	Contains all settings that can be configured for a specific host, like hostname what DE/WMs you want, and more.
-	Defaults:
-		Host Name: Matches Hostname Variable.
-		Desktop Envirnment: KDE Plasma
-		Kernel: Nix OS Default Kernel.
-		Enabled Package sets: Flatpak, neededApps, utilityApps, & extraShells
-		All other togglable modules are disabled by default, though are listed for use.
-
-#### nixUser.nix
-This is the template for a host specific user. Has two variables:
-\<hostName\> and \<userName\>. The \<hostName\> variable *MUST* match the \<hostName\> variable in configuration.nix otherwise it won't import properly.
-
-Modules:
-	flake.nixosModules.\<hostName\>\-\<userName\>
-	flake.homeConfigurations.\<userName\>
-	flake.homeModules.\<hostName\>\-\<userName\>
-
-nixosModules.\<hostName\>\-\<userName\>\:
-	Your user configuration. Automaticly adds the user to its needed groups, defines what shel, and imports the homeModules.\<hostName\>\-\<userName\>
-
-homeConfigurations.\<userName\>\:
-	some homemanager setings, sets the homemanager dir to the users directory.
-
-homeModules.\<hostName\>\-\<userName\>\:
-	Imports the appconfigurations, and allows thge user to toggle which app configurations, and WM dotfiles you would like to use.
-
-### sharedSystemConfigs
-Folders:
-	Kernels
-	graphcisDrivers
-	sessionManagement
-	users
-Files:
-	bootloader.nix
-	garbageCollection.nix
-	hibernation.nix
-	locale.nix
-	pipewire.nix
-	swap.nix
-	systemSettings.nix
-
-#### Kernels
-This folder contains the modules that can control the kernel that you want to use. This flake gives you the option to use the regular linux kernels, (latest or lts), and some of the CachyOS kernels. 
-
-Provided Kernels:
-	Default NixOS Linux Kernel
-	Linux Latest
-	Linux 6.18 (LTS Version)
-	Linux 6.12 (LTS Version)
-	CachyOS Latest (And Architechture varients)
-	CachyOS LTS (And Architechture varients)
-	CachyOS Hardened
-	CachyOS Server
-
-#### graphicsDrivers
-Contains the modules for nvidia, amd, and intel graphics drivers. Allows the user to toggle the drivers they need.
-
-#### sessionManagement
-Contains the modules for wayland and x11 sessions. And the display manager configuration file.
-Wayland DEs & WMs:
-	GNOME
-	KDE Plasma
-	Hyprland
-	Niri
-x11 DEs:
-	XFCE
-Display Manager:
-	SDDM (Default, If Gnome is used, then it uses GDM)
-SDDM uses the SilentSDDM theme, with the "rei" config enabled by default. To disable the theme or change wich config silentSDDM is using see the dispayManager.nix file.
-
-#### users
-Where your system wide hosts are stored. Currently has 2 files, being spotty.nix and users.nix. users.nix is used to import all of the multi system users and spotty.nix is a user file configured in a simaler mmanner to the host-specific users.
-
-#### bootloader.nix
-Configures the bootloader, grub, is not toggleable.
-
-#### garbageCollection.nix
-Configures automatic garbageCollection, toggleable
-
-#### hibernation.nix
-Configures hibernation, requires swap to be enabled, toggleable
-
-#### locale.nix
-Configures your locale settings. Not toggleable
-
-#### pipewire.nix
-Configures your pipewire settings. Not toggleable
-
-#### swap.nix
-Configures swap settings. Specificly enables Zswap. toggleable.
-
-#### systemSettings.nix
-Imports all modules, with the exception of the crossSystemUsers module (users.nix), which is imported by the hosts that want to use them.
-This file:
-	enables the bash shell
-	enables systemd in initrd
-	enables the use of unfree software
-	enables networkmanager & wireless networking
-	enables the use of flakes
-	enables printing support
-	enables SSH and SUID wrappers
-	setts the stateversion to 26.05
-	sets the default values of swap, hibernation, and autoGarbageCollection to false.
-	installs the jetbrains mono, firacode nerd font, and jetbrains mono nerd fonts.
+### [documentation](documentation/)
+Any written down file containing a list of stuff explaining my code. Mostly for myself, if i forget what something does
+### [dot-files](dot-files/)
+Where any program dotfiles, that are either too annoying to write declaritively, or i don't want to have to rebuild my
+system any time i want to see a change, goes here. Inside it are
+1. [extras](dot-files/extras): Some extra noctalia widget configurations for different host that i didn't add to my main
+noctalia dots
+2. [hypr](dot-files/hypr): My hyprland dot files.
+3. [kitty](dot-files/kitty): My kitty dot files.
+4. [niri](dot-files/niri): My niri dot files
+5. [noctalia](dot-files/noctalia): My noctalia shell dot files
+6. [uwsm](dot-files/uwsm): My UWSM dot files, used with hyprland.
+### [hosts](hosts/)
+Where I define and configure hosts. Currently 2 sub-directories:
+1. [drNix](hosts/drNix): My Current Nixos machine's configuration files.
+2. [templateHost](hosts/templateHost): A template host so i can quickly set up any new hosts.
+### [secrets](secrets/)
+Pretty self explainitory. its where any data that needs to be kept from public eyes are kept.
+### [software-modules](software-modules/)
+Pretty beefy one. Contains all settings for my home-manager, any packages i may use/want, and virtualization software
+#### [home-manager](software-modules/home-manager)
+1. [app-modules](software-modules/home-manager/app-modules): Any program specific home-manager configurations. IE zed-editor
+or VSCode configs.
+2. [dot-files-modules](software-modules/home-manager/dot-files-modules): Any modules for importing dotfiles from `dotfiles/`
+3. [shells](software-modules/home-manager/): Shell specific configurations.
+#### [packages](software-modules/packages)
+1. []

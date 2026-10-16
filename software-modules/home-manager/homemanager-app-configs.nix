@@ -22,7 +22,7 @@
     kitty-dots.enable = lib.mkOverride 1001 osConfig.kitty.enable;
     vscode-config.enable = lib.mkDefault osConfig.vscode.enable;
     neovim-dots.enable = lib.mkDefault osConfig.neovim.enable;
-    zen-browser-config.enable = true;
+    zen-browser-config.enable = lib.mkDefault osConfig.zen.enable;
 
   };
 
