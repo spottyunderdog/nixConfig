@@ -4,6 +4,10 @@
 
     options = {
       zen.enable = lib.mkEnableOption "zen";
+      zen.shortcut-version = lib.mkOption {
+        type = lib.types.int;
+        default = 21;
+      };
     };
 
     config = lib.mkIf config.zen.enable {

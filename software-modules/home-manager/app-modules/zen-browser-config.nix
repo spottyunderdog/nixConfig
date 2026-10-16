@@ -1,6 +1,6 @@
 { self, inputs, ... }: {
 
-  flake.homeModules.zen-browser-config = { config, lib, pkgs, ...}: {
+  flake.homeModules.zen-browser-config = { config, osConfig, lib, pkgs, ...}: {
 
     imports = [
       inputs.zen-browser.homeModules.default
@@ -126,6 +126,7 @@
             conIDShopping = 2;
             conIDBanking = 3;
             nixSnowflakeIcon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            shortcutVersion = osConfig.zen.shortcut-version;
           in  {
           mods = [
             "2317fd93-c3ed-4f37-b55a-304c1816819e" # Audio Indicator Enhanced
@@ -542,7 +543,7 @@
             };
 
           };
-          keyboardShortcutsVersion = 20;
+          keyboardShortcutsVersion = 21;
           keyboardShortcuts = [
             {
               id = "zen-compact-mode-toggle";
