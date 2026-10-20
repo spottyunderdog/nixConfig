@@ -313,6 +313,8 @@ in {
         clion
     ];
 
+    handbrake.enable = false;
+
     ###########################
     # Virtualization Software #
     ###########################
