@@ -75,7 +75,7 @@
 
   };
 
-  outputs = inputs: inputs.omniflake.flakes.flake-parts.lib.mkFlake{ inherit inputs; } 
+  outputs = inputs: inputs.omniflake.flakes.flake-parts.lib.mkFlake{ inherit inputs; }
     ( 
       inputs.omniflake.flakes.import-tree [ 
         ./hosts
@@ -83,7 +83,7 @@
         ./system-settings 
         ./users
         ./variables
-        ./parts.nix 
+        ./parts.nix
       ] 
     );
 }

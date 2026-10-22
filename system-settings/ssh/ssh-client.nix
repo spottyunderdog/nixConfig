@@ -5,7 +5,7 @@
     options = {
       sshClient.config = lib.mkOption {
         type = lib.types.str;
-        default = null;
+        default = "";
       };
     };
 

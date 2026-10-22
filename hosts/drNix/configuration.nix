@@ -7,7 +7,9 @@ in {
 
   flake.nixosConfigurations.${hostName} = inputs.nixpkgs.lib.nixosSystem {
 
-    modules = [ self.nixosModules."${hostName}Configuration" ];
+    modules = [
+      self.nixosModules."${hostName}Configuration" 
+    ];
 
   };
 
@@ -20,31 +22,46 @@ in {
   };
 
   flake.nixosModules."${hostName}Hardware" = { config, lib, pkgs, modulesPath, ... }: {
+    imports =
+      [ (modulesPath + "/installer/scan/not-detected.nix")
+      ];
 
-    imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
-
-    boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usbhid" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+    boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
     boot.initrd.kernelModules = [ ];
     boot.kernelModules = [ "kvm-amd" ];
     boot.extraModulePackages = [ ];
 
-    fileSystems."/" = {
-      device = "/dev/disk/by-uuid/da9c2d3d-5c75-42c1-a428-29cde9387dba";
-      fsType = "ext4";
-    };
+    fileSystems."/" =
+      { device = "/dev/mapper/luks-53689aba-7b1e-42a8-8435-4d41840eff65";
+        fsType = "btrfs";
+      };
 
-    fileSystems."/boot" = {
-      device = "/dev/disk/by-uuid/4075-60BF";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
+    boot.initrd.luks.devices."luks-53689aba-7b1e-42a8-8435-4d41840eff65".device = "/dev/disk/by-uuid/53689aba-7b1e-42a8-8435-4d41840eff65";
+
+    fileSystems."/home" =
+      { device = "/dev/mapper/luks-53689aba-7b1e-42a8-8435-4d41840eff65";
+        fsType = "btrfs";
+        options = [ "subvol=home" ];
+      };
+
+    fileSystems."/nix" =
+      { device = "/dev/mapper/luks-53689aba-7b1e-42a8-8435-4d41840eff65";
+        fsType = "btrfs";
+        options = [ "subvol=nix" ];
+      };
+
+    fileSystems."/boot" =
+      { device = "/dev/disk/by-uuid/D6AF-0881";
+        fsType = "vfat";
+        options = [ "fmask=0077" "dmask=0077" ];
+      };
 
     swapDevices = [ ];
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
     hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
   };
+
 
   flake.nixosModules."${hostName}Configuration" = { config, pkgs, lib, ... }: {
 
@@ -109,18 +126,18 @@ in {
 
     # Bootloader
     # Grub
-    grub.enable = false;
+    grub.enable = true;
     # Limine
-    limine.enable = true;
-    nix-vars.limine-entries = lib.mkForce ''
-      /+Other systems and bootloaders
-      //Windows
-        protocol: efi_chainload
-        image_path: guid(dd177fac-1ef3-4e7c-aa35-d312e09a48fd):/efi/Microsoft/Boot/bootmgfw.efi
-      //Efi Fallback
-        protocol: efi
-        path: boot():/EFI/BOOT/BOOTX64.EFI
-    '';
+   # limine.enable = true;
+   # nix-vars.limine-entries = lib.mkForce ''
+   #   /+Other systems and bootloaders
+   #   //Windows
+   #     protocol: efi_chainload
+   #     image_path: guid(dd177fac-1ef3-4e7c-aa35-d312e09a48fd):/efi/Microsoft/Boot/bootmgfw.efi
+   #   //Efi Fallback
+   #     protocol: efi
+   #     path: boot():/EFI/BOOT/BOOTX64.EFI
+   # '';
 
     #######################
     # Desktop Environments #
@@ -311,6 +328,12 @@ in {
         pciutils
         intellij-idea
         clion
+        (pkgs.writeShellScriptBin "update-hardware.nix" ''
+          echo "Coppying hardware.nix"
+          cp /etc/nixos/hardware-configuration.nix ~/nixConfig/hosts/${hostName}/hardware-configuration.nix
+        '')
+
+
     ];
 
     handbrake.enable = false;
