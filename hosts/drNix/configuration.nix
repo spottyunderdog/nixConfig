@@ -76,7 +76,7 @@ in {
 
     # Set Host name
     nix-vars.hostname = hostName;
-    nix-vars.install-dir = "/home/spotty";
+    nix-vars.install-dir = "/home/spotty/IdeaProjects";
     sops.keyPath = "/home/spotty/.config/sops/age/keys.txt";
 
     hardware.enableAllFirmware = true;
@@ -328,12 +328,8 @@ in {
         pciutils
         intellij-idea
         clion
-        (pkgs.writeShellScriptBin "update-hardware.nix" ''
-          echo "Coppying hardware.nix"
-          cp /etc/nixos/hardware-configuration.nix ~/nixConfig/hosts/${hostName}/hardware-configuration.nix
-        '')
-
-
+        nil
+        nixfmt
     ];
 
     handbrake.enable = false;
