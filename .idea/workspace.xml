@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="88d3b9f0-fc7e-4734-b215-b21736e03d93" name="Changes" comment="feat: flake update">
+    <list default="true" id="88d3b9f0-fc7e-4734-b215-b21736e03d93" name="Changes" comment="feat: updated .idea files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hosts/drNix/configuration.nix" beforeDir="false" afterPath="$PROJECT_DIR$/hosts/drNix/configuration.nix" afterDir="false" />
     </list>
@@ -159,7 +159,9 @@
     <MESSAGE value="patch: update .gitingnore, changed drNix's install dir." />
     <MESSAGE value="feat: general updates" />
     <MESSAGE value="feat: flake update" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: flake update" />
+    <MESSAGE value="feat: added ksshaskpass to drNixPackages" />
+    <MESSAGE value="feat: updated .idea files" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: updated .idea files" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
