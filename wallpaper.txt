@@ -1,2 +1,0 @@
-        nixos-artwork.wallpapers.catppuccin-mocha
-        nixos-artwork.wallpapers.nineish 
