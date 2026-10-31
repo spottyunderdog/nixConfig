@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="88d3b9f0-fc7e-4734-b215-b21736e03d93" name="Changes" comment="feat: flake update">
-      <change afterPath="$PROJECT_DIR$/.idea/doNotAskNotifications.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.sops.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.sops.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hosts/drNix/drnix-secrets.nix" beforeDir="false" afterPath="$PROJECT_DIR$/hosts/drNix/drnix-secrets.nix" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hosts/drNix/ssh-settings.nix" beforeDir="false" afterPath="$PROJECT_DIR$/hosts/drNix/ssh-settings.nix" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/secrets/secrets.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/secrets/secrets.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hosts/drNix/configuration.nix" beforeDir="false" afterPath="$PROJECT_DIR$/hosts/drNix/configuration.nix" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
