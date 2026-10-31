@@ -341,10 +341,6 @@ in {
         kdePackages.ksshaskpass
     ];
 
-    programs = {
-      ssh.startAgent = true;
-      ssh.askPassword = pkgs.lib.mkForce "${pkgs.ksshaskpass.out}/bin/ksshaskpass";
-    };
     environment = {
       sessionVariables = {
         SSH_ASKPASS_REQUIRE="prefer";
