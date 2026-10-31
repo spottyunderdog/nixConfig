@@ -14,60 +14,70 @@
     	"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBTauBq4ZidPBRLW6liPHxtl60U5qitBgF2jYxmskv8G personal-comp"
     ];
 
-#     sshClient.config = lib.mkForce ''
-#       Include ${config.sops.templates."ssh-hosts".path}
-#     '';
-#
-#     services.openssh.extraConfig = ''
-#       Include ${config.sops.templates."ssh-port.conf".path}
-#     '';
-#
-#     sops.templates."ssh-port.conf" = {
-#       mode = "0444";
-#       content = ''
-#         Port ${config.sops.placeholder."drnix/port"}
-#         ListenAddress ${config.sops.placeholder."drnix/address"}
-#       '';
-#     };
-#
-#     sops.templates."ssh-hosts" = {
-#       mode = "0400";
-#       owner = "spotty";
-#       content = ''
-#         Host dino
-#           HostName ${config.sops.placeholder."drdino/address"}
-#           Port ${config.sops.placeholder."drdino/port"}
-#           IdentityFile ${config.sops.placeholder."drdino/ssh"}
-#           User ${config.sops.placeholder."drdino/user"}
-#         Host dinotail
-#           HostName ${config.sops.placeholder."drdino/address"}
-#           Port ${config.sops.placeholder."drdino/altPort"}
-#           IdentityFile ${config.sops.placeholder."drdino/ssh"}
-#           User ${config.sops.placeholder."drdino/user"}
-#       '';
-#
-#     };
-#
-#     systemd.services.ssh-port-firewalld = {
-#       description = "Open secret SSH port in firewalld";
-#       wantedBy = [ "multi-user.target" ];
-#       after = [ "firewalld.service" ];
-#       requires = [ "firewalld.service" ];
-#       partOf = [ "firewalld.service" ];   # re-run whenever firewalld restarts
-#       path = [ pkgs.firewalld ];
-#       serviceConfig = {
-#         Type = "oneshot";
-#         RemainAfterExit = true;
-#       };
-#       script = ''
-#         port=$(cat ${config.sops.secrets."drnix/port".path})
-#         firewall-cmd --zone=trusted --add-port="$port/tcp"
-#       '';
-#       preStop = ''
-#         port=$(cat ${config.sops.secrets."drnix/port".path})
-#         firewall-cmd --zone=trusted --remove-port="$port/tcp" || true
-#       '';
-#     };
+     sshClient.config = lib.mkForce ''
+       Include ${config.sops.templates."ssh-hosts".path}
+     '';
+
+     services.openssh.extraConfig = ''
+       Include ${config.sops.templates."ssh-security.conf".path}
+     '';
+
+     sops.templates."ssh-security.conf" = {
+       mode = "0444";
+       content = ''
+         ${config.sops.placeholder."ssh/host2/config3"}
+         ${config.sops.placeholder."ssh/host2/config8"}
+       '';
+     };
+
+     sops.templates."ssh-hosts" = {
+       mode = "0400";
+       owner = "spotty";
+       content = ''
+         ${config.sops.placeholder."ssh/host1/config0"}
+             ${config.sops.placeholder."ssh/host1/config4"}
+             ${config.sops.placeholder."ssh/host1/config5"}
+             ${config.sops.placeholder."ssh/host1/config6"}
+             ${config.sops.placeholder."ssh/host1/config7"}
+         ${config.sops.placeholder."ssh/host1/config1"}
+             ${config.sops.placeholder."ssh/host1/config2"}
+             ${config.sops.placeholder."ssh/host1/config5"}
+             ${config.sops.placeholder."ssh/host1/config6"}
+             ${config.sops.placeholder."ssh/host1/config7"}
+         ${config.sops.placeholder."ssh/host2/config0"}
+             ${config.sops.placeholder."ssh/host2/config4"}
+             ${config.sops.placeholder."ssh/host2/config5"}
+             ${config.sops.placeholder."ssh/host2/config6"}
+             ${config.sops.placeholder."ssh/host2/config7"}
+         ${config.sops.placeholder."ssh/host2/config1"}
+             ${config.sops.placeholder."ssh/host2/config2"}
+             ${config.sops.placeholder."ssh/host2/config5"}
+             ${config.sops.placeholder."ssh/host2/config6"}
+             ${config.sops.placeholder."ssh/host2/config7"}
+       '';
+
+     };
+
+     systemd.services.ssh-port-firewalld = {
+       description = "Open secret SSH port in firewalld";
+       wantedBy = [ "multi-user.target" ];
+       after = [ "firewalld.service" ];
+       requires = [ "firewalld.service" ];
+       partOf = [ "firewalld.service" ];   # re-run whenever firewalld restarts
+       path = [ pkgs.firewalld ];
+       serviceConfig = {
+         Type = "oneshot";
+         RemainAfterExit = true;
+       };
+       script = ''
+         port=$(cat ${config.sops.secrets."ssh/host2/config3".path})
+         firewall-cmd --zone=trusted --add-port="$port/tcp"
+       '';
+       preStop = ''
+         port=$(cat ${config.sops.secrets."ssh/host2/config3".path})
+         firewall-cmd --zone=trusted --remove-port="$port/tcp" || true
+       '';
+     };
 
   };
 

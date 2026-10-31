@@ -10,39 +10,24 @@ in  {
         sopsFile = secrets-file1;
         neededForUsers = true;
       };
-
-#       "passwords/hyprland" = {
-#         sopsFile = secrets-file1;
-#         neededForUsers = true;
-#       };
-
-#       "drdino/address" = {
-#         sopsFile = secrets-file2;
-#       };
-#
-#       "drdino/port" = {
-#         sopsFile = secrets-file2;
-#       };
-#
-#       "drdino/altPort" = {
-#         sopsFile = secrets-file2;
-#       };
-#
-#       "drdino/ssh" = {
-#         sopsFile = secrets-file2;
-#       };
-#
-#       "drdino/user" = {
-#         sopsFile = secrets-file2;
-#       };
-#
-#       "drnix/address" = {
-#         sopsFile = secrets-file2;
-#       };
-#
-#       "drnix/port" = {
-#         sopsFile = secrets-file2;
-#       };
+      "ssh/host1/config0" = {};
+      "ssh/host1/config1" = {};
+      "ssh/host1/config2" = {};
+      "ssh/host1/config3" = {};
+      "ssh/host1/config4" = {};
+      "ssh/host1/config5" = {};
+      "ssh/host1/config6" = {};
+      "ssh/host1/config7" = {};
+      "ssh/host1/config8" = {};
+      "ssh/host2/config0" = {};
+      "ssh/host2/config1" = {};
+      "ssh/host2/config2" = {};
+      "ssh/host2/config3" = {};
+      "ssh/host2/config4" = {};
+      "ssh/host2/config5" = {};
+      "ssh/host2/config6" = {};
+      "ssh/host2/config7" = {};
+      "ssh/host2/config8" = {};
 
     };
 
