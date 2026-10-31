@@ -338,6 +338,7 @@ in {
         nil
         nixfmt
         gnumake
+        kdePackages.ksshaskpass
     ];
 
     handbrake.enable = false;
