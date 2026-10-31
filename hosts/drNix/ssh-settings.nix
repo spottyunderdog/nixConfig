@@ -8,6 +8,12 @@
     nix-vars.ssh-ports = lib.mkForce [ ];
     services.openssh.openFirewall = lib.mkForce false;
     nix-vars.allowed-ssh-users = [ "spotty" ];
+
+    # Authorized Pub Keys for SSH, For user spotty
+    users.users.spotty.openssh.authorizedKeys.keys = [
+    	"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBTauBq4ZidPBRLW6liPHxtl60U5qitBgF2jYxmskv8G personal-comp"
+    ];
+
 #     sshClient.config = lib.mkForce ''
 #       Include ${config.sops.templates."ssh-hosts".path}
 #     '';

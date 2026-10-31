@@ -23,7 +23,7 @@
     ];
 
     # Enable systemd services in initrd
-    boot.initrd.systemd.enable = true;
+#    boot.initrd.systemd.enable = true;
     # Enable Experimental Features
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     # Auto Optimize Nix Store
@@ -55,7 +55,6 @@
 
     # Allow unfree packages
     nixpkgs.config.allowUnfree = lib.mkDefault true;
-
     # Enable/Disable the firewall
     firewall.enable = lib.mkDefault true;
     # Enable/Disable NetworkManager

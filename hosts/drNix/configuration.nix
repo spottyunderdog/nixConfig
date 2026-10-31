@@ -81,6 +81,13 @@ in {
 
     hardware.enableAllFirmware = true;
 
+    services.displayManager = {
+        autoLogin = {
+            enable = true;
+            user = "spotty";
+        };
+    };
+
     ############################
     # Device Specific Settings #
     ############################
@@ -330,6 +337,7 @@ in {
         clion
         nil
         nixfmt
+        gnumake
     ];
 
     handbrake.enable = false;
