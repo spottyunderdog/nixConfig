@@ -34,23 +34,23 @@
     services.gnome.gnome-keyring.enable = lib.mkForce false;
     # Ensures that SDDM While be able to unlock the Kwallet via
     # Kwallet pam.
-    security.pam.services.sddm = {
-      enableKwallet = true;
-      rules = {
-        auth.kwallet = {
-          order = 12100;
-          control = "optional";
-          modulePath = "${pkgs.kdePackages.kwallet-pam}/lib/security/pam_kwallet5.so";
-          args = [ "try_first_pass" ];
-        };
-
-        session.kwallet = {
-          order = 12500;
-          control = "optional";
-          modulePath = "${pkgs.kdePackages.kwallet-pam}/lib/security/pam_kwallet5.so";
-          args = [ "auto_start" ];
-        };
+    systemd.services.display-manager.serviceConfig.KeyringMode = "inherit";
+    security.pam.services = {
+      login.kwallet = {
+        enable = true;
+        forceRun = true;
       };
+      sddm-autologin.text = lib.mkForce ''
+        auth     requisite pam_nologin.so
+        auth     required  pam_succeed_if.so uid >= 1000 quiet
+        -auth    optional  ${config.systemd.package}/lib/security/pam_systemd_loadkey.so
+        auth     optional  ${pkgs.kdePackages.kwallet-pam}/lib/security/pam_kwallet5.so kwalletd=${pkgs.kdePackages.kwallet}/bin/ksecretd
+        auth     required  pam_permit.so
+
+        account  include   sddm
+        password include   sddm
+        session  include   sddm
+      '';
     };
 
     # Allow unfree packages
