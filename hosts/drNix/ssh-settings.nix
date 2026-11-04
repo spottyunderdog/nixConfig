@@ -34,6 +34,9 @@
        mode = "0400";
        owner = "spotty";
        content = ''
+         Host github.com
+            HostName github.com
+            IdentityFile ~/.ssh/git_id_ed25519
          ${config.sops.placeholder."ssh/host1/config0"}
              ${config.sops.placeholder."ssh/host1/config4"}
              ${config.sops.placeholder."ssh/host1/config5"}
