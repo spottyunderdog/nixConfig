@@ -28,7 +28,7 @@ in {
 
     boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
     boot.initrd.kernelModules = [ ];
-    boot.kernelModules = [ "kvm-amd" ];
+    boot.kernelModules = [ "kvm-amd" "sg" ];
     boot.extraModulePackages = [ ];
 
     fileSystems."/" =
@@ -339,6 +339,8 @@ in {
         nixfmt
         gnumake
         kdePackages.ksshaskpass
+        makemkv
+        ffmpeg
     ];
 
     environment = {
@@ -346,8 +348,8 @@ in {
         SSH_ASKPASS_REQUIRE="prefer";
       };
     };
-
-    handbrake.enable = false;
+#
+#    handbrake.enable = false;
 
     ###########################
     # Virtualization Software #
