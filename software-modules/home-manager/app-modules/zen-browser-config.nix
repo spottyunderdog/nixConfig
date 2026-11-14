@@ -92,18 +92,6 @@
             "{85860b32-02a8-431a-b2b1-40fbd64c9c69}" = "github-file-icons"; # File Icon for Gihub, gitlab and bitbucket
           };
 
-          "3rdparty".Extensions."uBlock0@raymondhill.net".toOverwrite = {
-            filterLists = [
-              "user-filters"
-              "ublock-filters"
-              "ublock-badware"
-              "ublock-privacy"
-              "ublock-quick-fixes"
-              "ublock-unbreak"
-            ];
-            filters = ["||doubleclick.net^"];
-          };
-
           Preferences = mkLockedAttrs {
             "browser.aboutConfig.showWarning" = false;
             "browser.gesture.swipe.left" = "";
@@ -126,7 +114,6 @@
             conIDShopping = 2;
             conIDBanking = 3;
             nixSnowflakeIcon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-            shortcutVersion = osConfig.zen.shortcut-version;
           in  {
           mods = [
             "2317fd93-c3ed-4f37-b55a-304c1816819e" # Audio Indicator Enhanced
@@ -543,7 +530,6 @@
             };
 
           };
-          keyboardShortcutsVersion = 21;
           keyboardShortcuts = [
             {
               id = "zen-compact-mode-toggle";

@@ -296,9 +296,6 @@ in {
 
     # Zen Browser
     zen.enable = true;
-    # Update the shortcut version, will need to be bumped
-    # From time to time.
-    zen.shortcut-version = 21;
 
     # Vivaldi Browser
     vivaldi.enable = true;
