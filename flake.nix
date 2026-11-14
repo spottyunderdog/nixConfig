@@ -20,7 +20,7 @@
     };
 
     low-latency-layer = {
-        url = "github:nmetschke/nixos-low-latency-layer?shallow=1";
+        url = "github:nmetschke/nixos-low-latency-layer";
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
