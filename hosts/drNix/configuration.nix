@@ -321,7 +321,7 @@ in {
     ####################################################
 
     # Used to install steam Homebrew, like themes, etc
-    millennium.enable = true;
+    millennium.enable = false;
 
     # Alternitive discord client, can be customized beyond regular discord
     vesktop.enable = true;
@@ -341,6 +341,9 @@ in {
         kdePackages.ksshaskpass
         makemkv
         ffmpeg
+        remmina
+        rsync
+        gcc
     ];
 
     environment = {
