@@ -318,7 +318,7 @@ in {
     ####################################################
 
     # Used to install steam Homebrew, like themes, etc
-    millennium.enable = false;
+    millennium.enable = true;
 
     # Alternitive discord client, can be customized beyond regular discord
     vesktop.enable = true;
